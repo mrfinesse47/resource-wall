@@ -1,6 +1,14 @@
 // See: https://sass-lang.com/
 
+@import "./variables.scss";
+
 body,
 html {
   margin: 0;
+}
+
+main {
+  display: flex;
+
+  justify-content: center;
 }

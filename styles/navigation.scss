@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+#navigation {
+  background-color: $background-color;
+  height: 3em;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  div {
+    background-color: $background-color;
+  }
+}

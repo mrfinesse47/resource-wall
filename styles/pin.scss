@@ -1,0 +1,21 @@
+.pin {
+  background-color: lightcoral;
+  margin: 20px;
+  width: 200px;
+  height: 300px;
+  img {
+    width: 100%;
+  }
+}
+
+#pins-container {
+  max-width: 1200px;
+  width: 85%;
+  background-color: lightblue;
+  display: flex;
+  // css grid may work better
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
