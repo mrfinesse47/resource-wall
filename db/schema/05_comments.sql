@@ -1,8 +1,9 @@
-DROP TABLE if EXISTS post_ratings CASCADE;
+DROP TABLE if EXISTS comments CASCADE;
 
-CREATE TABLE post_ratings (
+CREATE TABLE comments (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
-  rating SMALLINT
-);
+  comment TEXT,
+  created_at TIMESTAMP
+)
