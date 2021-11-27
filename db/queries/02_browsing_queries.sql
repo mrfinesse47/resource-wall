@@ -1,0 +1,2 @@
+-- search post by title, tag or rating
+-- show all posts
