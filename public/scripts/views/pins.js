@@ -1,7 +1,11 @@
 const pins = () => {
+  const $createContainer = `<div id="pins-container">
+  </div>`
+  $($createContainer).appendTo('#main-container');
 
   //and then it appends everything to the screen
   //maybe we do a foreach loop
+
 
   //you would call AJAX here and send it into the createpin element with the ID and whatnot
   const $pin = createPinElement();

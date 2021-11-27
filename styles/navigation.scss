@@ -3,6 +3,7 @@
 #navigation {
   background-color: $background-color;
   height: 4em;
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -10,18 +11,31 @@
     width: 93%;
     margin: 0 auto;
   }
+
   div {
     background-color: $background-color;
   }
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
     li {
       display: inline-block;
     }
   }
+
   .nav-links {
     display: flex;
+  }
+
+  .nav-bar-items {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-bar-menu {
+    margin: 0 2em;
   }
 }

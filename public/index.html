@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+<head>
+  <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/pin.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/navigation.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/view-controller.js"></script>
-    <script type="text/javascript" src="/scripts/components/pin.js"></script>
-    <script type="text/javascript" src="/scripts/views/pins.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/pin.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/navigation.css" type="text/css" />
 
-  <body>
-    <nav id="navigation">
-      <div class="container">
-        <div>
-          <span id="logo"><p>LOGO</p></span>
-        </div>
-        <div class="nav-links">
-          <ul>
-            <li id="log-in">LogIn</li>
-            <li id="create-new">Create New</li>
-          </ul>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/view-controller.js"></script>
+  <script type="text/javascript" src="/scripts/components/pin.js"></script>
+  <script type="text/javascript" src="/scripts/views/pins.js"></script>
+  <script type="text/javascript" src="/scripts/views/login.js"></script>
+  <script type="text/javascript" src="/scripts/components/login.js"></script>
+</head>
+
+<body>
+  <nav id="navigation">
+    <div class="container">
+      <div class="nav-bar-items">
+        <span id="logo">
+          <p>LOGO</p>
+        </span>
+        <div class="nav-bar-menu">
+          <button type="button">My pins</button>
         </div>
       </div>
-    </nav>
-    <!-- example card -->
-    <main id="pins">
-      <div id="pins-container"></div>
-    </main>
-  </body>
+      <div class="nav-links">
+        <ul>
+          <li id="log-in">LogIn</li>
+          <li id="create-new">Create New</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- example card -->
+  <main id="main-container">
+  </main>
+</body>
+
 </html>

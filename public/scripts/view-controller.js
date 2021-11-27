@@ -4,7 +4,11 @@
 const render = (view) => {
   //first thing render does is empty the containers
 
-  if ((view = "pins")) {
+  if ((view === "pins")) {
     pins();
+  }
+
+  if ((view === "login")) {
+    login();
   }
 };
