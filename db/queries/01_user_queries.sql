@@ -25,19 +25,19 @@ SET`
 -- change object to whatever name later
 if (object.name) {
   queryParams.push(`${object.name}`);
-  queryString += `name = $${queryParams.length}`;
+  queryString += ` name = $${queryParams.length}`;
 }
 
 if (object.email) {
-  queryString += `${queryParams.length ? ',' : } `;
+  queryString += `${queryParams.length ? ', email = ' : ' email = '}`;
   queryParams.push(`${object.email}`);
-  queryString += `email = $${queryParams.length}`;
+  queryString += `$${queryParams.length}`;
 }
 
 if (object.password) {
-  queryString += `${queryParams.length ? ',' : } `;
+  queryString += `${queryParams.length ? ', password = ' : 'password = '}`;
   queryParams.push(`${object.password}`);
-  queryString += `password = $${queryParams.length}`;
+  queryString += `$${queryParams.length}`;
 }
 
 queryString += `WHERE email = $1`, email
