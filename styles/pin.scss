@@ -7,11 +7,13 @@
   display: flex;
   // css grid may work better
   flex-direction: row;
-  justify-content: space-evenly;
+  //justify-content: space-evenly;
+  gap: 10px 20px;
+  justify-content: center;
   flex-wrap: wrap;
-  align-content: stretch;
 
   .pin {
+    flex-grow: 1;
     background-color: $background-color;
     margin: 20px;
     width: 20%;
