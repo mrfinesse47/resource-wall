@@ -1,47 +1,72 @@
 @import "./variables.scss";
 
-#pins-container {
-  max-width: 95%px;
-  width: 85%;
-  // background-color: white;
-  display: flex;
-  // css grid may work better
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-content: stretch;
+$card-width: 250px;
+$card-border-radius: 16px;
+$row-increment: 10px;
+$card-small: 26;
+$card-medium: 33;
+$card-large: 45;
 
-  .pin {
-    background-color: $background-color;
-    margin: 20px;
-    width: 20%;
-    min-width: 250px;
-    margin: 2%;
+#pin_container {
+  margin: 0;
+  padding: 0;
+  width: 80vw;
 
-    .image-container {
-      width: 100%;
+  margin: 0 auto;
+
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $card-width);
+  grid-auto-rows: $row-increment;
+  justify-content: center;
+}
+
+.pin-small {
+  grid-row-end: span $card-small;
+}
+
+.pin-medium {
+  grid-row-end: span $card-medium;
+}
+.pin-large {
+  grid-row-end: span $card-large;
+}
+
+.pin {
+  padding: 0;
+  margin: 15px 10px;
+  background-color: red;
+  border-radius: $card-border-radius;
+}
+
+.pin {
+  background-color: $background-color;
+
+  .image-container {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+    border-radius: $card-border-radius;
+  }
+  footer {
+    padding: 0 4%;
+    height: 100%;
+
+    .title {
+      text-align: center;
     }
-    img {
-      width: 100%;
+    .info {
+      display: flex;
+      justify-content: space-between;
     }
-    footer {
-      padding: 0 4%;
-
-      .title {
-        text-align: center;
-      }
-      .info {
-        display: flex;
-        justify-content: space-between;
-      }
-      .rating {
-        display: flex;
-        align-items: center;
-        .fa-star {
-          display: block;
-          font-size: 0.75em;
-          color: darkorange;
-        }
+    .rating {
+      display: flex;
+      align-items: center;
+      .fa-star {
+        display: block;
+        font-size: 0.75em;
+        color: darkorange;
       }
     }
   }

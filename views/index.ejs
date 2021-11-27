@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/pin.css" type="text/css" />
     <link rel="stylesheet" href="/styles/navigation.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/pin.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -41,7 +41,38 @@
     </nav>
     <!-- example card -->
     <main id="pins">
-      <div id="pins-container"></div>
+      <div id="pin_container">
+        <article class="pin pin-large" id="12345">
+          <header class="image-container">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg"
+              alt=""
+            />
+          </header>
+          <footer>
+            <h5 class="title">Title</h5>
+            <p class="description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+              corrupti!
+            </p>
+            <div class="info">
+              <h5>Tag</h5>
+              <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </footer>
+        </article>
+        <div class="pin pin-small"></div>
+        <div class="pin pin-small"></div>
+        <div class="pin pin-small"></div>
+        <div class="pin pin-medium"></div>
+        <div class="pin pin-large"></div>
+      </div>
     </main>
   </body>
 </html>
