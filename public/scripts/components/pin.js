@@ -1,5 +1,7 @@
 const createPinElement = () => {
-  return ` <article class="pin">
+  //this will be pulled in and assembled from ajax
+  //somehow the id will have to be dynamic for an onclick event
+  return ` <article class="pin" id="12345">
     <header class="image-container">
       <img
         src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg"
