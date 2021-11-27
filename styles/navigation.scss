@@ -35,9 +35,6 @@
     align-items: center;
   }
 
-  .nav-bar-menu {
-    margin: 0 2em;
-  }
 
   #my-pins {
     border: none;
@@ -68,7 +65,23 @@
     color: #FBFBFB;
   }
 
+  #home {
+    border: none;
+    background: #5F5449;
+    box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
+    border-radius: 15px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 55%;
+    line-height: 100%;
+
+    color: #FBFBFB;
+  }
+
   .tweet-container>article:hover {
     box-shadow: 3px 4px 5px grey;
   }
+
+
 }
