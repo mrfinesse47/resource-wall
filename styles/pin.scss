@@ -1,21 +1,48 @@
-.pin {
-  background-color: lightcoral;
-  margin: 20px;
-  width: 200px;
-  height: 300px;
-  img {
-    width: 100%;
-  }
-}
+@import "./variables.scss";
 
 #pins-container {
-  max-width: 1200px;
+  max-width: 95%px;
   width: 85%;
-  background-color: lightblue;
+  // background-color: white;
   display: flex;
   // css grid may work better
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-content: stretch;
+
+  .pin {
+    background-color: $background-color;
+    margin: 20px;
+    width: 20%;
+    min-width: 250px;
+    margin: 2%;
+
+    .image-container {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+    footer {
+      padding: 0 4%;
+
+      .title {
+        text-align: center;
+      }
+      .info {
+        display: flex;
+        justify-content: space-between;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        .fa-star {
+          display: block;
+          font-size: 0.75em;
+          color: darkorange;
+        }
+      }
+    }
+  }
 }
