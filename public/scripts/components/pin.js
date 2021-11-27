@@ -9,7 +9,7 @@ const createPinElement = () => {
       />
     </header>
     <footer>
-      <h5 class="title">Title</h5>
+      <h3 class="title">Title</h3>
       <p class="description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
         corrupti!

@@ -21,4 +21,5 @@ const pins = () => {
   $("#pins-container").append($pin);
   $("#pins-container").append($pin);
   $("#pins-container").append($pin);
+  $("#pins-container").append($pin);
 };
