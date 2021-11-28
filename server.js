@@ -88,24 +88,6 @@ const dbHelpers = require("./db/db-queries")(db);
 //   console.log('addRating', result)
 // })
 
-// ADD COMMENT //
-const commentTest = {
-  user_id: 1,
-  post_id: 1,
-  comment: 'CLICK THIS TO RECIEVE FREE BITCOIN'
-}
-dbHelpers.addComment(commentTest).then((result) => {
-  console.log('addComment', result)
-})
-
-// ADD FAVORITE //
-const favoriteTest = {
-  user_id: 1,
-  post_id: 1,
-}
-dbHelpers.addFavorite(favoriteTest).then((result) => {
-  console.log('addFavorite', result)
-})
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
