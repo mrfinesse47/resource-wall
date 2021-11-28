@@ -12,26 +12,26 @@ module.exports = (db) => {
   };
 
 
-  const updateInfo = function(email, object){
+  const updateInfo = function(email, newInfo){
 
     const queryParams =[];
     let queryString = `UPDATE users
     SET`
 
-    if (object.name) {
-      queryParams.push(`${object.name}`);
+    if (newInfo.name) {
+      queryParams.push(`${newInfo.name}`);
       queryString += ` name = $${queryParams.length}`;
     }
 
-    if (object.email) {
+    if (newInfo.email) {
       queryString += `${queryParams.length ? ', email = ' : ' email = '}`;
-      queryParams.push(`${object.email}`);
+      queryParams.push(`${newInfo.email}`);
       queryString += `$${queryParams.length}`;
     }
 
-    if (object.password) {
+    if (newInfo.password) {
       queryString += `${queryParams.length ? ', password = ' : 'password = '}`;
-      queryParams.push(`${object.password}`);
+      queryParams.push(`${newInfo.password}`);
       queryString += `$${queryParams.length}`;
     }
 
@@ -42,6 +42,10 @@ module.exports = (db) => {
     `
 
     return db.query(queryString, queryParams).then((result) => result.rows[0])
+  }
+
+  const addUser = function(object) {
+
   }
 
 

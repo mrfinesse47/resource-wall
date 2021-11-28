@@ -49,9 +49,12 @@ const testNewInfo = {
   email: 'example@example.com',
   password: 'test'
 }
-dbHelpers.updateInfo(email, testNewInfo).then((result) => {
-  console.log('updateInfo', result)
-});
+
+// dbHelpers.updateInfo(email, testNewInfo).then((result) => {
+//   console.log('updateInfo', result)
+// });
+
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
