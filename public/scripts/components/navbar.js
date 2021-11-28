@@ -14,7 +14,7 @@ const navBar = (condition) => {
   </form>
   </div>
   <div class="nav-links">
-  <button type="button" id="logout">Log Out</button>
+  <button type="button" id="logout-btn">Log Out</button>
   </div>
   </div>
   </nav>`

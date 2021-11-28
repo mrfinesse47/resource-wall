@@ -30,4 +30,24 @@ const pins = () => {
   $("#pins-container").append($pin);
   $("#pins-container").append($pin);
   $("#pins-container").append($pin);
+
+
+
+  $('#logout-btn').submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        data: {
+          action: 'logout'
+        },
+        url: 'api/users/logout',
+      })
+      .done(function () {
+        render("login")
+      })
+      .fail(function () {
+        render("login") //should either render pins or give a notification that logout failed
+
+      });
+  })
 };
