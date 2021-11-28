@@ -19,21 +19,38 @@ module.exports = (db) => {
     //   .catch((err) => {
     //     res.status(500).json({ error: err.message });
     //   });
-    res.json({ users: "hello" });
+    res.json({
+      users: "hello"
+    });
   });
   router.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    const {
+      email,
+      password
+    } = req.body;
+    console.log(req, res)
     login(email, password)
       .then((user) => {
         if (!user) {
-          res.send({ error: "error" });
+          res.send({
+            error: "error"
+          });
           return;
         }
         req.session.userId = user.id;
-        res.send({ user: { name: user.name, email: user.email, id: user.id } });
+        res.send({
+          user: {
+            name: user.name,
+            email: user.email,
+            id: user.id
+          }
+        });
       })
       .catch((e) => res.send(e));
-    res.json({ users: "hello" });
+    res.json({
+      users: "hello"
+    });
+    console.log("in router");
   });
   return router;
 };
