@@ -39,12 +39,14 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const dbHelpers = require("./db/db-queries")(db);
 
-const email = 'quis@outlook.com';
-dbHelpers.getUserByEmail(email)
+const email = "quis@outlook.com";
+dbHelpers.getUserByEmail(email).then((result) => {
+  console.log(result);
+});
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/users", usersRoutes(dbHelpers));
+app.use("/api/widgets", widgetsRoutes(dbHelpers));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -59,6 +61,4 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-
-
-getUser (db, )
+// getUser(db);
