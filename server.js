@@ -39,28 +39,29 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const dbHelpers = require("./db/db-queries")(db);
 
-const email = "quis@outlook.com";
-dbHelpers.getUserByEmail(email).then((result) => {
-  console.log('getUserByEmail', result);
-});
-
-const testNewInfo = {
-  name: 'evan',
-  email: 'example@example.com',
-  password: 'test'
-}
-
-// dbHelpers.updateInfo(email, testNewInfo).then((result) => {
-//   console.log('updateInfo', result)
+// FIND BY EMAIL //
+// const email = "quis@outlook.com";
+// dbHelpers.getUserByEmail(email).then((result) => {
+//   console.log('getUserByEmail', result);
 // });
 
-dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log('addUser', result)
-});
-
-dbHelpers.getUserById(1).then((result) => {
-  console.log('getUsetById', result)
-});
+// const testNewInfo = {
+//   name: 'evan',
+//   email: 'example@example.com',
+//   password: 'test'
+// }
+// UPDATE USER INFO //
+// dbHelpers.updateUserInfo(email, testNewInfo).then((result) => {
+//   console.log('updateInfo', result)
+// });
+// ADD USER //
+// dbHelpers.addUser(testNewInfo).then((result) => {
+//   console.log('addUser', result)
+// });
+// GET USER BY ID //
+// dbHelpers.getUserById(1).then((result) => {
+//   console.log('getUsetById', result)
+// });
 
 const testPin = {
   owner_id: 1,
@@ -75,6 +76,7 @@ const testPin = {
 dbHelpers.addPin(testPin).then((result) => {
   console.log('addPin', result)
 })
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
