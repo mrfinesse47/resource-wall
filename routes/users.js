@@ -24,33 +24,10 @@ module.exports = (db) => {
     });
   });
   router.post("/login", (req, res) => {
-    const {
-      email,
-      password
-    } = req.body;
-    console.log(req, res)
-    login(email, password)
-      .then((user) => {
-        if (!user) {
-          res.send({
-            error: "error"
-          });
-          return;
-        }
-        req.session.userId = user.id;
-        res.send({
-          user: {
-            name: user.name,
-            email: user.email,
-            id: user.id
-          }
-        });
-      })
-      .catch((e) => res.send(e));
+    console.log("in router", req.body);
     res.json({
       users: "hello"
     });
-    console.log("in router");
   });
   return router;
 };

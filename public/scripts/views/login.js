@@ -15,19 +15,14 @@ const login = () => {
     $.ajax({
         method: 'POST',
         data: $(this).serialize(),
-        url: 'users/login',
+        url: 'api/users/login',
       })
-      .done(function () {
-        console.log("123123")
+      .done(function (abc) {
+        console.log(abc)
+        render("pins")
       })
       .fail(function () {
-        alert("failed!")
+        render("pins")
       });
   })
 }
-
-
-// const email = $('#email').serialize();
-// const password = $('#password').serialize();
-
-// const logInForm = $('#login-form').serialize();

@@ -3,7 +3,8 @@
 
 const render = (view) => {
   //first thing render does is empty the containers
-
+  $('#login-article').remove();
+  $('#navigation').remove();
   if ((view === "pins")) {
     pins();
   }

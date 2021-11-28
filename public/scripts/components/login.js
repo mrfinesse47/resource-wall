@@ -1,6 +1,6 @@
 const loginElement = () => {
   return `
-  <form method="POST" action="users/login" id="login-form" class="login-form">
+  <form method="POST" action="/api/users/login" id="login-form" class="login-form">
   <p id="login-title">Log In</p>
   <div class="login-form">
     <input id="email" type="email" name="email" placeholder="Email">
