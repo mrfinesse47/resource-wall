@@ -54,6 +54,13 @@ const testNewInfo = {
 //   console.log('updateInfo', result)
 // });
 
+dbHelpers.addUser(testNewInfo).then((result) => {
+  console.log('addUser', result)
+});
+
+dbHelpers.getUserById(1).then((result) => {
+  console.log('getUsetById', result)
+});
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
