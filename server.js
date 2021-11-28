@@ -9,7 +9,6 @@ const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 
-
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -22,7 +21,7 @@ db.connect();
 app.use(morgan("dev"));
 app.use(
   cookieSession({
-    name: "user",
+    name: "user_id",
     keys: ["key1", "key2"],
   })
 );
@@ -49,25 +48,25 @@ const dbHelpers = require("./db/db-queries")(db);
 
 const email = "quis@outlook.com";
 dbHelpers.getUserByEmail(email).then((result) => {
-  console.log('getUserByEmail', result);
+  console.log("getUserByEmail", result);
 });
 
 const testNewInfo = {
-  name: 'evan',
-  email: 'example@example.com',
-  password: 'test'
-}
+  name: "evan",
+  email: "example@example.com",
+  password: "test",
+};
 
 // dbHelpers.updateInfo(email, testNewInfo).then((result) => {
 //   console.log('updateInfo', result)
 // });
 
 dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log('addUser', result)
-})
+  console.log("addUser", result);
+});
 
 dbHelpers.getUserById(1).then((result) => {
-  console.log('getUserById', result)
+  console.log("getUserById", result);
 });
 
 const testPin = {
@@ -77,15 +76,13 @@ const testPin = {
   content_type: "Text",
   content: "if cell is a cell would a group of cells be tissue?",
   tag: "Biology",
-  created_at: '2021-12-27T08:00:00.000Z'
-}
+  created_at: "2021-12-27T08:00:00.000Z",
+};
 
 //TESTING
 // dbHelpers.addPin(testPin).then((result) => {
 //   console.log('addPin', result)
 // })
-
-
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

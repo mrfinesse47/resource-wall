@@ -28,6 +28,8 @@ module.exports = (db) => {
     const userID = req.session.user_id;
 
     db.getUserById(userID).then((dbusr) => {
+      //the user id from cookie matches an id in the database
+      console.log("db user", dbusr);
       if (dbusr) {
         //user is already logged in
         console.log("already logged in");
@@ -43,6 +45,7 @@ module.exports = (db) => {
             if (req.body.password === user.password) {
               //check the user password vs the form password
               req.session.user_id = user.id;
+              console.log(req.session.user_id);
               console.log("authenticated");
               res.json({ auth: true, message: "success" });
             } else {
@@ -66,6 +69,11 @@ module.exports = (db) => {
     });
 
     router.post("/logout", (req, res) => {
+      req.session = null; //deletes user cookies
+      res.json({ auth: false, message: "sucessfully logged out user" });
+    });
+
+    router.post("/register", (req, res) => {
       req.session = null; //deletes user cookies
       res.json({ auth: false, message: "sucessfully logged out user" });
     });
