@@ -37,7 +37,10 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const dbHelpers = require("./db/db-queries")(db);
 
+const email = 'quis@outlook.com';
+dbHelpers.getUserByEmail(email)
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -55,3 +58,7 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
+
+getUser (db, )
