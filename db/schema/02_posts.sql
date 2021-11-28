@@ -8,7 +8,7 @@ CREATE TABLE posts (
   description VARCHAR(140) NOT NULL,
   content_type TEXT NOT NULL,
   content TEXT NOT NULL,
-  tag VARCHAR(140) NOT NULL
+  tag VARCHAR(140) NOT NULL,
+  created_at TIMESTAMP
 );
 
---repeating columns ratings and comments, should just join to get the relevant information
