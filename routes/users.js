@@ -27,12 +27,6 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const userID = req.session.user_id;
 
-    console.log("here");
-
-    if (!userID) {
-      return res.json({ auth: false, message: "not logged in" });
-    }
-
     db.getUserById(userID).then((dbusr) => {
       if (dbusr) {
         //user is already logged in
