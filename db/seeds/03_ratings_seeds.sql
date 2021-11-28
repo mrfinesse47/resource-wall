@@ -1,4 +1,4 @@
-INSERT INTO post_ratings (user_id, post_id, rating)
+INSERT INTO pin_ratings (user_id, pin_id, rating)
 VALUES (14,2,5),
   (19,12,2),
   (3,3,4),
