@@ -26,9 +26,9 @@ module.exports = (db) => {
 
   router.post("/signup", (req, res) => {
     console.log("in router", req.body);
-    res.json({
-      users: "hello"
-    });
+    // res.json({
+    //   users: "hello"
+    // });
   });
 
 
