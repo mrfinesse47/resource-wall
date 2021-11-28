@@ -76,11 +76,12 @@ module.exports = (db) => {
     INSERT INTO posts (owner_id, title, description, content_type, content, tag, created_at)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
-    ` [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag, object.created_at])
-    .then(result => result)
+    `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag, object.created_at])
+    .then(result => result.rows[0])
+    //testing, remove .rows[0] in production
   }
 
-  return { getUserByEmail, updateInfo, addUser, getUserById };
+  return { getUserByEmail, updateInfo, addUser, getUserById, addPin };
 };
 
 

@@ -72,10 +72,9 @@ const testPin = {
   created_at: '2021-12-27T08:00:00.000Z'
 }
 
-//TESTING
-// dbHelpers.addPin(testPin).then((result) => {
-//   console.log('addPin', result)
-// })
+dbHelpers.addPin(testPin).then((result) => {
+  console.log('addPin', result)
+})
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
