@@ -5,5 +5,5 @@ CREATE TABLE comments (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
   comment TEXT,
-  created_at TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )

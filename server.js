@@ -63,21 +63,49 @@ const dbHelpers = require("./db/db-queries")(db);
 //   console.log('getUsetById', result)
 // });
 
-const testPin = {
-  owner_id: 1,
-  title: "is cell from dbz a cell",
-  description: "is cell a cell?",
-  content_type: "Text",
-  content: "if cell is a cell would a group of cells be tissue?",
-  tag: "Biology",
-  created_at: '2021-12-27T08:00:00.000Z'
-}
+// const testPin = {
+//   owner_id: 1,
+//   title: "is cell from dbz a cell",
+//   description: "is cell a cell?",
+//   content_type: "Text",
+//   content: "if cell is a cell would a group of cells be tissue?",
+//   tag: "Biology",
+//   created_at: '2021-12-27T08:00:00.000Z'
+// }
 
-dbHelpers.addPin(testPin).then((result) => {
-  console.log('addPin', result)
+// dbHelpers.addPin(testPin).then((result) => {
+//   console.log('addPin', result)
+// })
+
+
+// ADD RATING //
+// const ratingTest = {
+//   user_id: 1,
+//   post_id: 1,
+//   rating: 4
+// }
+// dbHelpers.addRating(ratingTest).then((result) => {
+//   console.log('addRating', result)
+// })
+
+// ADD COMMENT //
+const commentTest = {
+  user_id: 1,
+  post_id: 1,
+  comment: 'CLICK THIS TO RECIEVE FREE BITCOIN'
+}
+dbHelpers.addComment(commentTest).then((result) => {
+  console.log('addComment', result)
 })
 
-
+// ADD FAVORITE //
+const favoriteTest = {
+  user_id: 1,
+  post_id: 1,
+}
+dbHelpers.addFavorite(favoriteTest).then((result) => {
+  console.log('addFavorite', result)
+})
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));

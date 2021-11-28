@@ -87,17 +87,34 @@ module.exports = (db) => {
     INSERT INTO post_ratings (user_id, post_id, rating)
     VALUES ($1, $2, $3)
     RETURNING *;
-    `, [object.user_id, object.post_id, rating])
+    `, [object.user_id, object.post_id, object.rating])
       .then(result => result.rows[0])
+      .catch((err) => console.log(err))
   };
 
-  const addComment = function() {};
+  const addComment = function(object) {
+    return db.query(`
+    INSERT INTO comments (user_id, post_id, comment)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [object.user_id, object.post_id, object.comment])
+      .then(result => result.rows[0])
+      .catch((err) => console.log(err))
+  };
 
-  const addFavorite = function() {};
+  const addFavorite = function(object) {
+    return db.query(`
+    INSERT INTO liked_posts (user_id, post_id)
+    VALUES ($1, $2)
+    RETURNING *;
+    `, [object.user_id, object.post_id])
+      .then(result => result.rows[0])
+      .catch((err) => console.log(err))
+  };
 
 
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin,  };
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite };
 };
 
 
