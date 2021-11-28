@@ -1,12 +1,12 @@
-const login = () => {
-  const $createArticle = `<article id="login-article">
+const signUp = () => {
+  const $createArticle = `<article id="signup-article">
   </article>`
   $($createArticle).appendTo('#main-container');
 
 
 
-  const $login = loginElement();
-  $("#login-article").append($login);
+  const $signUp = signUpElement();
+  $("#signup-article").append($signUp);
 
 
 
@@ -14,22 +14,19 @@ const login = () => {
   $($navBar).appendTo('#nav-placeholder');
 
 
-
-
-  $('#login-form').submit(function (event) {
-    console.log("123");
+  $('#signup-form').submit(function (event) {
     event.preventDefault();
     $.ajax({
         method: 'POST',
         data: $(this).serialize(),
-        url: 'api/users/login',
+        url: 'api/users/signup',
       })
       .done(function (abc) {
         console.log(abc)
-        render("pins")
+        render("login")
       })
       .fail(function () {
-        render("pins")
+        render("login")
       });
   })
-}
+};

@@ -1,6 +1,6 @@
 @import "./variables.scss";
 
-#login-article {
+#signup-article {
   display: flex;
   flex-direction: column;
   padding: 2em 3em;
@@ -9,7 +9,7 @@
   margin: 10rem 0;
   justify-content: space-between;
 
-  #login-title {
+  #signup-title {
     display: flex;
     justify-content: center;
     font-family: Test Söhne Breit;
@@ -18,7 +18,7 @@
     letter-spacing: 0.07em;
   }
 
-  .login-form {
+  .signup-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,14 +27,14 @@
     width: 20rem;
   }
 
-  #login-box {
+  #signup-box {
     display: flex;
     justify-content: center;
     align-items: center;
 
   }
 
-  #loginbtn {
+  #signupbtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@
     border: none;
     color: whitesmoke;
     background-color: #5F5449;
-    width: 5em;
+    width: 7.8em;
     height: 2em;
     border-radius: 3rem;
     letter-spacing: 0.07em;
@@ -51,7 +51,7 @@
     -o-transition: all .3s ease-in-out;
   }
 
-  #loginbtn:hover {
+  #signupbtn:hover {
     box-shadow: 3px 4px 5px grey;
   }
 

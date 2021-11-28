@@ -23,6 +23,15 @@ module.exports = (db) => {
       users: "hello"
     });
   });
+
+  router.post("/signup", (req, res) => {
+    console.log("in router", req.body);
+    res.json({
+      users: "hello"
+    });
+  });
+
+
   router.post("/login", (req, res) => {
     console.log("in router", req.body);
     res.json({
@@ -30,4 +39,6 @@ module.exports = (db) => {
     });
   });
   return router;
+
+
 };
