@@ -1,5 +1,6 @@
 module.exports = (db) => {
-  const getUserByEmail = function(email) {
+
+  const getUserByEmail = function (email) {
     return db
       .query(`SELECT * FROM users WHERE email = $1;`, [email])
       .then((result) => {
@@ -11,22 +12,22 @@ module.exports = (db) => {
       });
   };
 
-  const getUserById = function(id) {
+  const getUserById = function (id) {
     return db.query(`
     SELECT * FROM users WHERE id = $1;`, [id])
-    .then((result) => {
-      if (result){
-        return result.rows[0];
-      } else {
-        return null;
-      }
-    });
+      .then((result) => {
+        if (result) {
+          return result.rows[0];
+        } else {
+          return null;
+        }
+      });
   };
 
 
-  const updateInfo = function(email, newInfo){
+  const updateUserInfo = function (email, newInfo) {
 
-    const queryParams =[];
+    const queryParams = [];
     let queryString = `UPDATE users
     SET`
 
@@ -74,17 +75,58 @@ module.exports = (db) => {
           return null
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        return null
+      })
   }
 
   const addPin = function(object) {
     return db.query(`
     INSERT INTO posts (owner_id, title, description, content_type, content, tag, created_at)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    VALUES ($1, $2, $3, $4, $5, $6, now())
     RETURNING *;
-    ` [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag, object.created_at])
-    .then(result => result)
+    `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag])
+      .then(result => result.rows[0])
+    //testing, remove .rows[0] in production
   }
 
-  return { getUserByEmail, updateInfo, addUser, getUserById, addPin };
+  const addRating = function(object) {
+    return db.query(`
+    INSERT INTO post_ratings (user_id, post_id, rating)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [object.user_id, object.post_id, object.rating])
+      .then(result => result.rows[0])
+      .catch((err) => console.log(err))
+  };
+
+  const addComment = function(object) {
+    return db.query(`
+    INSERT INTO comments (user_id, pin_id, comment, created_at)
+    VALUES ($1, $2, $3, now())
+    RETURNING *;
+    `, [object.user_id, object.post_id, object.comment])
+      .then(result => result.rows)
+      .catch((err) => console.log(err))
+  };
+
+  const addFavorite = function(object) {
+    return db.query(`
+    INSERT INTO liked_posts (user_id, post_id)
+    VALUES ($1, $2)
+    RETURNING *;
+    `, [object.user_id, object.post_id])
+      .then(result => result.rows[0])
+      .catch((err) => console.log(err))
+  };
+
+
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite };
 };
+
+
+
+
+
