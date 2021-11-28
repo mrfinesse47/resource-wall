@@ -23,7 +23,7 @@ const signUp = () => {
       })
       .done(function (abc) {
         console.log(abc)
-        render("login")
+        render("pins")
       })
       .fail(function () {
         render("login")
