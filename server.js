@@ -7,6 +7,8 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require("cookie-session");
+
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -18,6 +20,12 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
+app.use(
+  cookieSession({
+    name: "user",
+    keys: ["key1", "key2"],
+  })
+);
 
 // app.set("view engine", "ejs"); dont neecd for SPA
 app.use(express.urlencoded({ extended: true }));
@@ -56,11 +64,28 @@ const testNewInfo = {
 
 dbHelpers.addUser(testNewInfo).then((result) => {
   console.log('addUser', result)
-});
+})
 
 dbHelpers.getUserById(1).then((result) => {
-  console.log('getUsetById', result)
+  console.log('getUserById', result)
 });
+
+const testPin = {
+  owner_id: 1,
+  title: "is cell from dbz a cell",
+  description: "is cell a cell?",
+  content_type: "Text",
+  content: "if cell is a cell would a group of cells be tissue?",
+  tag: "Biology",
+  created_at: '2021-12-27T08:00:00.000Z'
+}
+
+//TESTING
+// dbHelpers.addPin(testPin).then((result) => {
+//   console.log('addPin', result)
+// })
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

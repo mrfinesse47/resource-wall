@@ -71,5 +71,14 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   }
 
-  return { getUserByEmail, updateInfo, addUser, getUserById };
+  const addPin = function(object) {
+    return db.query(`
+    INSERT INTO posts (owner_id, title, description, content_type, content, tag, created_at)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *;
+    ` [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag, object.created_at])
+    .then(result => result)
+  }
+
+  return { getUserByEmail, updateInfo, addUser, getUserById, addPin };
 };
