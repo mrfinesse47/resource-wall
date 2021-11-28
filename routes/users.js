@@ -75,31 +75,44 @@ module.exports = (db) => {
   });
 
   router.post("/signup", (req, res) => {
-    const user = {
-      first_name: req.body.FirstName,
-      last_name: req.body.FirstName,
-      email: req.body.email,
-      password: req.body.password,
-    };
-    // const values = [user.first_name, user.last_name, user.email, user.password]
-    db.addUser(user)
-      .then((result) => {
-        if (!result) {
-          res.json({
-            auth: false,
-            message: "not succesful in registering user",
-          });
-          return console.log("not successful in adding new user");
-        }
-        console.log("successfully added user to db: ", result);
-        req.session.user_id = result.id; //set the cookie according to the userid returned from the database
-        res.json({ auth: true, message: "succesful registration" });
-      })
-      .catch((err) => {
-        console.log("db error", err);
-        res.status(500).json({ auth: false, message: "internal server error" });
-      });
+    const userID = req.session.user_id;
 
+    db.getUserById(userID).then((dbusr) => {
+      //the user id from cookie matches an id in the database
+      console.log("db user", dbusr);
+      if (dbusr) {
+        //user is already logged in
+        console.log("already logged in");
+        return res.json({ auth: true, message: "already logged in" });
+      }
+
+      const user = {
+        first_name: req.body.FirstName,
+        last_name: req.body.LastName,
+        email: req.body.email,
+        password: req.body.password,
+      };
+      // const values = [user.first_name, user.last_name, user.email, user.password]
+      db.addUser(user)
+        .then((result) => {
+          if (!result) {
+            res.json({
+              auth: false,
+              message: "not succesful in registering user",
+            });
+            return console.log("not successful in adding new user");
+          }
+          console.log("successfully added user to db: ", result);
+          req.session.user_id = result.id; //set the cookie according to the userid returned from the database
+          res.json({ auth: true, message: "succesful registration" });
+        })
+        .catch((err) => {
+          console.log("db error", err);
+          res
+            .status(500)
+            .json({ auth: false, message: "internal server error" });
+        });
+    });
     // db.addUser()
   });
   return router;
