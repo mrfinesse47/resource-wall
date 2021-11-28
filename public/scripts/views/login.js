@@ -1,10 +1,11 @@
 const login = () => {
-  const $createContainer = `<article id="login-container">
+  const $createArticle = `<article id="login-article">
   </article>`
-  $($createContainer).appendTo('#main-container');
+  $($createArticle).appendTo('#main-container');
 
   const $login = loginElement();
+  $("#login-article").append($login);
 
-
-  $("#login-container").append($login);
+  const $navBar = navBar('loggedOut');
+  $($navBar).appendTo('#nav-placeholder');
 }

@@ -1,7 +1,7 @@
 const loginElement = () => {
   return `
   <form id="login-form" class="login-form">
-  <p>Login</p>
+  <p id="login-title">Log In</p>
   <div class="login-form">
     <input type="email" name="email" placeholder="Email">
   </div>
@@ -10,9 +10,8 @@ const loginElement = () => {
       <input type="password" name="password" placeholder="Password">
     </div>
 
-  <div class="login-form">
-      <button>Login</button>
-      <a id="login-form" href="#">Cancel</a>
+  <div class="login-form" id="login-box">
+      <button id="loginbtn">Login</button>
   </div>
 </form>
 `

@@ -1,6 +1,25 @@
-const navLoggedIn = () => {
-
-  return `<nav id="navigation">
+const navBar = (condition) => {
+  if (condition === 'loggedIn') {
+    return `<nav id="navigation">
+  <div class="container">
+  <div class="nav-bar-items">
+  <button type="button" id="home">Home
+  </button>
+  <button type="button" id="my-pins">My pins</button>
+  <form id="search-bar">
+  <span>
+  <input type="search" id="query" placeholder="Search">
+  <button>Search</button>
+  </span>
+  </form>
+  </div>
+  <div class="nav-links">
+  <button type="button" id="logout">Log Out</button>
+  </div>
+  </div>
+  </nav>`
+  } else {
+    return `<nav id="navigation">
     <div class="container">
       <div>
         <span id="logo">
@@ -8,11 +27,8 @@ const navLoggedIn = () => {
         </span>
       </div>
       <div class="nav-links">
-        <ul>
-        <li id="my-pins">My Pins</li>
-          <li id="log-in">Log Out</li>
-        </ul>
       </div>
     </div>
   </nav>`
+  }
 }

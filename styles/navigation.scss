@@ -2,7 +2,8 @@
 
 #navigation {
   background-color: $background-color;
-  height: 2rem;
+  height: 5rem;
+
 
   .container {
     display: flex;
@@ -10,6 +11,7 @@
     align-items: center;
     width: 93%;
     margin: 0 auto;
+    height: inherit;
   }
 
   div {
@@ -33,50 +35,50 @@
   .nav-bar-items {
     display: flex;
     align-items: center;
-  }
 
+  }
 
   #my-pins {
     border: none;
-    background: #5F5449;
-    box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
-    border-radius: 15px;
+    background: inherit;
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
-    font-size: 55%;
+    font-size: 100%;
     line-height: 100%;
 
-
-    color: #FBFBFB;
+    color: black;
   }
 
   #logout {
     border: none;
-    background: #5F5449;
+    background: hsl(0, 79%, 23%);
     box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
-    border-radius: 15px;
-    font-family: Inter;
-    font-style: normal;
+    border-radius: 2em;
     font-weight: 600;
-    font-size: 55%;
-    line-height: 100%;
-
+    font-size: 100%;
+    line-height: 180%;
+    padding: 0.3em .7em;
     color: #FBFBFB;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+  }
+
+  #logout:hover {
+    box-shadow: 3px 4px 5px grey;
   }
 
   #home {
     border: none;
-    background: #5F5449;
-    box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
-    border-radius: 15px;
+    background: inherit;
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
-    font-size: 55%;
+    font-size: 100%;
     line-height: 100%;
 
-    color: #FBFBFB;
+    color: black;
   }
 
   .tweet-container>article:hover {
@@ -85,3 +87,16 @@
 
 
 }
+
+
+// border: none;
+// background: #5F5449;
+// box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
+// border-radius: 15px;
+// font-family: Inter;
+// font-style: normal;
+// font-weight: 600;
+// font-size: 60%;
+// line-height: 100%;
+// margin: 0 2em;
+// color: #FBFBFB;

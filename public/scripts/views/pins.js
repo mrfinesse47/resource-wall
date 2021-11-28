@@ -1,7 +1,11 @@
 const pins = () => {
-  const $createContainer = `<div id="pins-container">
+  const $createPinContainer = `<div id="pins-container">
   </div>`
-  $($createContainer).appendTo('#main-container');
+  $($createPinContainer).appendTo('#main-container');
+
+  const $navBar = navBar('loggedIn');
+  $($navBar).appendTo('#nav-placeholder');
+  // Move somewhere to reduce redundancy
 
   //and then it appends everything to the screen
   //maybe we do a foreach loop
