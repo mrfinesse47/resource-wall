@@ -33,7 +33,7 @@ const pins = () => {
 
 
 
-  $('#logout-btn').submit(function (event) {
+  $('#logout-btn').click(function (event) {
     event.preventDefault();
     $.ajax({
         method: 'POST',

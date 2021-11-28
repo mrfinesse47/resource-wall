@@ -5,6 +5,7 @@ const render = (view) => {
   //first thing render does is empty the containers
   $('#login-article').remove();
   $('#navigation').remove();
+  $('#pins-container').remove();
 
   if ((view === "pins")) {
     pins();
@@ -16,5 +17,9 @@ const render = (view) => {
 
   if ((view === "signUp")) {
     signUp();
+  }
+
+  if ((view === "userPins")) {
+    userPins();
   }
 };
