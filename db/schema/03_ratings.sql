@@ -1,8 +1,8 @@
-DROP TABLE if EXISTS post_ratings CASCADE;
+DROP TABLE if EXISTS pin_ratings CASCADE;
 
-CREATE TABLE post_ratings (
+CREATE TABLE pin_ratings (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
+  post_id INTEGER REFERENCES pins(id) ON DELETE CASCADE,
   rating SMALLINT
 );
