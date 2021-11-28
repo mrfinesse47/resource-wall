@@ -1,4 +1,4 @@
-const pins = () => {
+const innerPins = () => {
   const $createPinContainer = `<div id="pins-container">
   </div>`
   $($createPinContainer).appendTo('#main-container');

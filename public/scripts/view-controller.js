@@ -3,6 +3,8 @@
 
 const render = (view) => {
   //first thing render does is empty the containers
+  $('#login-article').remove();
+  $('#navigation').remove();
 
   if ((view === "pins")) {
     pins();
@@ -10,5 +12,9 @@ const render = (view) => {
 
   if ((view === "login")) {
     login();
+  }
+
+  if ((view === "signUp")) {
+    signUp();
   }
 };

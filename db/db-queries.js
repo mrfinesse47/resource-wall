@@ -31,9 +31,15 @@ module.exports = (db) => {
     let queryString = `UPDATE users
     SET`
 
-    if (newInfo.name) {
+    if (newInfo.first_name) {
       queryParams.push(`${newInfo.name}`);
-      queryString += ` name = $${queryParams.length}`;
+      queryString += ` first_name = $${queryParams.length}`;
+    }
+
+    if (newInfo.last_name) {
+      queryString += `${queryParams.length ? ', last_name = ' : ' last_name = '}`;
+      queryParams.push(`${newInfo.name}`);
+      queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.email) {
@@ -57,10 +63,10 @@ module.exports = (db) => {
     return db.query(queryString, queryParams).then((result) => result.rows[0])
   }
 
-  const addUser = function (user) {
-    const values = [user.name, user.email, user.password]
-    return db.query(`INSERT INTO users (name, email, password)
-    VALUES ($1, $2, $3)
+  const addUser = function(user) {
+    const values = [user.first_name, user.last_name, user.email, user.password]
+    return db.query(`INSERT INTO users (first_name, last_name, email, password)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;`, values)
       .then((result) => {
         if (result) {
@@ -69,15 +75,18 @@ module.exports = (db) => {
           return null
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        return null
+      })
   }
 
-  const addPin = function (object) {
+  const addPin = function(object) {
     return db.query(`
     INSERT INTO posts (owner_id, title, description, content_type, content, tag, created_at)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    VALUES ($1, $2, $3, $4, $5, $6, now())
     RETURNING *;
-    `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag, object.created_at])
+    `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag])
       .then(result => result.rows[0])
     //testing, remove .rows[0] in production
   }
@@ -94,11 +103,11 @@ module.exports = (db) => {
 
   const addComment = function(object) {
     return db.query(`
-    INSERT INTO comments (user_id, post_id, comment)
-    VALUES ($1, $2, $3)
+    INSERT INTO comments (user_id, pin_id, comment, created_at)
+    VALUES ($1, $2, $3, now())
     RETURNING *;
     `, [object.user_id, object.post_id, object.comment])
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch((err) => console.log(err))
   };
 

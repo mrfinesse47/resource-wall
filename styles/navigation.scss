@@ -2,7 +2,8 @@
 
 #navigation {
   background-color: $background-color;
-  height: 4em;
+  height: 5rem;
+
 
   .container {
     display: flex;
@@ -10,6 +11,7 @@
     align-items: center;
     width: 93%;
     margin: 0 auto;
+    height: inherit;
   }
 
   div {
@@ -33,9 +35,57 @@
   .nav-bar-items {
     display: flex;
     align-items: center;
+
   }
 
-  .nav-bar-menu {
-    margin: 0 2em;
+  #my-pins {
+    border: none;
+    background: inherit;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    line-height: 100%;
+
+    color: black;
+  }
+
+  #logout {
+    border: none;
+    background: hsl(0, 79%, 23%);
+    box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
+    border-radius: 2em;
+    font-weight: 600;
+    font-size: 100%;
+    line-height: 180%;
+    padding: 0.3em .7em;
+    color: #FBFBFB;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+  }
+
+  #logout:hover {
+    box-shadow: 3px 4px 5px grey;
+  }
+
+  #home {
+    border: none;
+    background: inherit;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    line-height: 100%;
+
+    color: black;
+  }
+
+  #home:hover {
+    color: grey;
+  }
+
+  #my-pins:hover {
+    color: gray;
   }
 }
