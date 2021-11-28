@@ -9,7 +9,6 @@ const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 
-
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -45,12 +44,14 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const pinsRoutes = require("./routes/pins");
 const dbHelpers = require("./db/db-queries")(db);
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
 app.use("/api/widgets", widgetsRoutes(dbHelpers));
+app.use("/api/pins", pinsRoutes(dbHelpers));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -73,15 +74,15 @@ app.listen(PORT, () => {
 
 const email = "example@example.com";
 dbHelpers.getUserByEmail(email).then((result) => {
-  console.log('getUserByEmail', result);
+  console.log("getUserByEmail", result);
 });
 
 const testNewInfo = {
-  first_name: 'evan',
-  last_name: 'fish',
-  email: 'example@example.com',
-  password: 'test'
-}
+  first_name: "evan",
+  last_name: "fish",
+  email: "example@example.com",
+  password: "test",
+};
 
 // // UPDATE USER INFO //
 // dbHelpers.updateUserInfo(email, testNewInfo).then((result) => {
@@ -89,7 +90,7 @@ const testNewInfo = {
 // });
 // ADD USER //
 dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log('addUser', result)
+  console.log("addUser", result);
 });
 // // GET USER BY ID //
 // dbHelpers.getUserById(1).then((result) => {
