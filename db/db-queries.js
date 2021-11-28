@@ -1,4 +1,5 @@
 module.exports = (db) => {
+
   const getUserByEmail = function (email) {
     return db
       .query(`SELECT * FROM users WHERE email = $1;`, [email])
@@ -81,7 +82,14 @@ module.exports = (db) => {
     //testing, remove .rows[0] in production
   }
 
-  const addRating = function() {};
+  const addRating = function(object) {
+    return db.query(`
+    INSERT INTO post_ratings (user_id, post_id, rating)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+    `, [object.user_id, object.post_id, rating])
+      .then(result => result.rows[0])
+  };
 
   const addComment = function() {};
 
