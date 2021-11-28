@@ -10,7 +10,13 @@ const pins = () => {
   //and then it appends everything to the screen
   //maybe we do a foreach loop
 
+  const renderPins = function (data) {
 
+    for (let pins of data) {
+
+      $(`#pins-container`).append($pin);
+    }
+  };
   //you would call AJAX here and send it into the createpin element with the ID and whatnot
   const $pin = createPinElement();
   //after generating the element
