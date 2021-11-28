@@ -41,7 +41,16 @@ const dbHelpers = require("./db/db-queries")(db);
 
 const email = "quis@outlook.com";
 dbHelpers.getUserByEmail(email).then((result) => {
-  console.log(result);
+  console.log('getUserByEmail', result);
+});
+
+const testNewInfo = {
+  name: 'evan',
+  email: 'example@example.com',
+  password: 'test'
+}
+dbHelpers.updateInfo(email, testNewInfo).then((result) => {
+  console.log('updateInfo', result)
 });
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
