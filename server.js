@@ -53,7 +53,8 @@ dbHelpers.getUserByEmail(email).then((result) => {
 });
 
 const testNewInfo = {
-  name: 'evan',
+  first_name: 'evan',
+  last_name: 'fish',
   email: 'example@example.com',
   password: 'test'
 }
@@ -62,30 +63,28 @@ const testNewInfo = {
 //   console.log('updateInfo', result)
 // });
 
-dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log('addUser', result)
-})
+// dbHelpers.addUser(testNewInfo).then((result) => {
+//   console.log('addUser', result)
+// })
 
-dbHelpers.getUserById(1).then((result) => {
-  console.log('getUserById', result)
-});
+// dbHelpers.getUserById(1).then((result) => {
+//   console.log('getUserById', result)
+// });
 
-const testPin = {
-  owner_id: 1,
-  title: "is cell from dbz a cell",
-  description: "is cell a cell?",
-  content_type: "Text",
-  content: "if cell is a cell would a group of cells be tissue?",
-  tag: "Biology",
-  created_at: '2021-12-27T08:00:00.000Z'
-}
+// const testPin = {
+//   owner_id: 1,
+//   title: "is cell from dbz a cell",
+//   description: "is cell a cell?",
+//   content_type: "Text",
+//   content: "if cell is a cell would a group of cells be tissue?",
+//   tag: "Biology",
+//   created_at: '2021-12-27T08:00:00.000Z'
+// }
 
 //TESTING
 // dbHelpers.addPin(testPin).then((result) => {
 //   console.log('addPin', result)
 // })
-
-
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

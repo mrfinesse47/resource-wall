@@ -30,9 +30,15 @@ module.exports = (db) => {
     let queryString = `UPDATE users
     SET`
 
-    if (newInfo.name) {
+    if (newInfo.first_name) {
       queryParams.push(`${newInfo.name}`);
-      queryString += ` name = $${queryParams.length}`;
+      queryString += ` first_name = $${queryParams.length}`;
+    }
+
+    if (newInfo.last_name) {
+      queryString += `${queryParams.length ? ', last_name = ' : ' last_name = '}`;
+      queryParams.push(`${newInfo.name}`);
+      queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.email) {
@@ -57,9 +63,9 @@ module.exports = (db) => {
   }
 
   const addUser = function(user) {
-    const values = [user.name, user.email, user.password]
-    return db.query(`INSERT INTO users (name, email, password)
-    VALUES ($1, $2, $3)
+    const values = [user.first_name, user.last_name, user.email, user.password]
+    return db.query(`INSERT INTO users (first_name, last_name, email, password)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;`, values)
       .then((result) => {
         if (result) {
