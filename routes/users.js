@@ -24,29 +24,26 @@ module.exports = (db) => {
     });
   });
 
-<<<<<<< HEAD
-  router.post("/signup", (req, res) => {
-    console.log("in router", req.body);
-    // res.json({
-    //   users: "hello"
-    // });
-  });
-=======
   router.post("/login", (req, res) => {
     const userID = req.session.user_id;
->>>>>>> master
 
     console.log("here");
 
     if (!userID) {
-      return res.json({ auth: false, message: "not logged in" });
+      return res.json({
+        auth: false,
+        message: "not logged in"
+      });
     }
 
     db.getUserById(userID).then((dbusr) => {
       if (dbusr) {
         //user is already logged in
         console.log("already logged in");
-        return res.json({ auth: true, message: "already logged in" });
+        return res.json({
+          auth: true,
+          message: "already logged in"
+        });
       }
 
       //user is not logged in
@@ -59,15 +56,24 @@ module.exports = (db) => {
               //check the user password vs the form password
               req.session.user_id = user.id;
               console.log("authenticated");
-              res.json({ auth: true, message: "success" });
+              res.json({
+                auth: true,
+                message: "success"
+              });
             } else {
               console.log("not authenticated");
-              res.json({ auth: false, message: "bad password" });
+              res.json({
+                auth: false,
+                message: "bad password"
+              });
             }
           } else {
             //user does not exist in db as per email
             console.log("email does not exist");
-            res.json({ auth: false, message: "not a valid email address" });
+            res.json({
+              auth: false,
+              message: "not a valid email address"
+            });
           }
         })
         .catch((err) => {
@@ -76,13 +82,19 @@ module.exports = (db) => {
           console.log(err);
           res
             .status(500)
-            .json({ auth: false, message: "internal server error" });
+            .json({
+              auth: false,
+              message: "internal server error"
+            });
         });
     });
 
     router.post("/logout", (req, res) => {
       req.session = null; //deletes user cookies
-      res.json({ auth: false, message: "sucessfully logged out user" });
+      res.json({
+        auth: false,
+        message: "sucessfully logged out user"
+      });
     });
   });
   return router;
