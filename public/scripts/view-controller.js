@@ -7,6 +7,8 @@ const render = (view) => {
   $('#navigation').remove();
   $('#pins-container').remove();
 
+  // then checks to see which page to render
+
   if ((view === "pins")) {
     pins();
   }
@@ -21,5 +23,9 @@ const render = (view) => {
 
   if ((view === "userPins")) {
     userPins();
+  }
+
+  if ((view === "expandedPins")) {
+    expandedPins();
   }
 };

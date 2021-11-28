@@ -21,11 +21,10 @@ const signUp = () => {
         url: 'api/users/register',
       })
       .done(function (abc) {
-        console.log(abc)
-        render("pins")
+        render("login")
       })
       .fail(function () {
-        render("login")
+        render("login") // should return an error here
       });
   })
 };

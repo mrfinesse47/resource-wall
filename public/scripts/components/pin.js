@@ -27,3 +27,5 @@ const createPinElement = () => {
     </footer>
   </article>`;
 };
+
+// needs to be dynamic

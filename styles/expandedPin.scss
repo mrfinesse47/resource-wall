@@ -1,0 +1,77 @@
+@import "./variables.scss";
+
+#main-container {
+  display: flex;
+
+
+  #pin-container {
+    display: flex;
+    justify-content: center;
+    padding: 6em 4em;
+
+    .new-comment {
+      display: flex;
+      justify-content: flex-start;
+      margin: 2em;
+
+      #comment-box {
+        width: 40em;
+        height: 10em;
+        resize: none;
+      }
+    }
+
+    #expanded-pin {
+      display: flex;
+      flex-wrap: wrap;
+      width: 40%;
+      justify-content: center;
+      background-color: $background-color;
+      margin: 2em;
+
+      .info {
+        padding-bottom: 1em;
+      }
+
+      .description {
+        text-align: justify;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5em 1.5em;
+
+        img {
+          display: flex;
+          width: 90%;
+        }
+      }
+
+      footer {
+        padding: 0 7%;
+
+        .title {
+          text-align: center;
+        }
+
+        .info {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .rating {
+          display: flex;
+          align-items: center;
+
+          .fa-star {
+            display: block;
+            font-size: 0.75em;
+            color: darkorange;
+          }
+        }
+      }
+    }
+  }
+}
