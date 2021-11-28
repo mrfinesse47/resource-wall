@@ -60,9 +60,9 @@
     line-height: 180%;
     padding: 0.3em .7em;
     color: #FBFBFB;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
   }
 
   #logout:hover {
@@ -81,9 +81,11 @@
     color: black;
   }
 
-  #my-pins:hover {
-    box-shadow: 3px 4px 5px grey;
+  #home:hover {
+    color: grey;
   }
 
-
+  #my-pins:hover {
+    color: gray;
+  }
 }

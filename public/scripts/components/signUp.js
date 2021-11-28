@@ -4,11 +4,11 @@ const signUpElement = () => {
   <p id="signup-title">Sign Up</p>
 
   <div class="signup-form">
-  <input type="text" name="First Name" placeholder="First Name">
+  <input type="text" name="FirstName" placeholder="First Name">
 </div>
 
 <div class="signup-form">
-  <input type="text" name="Last Name" placeholder="Last Name">
+  <input type="text" name="LastName" placeholder="Last Name">
 </div>
 
   <div class="signup-form">

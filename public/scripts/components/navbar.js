@@ -23,7 +23,7 @@ const navBar = (condition) => {
     <div class="container">
       <div>
         <span id="logo">
-          <p>LOGO</p>
+          <p>HOME</p>
         </span>
       </div>
       <div class="nav-links">
