@@ -1,4 +1,4 @@
-INSERT INTO liked_posts (user_id, post_id)
+INSERT INTO favorite_pins (user_id, pin_id)
 VALUES (15,16),
   (13,23),
   (2,4),

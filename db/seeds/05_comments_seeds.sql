@@ -1,5 +1,5 @@
 -- Widgets table seeds here (Example)
-INSERT INTO comments (user_id, post_id, comment, created_at)
+INSERT INTO comments (user_id, pin_id, comment, created_at)
 VALUES (11,22,'I disagree', '2020-12-27T08:00:00.000Z'),
   (15,21,'What a nice source', '2020-12-27T05:00:00.000Z'),
   (17,13,'I dun get it', '2020-12-27T08:00:00.000Z'),
