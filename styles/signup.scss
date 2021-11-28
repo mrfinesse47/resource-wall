@@ -3,10 +3,10 @@
 #signup-article {
   display: flex;
   flex-direction: column;
-  padding: 2em 3em;
+  padding: 1em 3em;
   background: #CEDFD9;
   border-radius: 3rem;
-  margin: 10rem 0;
+  margin: 15rem 0;
   justify-content: space-between;
 
   #signup-title {
@@ -54,6 +54,27 @@
   #signupbtn:hover {
     box-shadow: 3px 4px 5px grey;
   }
+
+  #log-in-redirect {
+    margin-top: 0.3em;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: #5F5449;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
 
   input,
   textarea {

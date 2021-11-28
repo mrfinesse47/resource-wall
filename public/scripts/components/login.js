@@ -13,6 +13,10 @@ const loginElement = () => {
   <div class="login-form" id="login-box">
       <button id="loginbtn">Login</button>
   </div>
+
+  <div class="login-form" id="sign-up-redirect">
+      <a href="api/users/register">Register</a>
+  </div>
 </form>
 `
 }

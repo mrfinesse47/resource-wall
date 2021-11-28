@@ -19,7 +19,7 @@ const signUp = () => {
     $.ajax({
         method: 'POST',
         data: $(this).serialize(),
-        url: 'api/users/signup',
+        url: 'api/users/register',
       })
       .done(function (abc) {
         console.log(abc)
