@@ -3,10 +3,6 @@ const expandedPins = () => {
   </div>`
   $($createExpandedPinContainer).appendTo('#main-container');
 
-  const $navBar = navBar('loggedIn');
-  $($navBar).appendTo('#nav-placeholder');
-
-
 
   const $pin = createExpandedPinElement();
   //after generating the element

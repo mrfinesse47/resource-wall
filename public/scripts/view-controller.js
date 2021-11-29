@@ -6,7 +6,7 @@ const render = (view, auth) => {
   $('#login-article').remove();
   $('#navigation').remove();
   $('#pins-container').remove();
-
+  $('#signup-article').remove();
 
   navBarView(auth);
 

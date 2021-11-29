@@ -8,18 +8,26 @@ const signUp = () => {
   $("#signup-article").append($signUp);
 
   // ajax call for form submission
-  $('#signup-form').submit(function (event) {
+  $('#sign-up-user').submit(function (event) {
+    console.log(event);
     event.preventDefault();
+
     $.ajax({
         method: 'POST',
         data: $(this).serialize(),
-        url: 'api/users/register',
+        url: 'api/users/signup',
       })
-      .done(function (abc) {
-        render("login")
+      .done(function (obj) {
+        console.log(obj)
+        if (obj.auth) {
+          render("pins", obj.auth);
+        }
+        if (!obj.auth) {
+          render("login", obj.auth)
+        }
       })
       .fail(function () {
-        render("login") // should return an error here
+        console.log("something went wrong in signup ajax") // should return an error here
       });
   })
 };
