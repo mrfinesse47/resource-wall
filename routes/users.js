@@ -22,13 +22,19 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/auth", (req, res) => {
+    console.log("are we here yet?")
     if (!req.session.user_id) {
-      res.json({ auth: false, message: "user has no cookie" });
+      res.json({
+        auth: false,
+        message: "user has no cookie"
+      });
     }
     const userID = req.session.user_id; //get users id from their cookie
     isUserLoggedIn(userID, db)
       .then((isLoggedIn) => {
-        res.json({ auth: isLoggedIn });
+        res.json({
+          auth: isLoggedIn
+        });
       })
       .catch((err) => {
         res.status(500).json({
