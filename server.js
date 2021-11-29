@@ -165,3 +165,14 @@ const testNewInfo = {
 // dbHelpers.getFavPins(testID).then((result) => {
 //   console.log('FavPins', result)
 // })
+
+// PIN SEARCH //
+const testPinSearch = {
+  title: 'Art',
+  rating: 1,
+  tag: 'Art'
+}
+
+dbHelpers.getPins(testPinSearch).then((result) => {
+  console.log('search', result)
+})
