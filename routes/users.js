@@ -22,9 +22,9 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/auth", (req, res) => {
-    console.log("are we here yet?")
+    console.log(req.session.user_id);
     if (!req.session.user_id) {
-      res.json({
+      return res.json({
         auth: false,
         message: "user has no cookie"
       });
@@ -32,16 +32,18 @@ module.exports = (db) => {
     const userID = req.session.user_id; //get users id from their cookie
     isUserLoggedIn(userID, db)
       .then((isLoggedIn) => {
-        res.json({
+        return res.json({
           auth: isLoggedIn
         });
       })
       .catch((err) => {
+        console.log(err);
         res.status(500).json({
           auth: false,
           message: "internal server error",
         });
       });
+    // res.json({ msg: "hi" });
   });
 
   //-----------------------------------------------------------------
@@ -128,6 +130,20 @@ module.exports = (db) => {
   router.post("/signup", (req, res) => {
     const userID = req.session.user_id;
 
+    const user = {
+      first_name: req.body.FirstName,
+      last_name: req.body.LastName,
+      email: req.body.email,
+      password: req.body.password,
+    };
+
+    if (!(user.first_name && user.last_name && user.email && user.password)) {
+      return res.json({
+        auth: false,
+        message: "incomplete form"
+      });
+    }
+
     //first thing is to check if the user is already logged in
 
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
@@ -141,13 +157,6 @@ module.exports = (db) => {
       }
 
       //if they arent logged in we can then go about creating a user
-
-      const user = {
-        first_name: req.body.FirstName,
-        last_name: req.body.LastName,
-        email: req.body.email,
-        password: req.body.password,
-      };
 
       db.addUser(user)
         .then((result) => {
