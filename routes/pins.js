@@ -1,21 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     console.log("get pins");
     res.json({ auth: false });
 
-    db.getUserById(userID).then((dbusr) => {
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
       //this is in every route and needs to be its own helper
       //the user id from cookie matches an id in the database
       console.log("db user", dbusr);
-      if (!dbusr) {
+
+      if (!isLoggedIn) {
         //user is already logged in
-        console.log("already logged in");
+        console.log("user not logged in");
         return res.json({
-          auth: true,
-          message: "already logged in",
+          auth: false,
+          message: "not logged in",
         });
       }
     });
