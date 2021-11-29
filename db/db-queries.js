@@ -64,10 +64,12 @@ module.exports = (db) => {
   }
 
   const addUser = function(user) {
+    if (!user.first_name || !user.last_name || !user.email || !user.password) {
+      return null
+    }
     const values = [user.first_name, user.last_name, user.email, user.password]
     return db.query(`INSERT INTO users (first_name, last_name, email, password)
-    VALUES ($1, $2, $3, $4)
-    RETURNING *;`, values)
+    VALUES ($1, $2, $3, $4);`, values)
       .then((result) => {
         if (result) {
           return result.rows[0]
@@ -123,9 +125,12 @@ module.exports = (db) => {
 
   const getOwnedPins = function(id) {
     return db.query(`
-    SELECT *
+    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
+    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     WHERE owner_id = $1
+    GROUP BY pins.id
+    ORDER BY pins.created_at
     `, [id])
       .then(result => result.rows)
       .catch((err) => console.log(err))
@@ -157,7 +162,7 @@ module.exports = (db) => {
     let queryString = `
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
-    JOIN pin_ratings ON pins.id = pin_ratings.pin_id
+    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     `;
 
     if (pin.title) {
