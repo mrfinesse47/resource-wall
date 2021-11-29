@@ -148,13 +148,11 @@ const testNewInfo = {
 // })
 
 // ADD FAVORITE //
-// const favoriteTest = {
-//   user_id: 1,
-//   pin_id: 1,
-// }
-// dbHelpers.addFavorite(favoriteTest).then((result) => {
-//   console.log('addFavorite', result)
-// })
+const user = 16;
+const pinId = 3;
+dbHelpers.addFavorite(user, pinId).then((result) => {
+  console.log('addFavorite', result)
+})
 
 
 // GET OWNED PINS //
@@ -185,6 +183,15 @@ const testNewInfo = {
 
 // dbHelpers.searchPins(testPinSearch).then((result) => {
 //   console.log('search', result)
-// })
+// });
 
+// PIN BY ID //
+// const testID = 3
+// dbHelpers.getPinById(testID).then((result) => {
+//   console.log('Pin By Id', result)
+// });
 
+// PIN COMMENTS BY PIN ID //
+// dbHelpers.getPinCommentsById(testID).then((result) => {
+//   console.log('Pin Comments', result)
+// });

@@ -64,9 +64,6 @@ module.exports = (db) => {
   }
 
   const addUser = function(user) {
-    if (!user.first_name || !user.last_name || !user.email || !user.password) {
-      return null
-    }
     const values = [user.first_name, user.last_name, user.email, user.password]
     return db.query(`INSERT INTO users (first_name, last_name, email, password)
     VALUES ($1, $2, $3, $4);`, values)
@@ -113,12 +110,12 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addFavorite = function(object) {
+  const addFavorite = function(id, pinId) {
     return db.query(`
     INSERT INTO favorite_pins (user_id, pin_id)
     VALUES ($1, $2)
     RETURNING *;
-    `, [object.user_id, object.pin_id])
+    `, [id, pinId])
       .then(result => result.rows[0])
       .catch((err) => console.log(err))
   };
@@ -180,7 +177,7 @@ module.exports = (db) => {
 
     if (pin.minimum_rating) {
       queryParams.push(pin.minimum_rating);
-      queryString += `HAVING AVG(pin_rating.rating) > $${queryParams.length}`
+      queryString += `HAVING AVG(pin_ratings.rating) > $${queryParams.length}`
     }
 
     queryString += `
@@ -190,6 +187,28 @@ module.exports = (db) => {
     return db.query(queryString, queryParams).then((result) => result.rows)
   }
 
+  const getPinById = function(id) {
+    return db.query(`
+    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    FROM pins
+    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
+    WHERE pins.id = $1
+    GROUP BY pins.id;
+    `, [id])
+      .then((result) => result.rows[0])
+      .catch((err) => console.log(err))
+  }
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins };
+  const getPinCommentsById = function(id) {
+    return db.query(`
+    SELECT *
+    FROM comments
+    WHERE pin_id = $1
+    ORDER BY created_at;
+    `, [id])
+      .then((result) => result.rows)
+      .catch((err) => console.log(err))
+  }
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById };
 };
