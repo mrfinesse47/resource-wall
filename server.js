@@ -73,9 +73,9 @@ app.listen(PORT, () => {
 // --------------------------------------------------------------------------------------------------------------------------//
 
 const email = "example@example.com";
-dbHelpers.getUserByEmail(email).then((result) => {
-  console.log("getUserByEmail", result);
-});
+// dbHelpers.getUserByEmail(email).then((result) => {
+//   console.log('getUserByEmail', result);
+// });
 
 const testNewInfo = {
   first_name: "evan",
@@ -89,9 +89,9 @@ const testNewInfo = {
 //   console.log('updateInfo', result)
 // });
 // ADD USER //
-dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log("addUser", result);
-});
+// dbHelpers.addUser(testNewInfo).then((result) => {
+//   console.log('addUser', result)
+// });
 // // GET USER BY ID //
 // dbHelpers.getUserById(1).then((result) => {
 //   console.log('getUsetById', result)
@@ -107,7 +107,7 @@ dbHelpers.addUser(testNewInfo).then((result) => {
 //   description: "is cell a cell?",
 //   content_type: "Text",
 //   content: "if cell is a cell would a group of cells be tissue?",
-//   tag: "Biology"
+//   tag: "Science"
 // }
 
 // const testPin2 = {
@@ -116,7 +116,7 @@ dbHelpers.addUser(testNewInfo).then((result) => {
 //   description: `please help i'm having a mental breakdown`,
 //   content_type: 'Text',
 //   content: 'are we eating people? like how soylent green is people?',
-//   tag: 'Biology'
+//   tag: 'Science'
 // }
 
 // dbHelpers.addPin(testPin).then((result) => {
@@ -155,3 +155,34 @@ dbHelpers.addUser(testNewInfo).then((result) => {
 // dbHelpers.addFavorite(favoriteTest).then((result) => {
 //   console.log('addFavorite', result)
 // })
+
+// const testID = 16
+// // GET OWNED PINS //
+// dbHelpers.getOwnedPins(testID).then((result) => {
+//   console.log('OwnedPins', result)
+// });
+
+// // GET FAV PINS //
+// dbHelpers.getFavPins(testID).then((result) => {
+//   console.log('FavPins', result)
+// })
+
+// ALL PINS //
+dbHelpers.getAllPins().then((result) => {
+  console.log('getAll', result)
+})
+
+
+// PIN SEARCH //
+// comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
+// tested conditions: all, title + rating
+
+// const testPinSearch = {
+//   title: 'Science'
+// }
+
+// dbHelpers.searchPins(testPinSearch).then((result) => {
+//   console.log('search', result)
+// })
+
+
