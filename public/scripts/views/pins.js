@@ -11,14 +11,29 @@ const pins = () => {
 
 
 
-  const renderPins = function (data) {
-    data.forEach(($pin) => {
-      $("#pins-container").append($pin);
+  const renderPins = function (obj) {
+    obj.pins.forEach(($pin) => {
+      $("#pins-container").append(createPinElement($pin));
 
+      $(`#${$pin.id}`).click(function (event) {
+        console.log("123");
+        $.ajax({
+            method: 'GET',
+            url: `api/pins/${$pin.id}`,
+          })
+          .done(function (obj) {
+            if (obj.auth) {
+              render("expandedPins", true);
+            } else {
+              render("login", false);
+            }
+          })
+          .fail(function () {
+            //should either render pins or give a notification that logout failed
+          });
+      })
     })
   };
-
-  //you would call AJAX here and send it into the createpin element with the ID and whatnot
 
 
 
@@ -30,7 +45,7 @@ const pins = () => {
         dataType: "json",
       })
       .done(function (obj) {
-        console.log(obj);
+        renderPins(obj);
       })
       .fail(function () {
         console.log("something went wrong in loadPins ajax") // should return an error here
@@ -38,26 +53,6 @@ const pins = () => {
   };
 
   loadPins();
-
-  const $pin = createPinElement();
-  //after generating the element
-  $("#pins-container").append($pin);
-
-  //we have to bind a click listener onto the new item after it is appended
-  // $("#12345").click(function () {
-  //   alert("12345 clicked");
-  // });
-
-  //we can append as many as we want.
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-  // $("#pins-container").append($pin);
-
 
 
   $('#logout-btn').click(function (event) {
