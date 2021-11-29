@@ -10,7 +10,33 @@ const pins = () => {
   //maybe we do a foreach loop
 
 
+
+  const renderPins = function (data) {
+    data.forEach(($pin) => {
+      $("#pins-container").append($pin);
+
+    })
+  };
+
   //you would call AJAX here and send it into the createpin element with the ID and whatnot
+
+
+
+  const loadPins = function () {
+    $.ajax({
+      method: 'GET',
+      url: "/pins",
+      data: $("").serialize(),
+      dataType: "json",
+      success: function (data) {
+        renderPins(data);
+
+      }
+
+    });
+  };
+
+
   const $pin = createPinElement();
   //after generating the element
   $("#pins-container").append($pin);

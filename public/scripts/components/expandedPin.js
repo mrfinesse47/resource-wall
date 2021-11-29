@@ -2,6 +2,7 @@ const createExpandedPinElement = () => {
 
   return `
   <article id="expanded-pin">
+  <h3 class="title">Title</h3>
   <header class="image-container">
     <img
       src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg"
@@ -9,7 +10,6 @@ const createExpandedPinElement = () => {
     />
   </header>
   <footer>
-    <h3 class="title">Title</h3>
     <p class="description">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
       corrupti!Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
@@ -66,7 +66,7 @@ const createExpandedPinElement = () => {
   <section class="new-comment">
   <form method="POST" action="/comments" id="comment-box">
     <div class="error"></div>
-    <textarea name="comment" id="comment-box" placeholder="comment?"></textarea>
+    <textarea name="comment" id="comment-box" placeholder="Somethiing to say?"></textarea>
     <div class="footer">
       <button type="submit" id="commentBtn">submit</button>
       <output name="counter" class="counter" for="comment-box">140</output>

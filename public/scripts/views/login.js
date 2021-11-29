@@ -20,11 +20,12 @@ const login = () => {
         data: $(this).serialize(),
         url: 'api/users/login',
       })
-      .done(function (json) {
-        console.log(json)
-        if (json.auth) {
-          render("pins", json.auth);
+      .done(function (obj) {
+        console.log(obj)
+        if (obj.auth) {
+          render("pins", obj.auth);
         }
+
       })
       .fail(function () {
         // render("pins") // should re-render login once back end is hooked up
