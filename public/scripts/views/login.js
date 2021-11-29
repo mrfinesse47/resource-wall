@@ -10,21 +10,21 @@ const login = () => {
   $("#login-article").append($login);
 
   // creates the navbar in the logged out state and appends it to the body
-  const $navBar = navBar('loggedOut');
-  $($navBar).appendTo('#nav-placeholder');
+
 
   // ajax call for submission of login form
   $('#login-form').submit(function (event) {
-    console.log("123");
     event.preventDefault();
     $.ajax({
         method: 'POST',
         data: $(this).serialize(),
         url: 'api/users/login',
       })
-      .done(function (abc) {
-        console.log(abc)
-        render("pins")
+      .done(function (json) {
+        console.log(json)
+        if (json.auth) {
+          render("pins", json.auth);
+        }
       })
       .fail(function () {
         // render("pins") // should re-render login once back end is hooked up

@@ -3,8 +3,7 @@ const pins = () => {
   </div>`
   $($createPinContainer).appendTo('#main-container');
 
-  const $navBar = navBar('loggedIn');
-  $($navBar).appendTo('#nav-placeholder');
+
   // Move somewhere to reduce redundancy
 
   //and then it appends everything to the screen
@@ -41,11 +40,13 @@ const pins = () => {
       })
       .done(function (json) {
         console.log(json);
-
+        if (!json.auth) {
+          render("login");
+        }
       })
       .fail(function () {
-        render("login") //should either render pins or give a notification that logout failed
 
+        //should either render pins or give a notification that logout failed
       });
   })
 };

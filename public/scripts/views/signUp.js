@@ -7,11 +7,6 @@ const signUp = () => {
   const $signUp = signUpElement();
   $("#signup-article").append($signUp);
 
-
-  // creates then appends the navbar in the logged out state
-  const $navBar = navBar('loggedOut');
-  $($navBar).appendTo('#nav-placeholder');
-
   // ajax call for form submission
   $('#signup-form').submit(function (event) {
     event.preventDefault();

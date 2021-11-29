@@ -1,5 +1,5 @@
-const navBar = (condition) => {
-  if (condition === 'loggedIn') {
+const navBar = (auth) => {
+  if (auth) {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">

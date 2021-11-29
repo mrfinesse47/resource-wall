@@ -3,8 +3,6 @@ const userPins = () => {
   </div>`
   $($createPinContainer).appendTo('#main-container');
 
-  const $navBar = navBar('loggedIn');
-  $($navBar).appendTo('#nav-placeholder');
   // Move somewhere to reduce redundancy
 
   //and then it appends everything to the screen
