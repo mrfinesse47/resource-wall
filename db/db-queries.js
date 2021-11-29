@@ -142,11 +142,40 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   }
 
+  const getPins = function (pin) {
+    const queryParams = [];
+    let queryString = `
+    SELECT posts.*, AVG(post_ratings.rating) AS average_rating
+    FROM posts
+    JOIN average_rating ON posts.id = post_ratings.post_id
+    `;
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins };
+    if (pin.title) {
+      queryParams.push(`%${pin.title}%`);
+      queryString += `WHERE title LIKE $${queryParams.length} `;
+    }
+
+    if (pin.tag) {
+      queryString += `${queryParams.length ? 'AND' : 'WHERE'} `;
+      queryParams.push(pin.tag);
+      queryString += `tag = $${queryParams.length}`
+    }
+
+    queryString += `GROUP BY posts.id`
+
+    if (pin.minimum_rating) {
+      queryParams.push(pin.minimum_rating);
+      queryString += `HAVING AVG(post_rating.rating) > $${queryParams.length}`
+    }
+
+    queryString += `
+    ORDER BY posts.created_at
+    LIMIT 10;
+    `;
+
+    return db.query(queryString, queryParams).then((result) => result.rows)
+  }
+
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getPins };
 };
-
-
-
-
-
