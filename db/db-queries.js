@@ -157,7 +157,7 @@ module.exports = (db) => {
     let queryString = `
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
-    JOIN pin_ratings ON pins.id = pin_ratings.pin_id
+    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     `;
 
     if (pin.title) {

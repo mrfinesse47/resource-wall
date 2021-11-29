@@ -167,21 +167,21 @@ const testNewInfo = {
 // })
 
 // ALL PINS //
-dbHelpers.getAllPins().then((result) => {
-  console.log('getAll', result)
-})
+// dbHelpers.getAllPins().then((result) => {
+//   console.log('getAll', result)
+// })
 
 
 // PIN SEARCH //
 // comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
-// tested conditions: all, title + rating
+// tested conditions: all
 
-// const testPinSearch = {
-//   title: 'Science'
-// }
+const testPinSearch = {
+  tag: 'Geography'
+}
 
-// dbHelpers.searchPins(testPinSearch).then((result) => {
-//   console.log('search', result)
-// })
+dbHelpers.searchPins(testPinSearch).then((result) => {
+  console.log('search', result)
+})
 
 
