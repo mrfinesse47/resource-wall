@@ -64,7 +64,7 @@ module.exports = (db) => {
         })
         .catch(() => {
           res.status(500).json({
-            auth: false,
+            auth: true,
             message: "internal server error",
           });
         });
