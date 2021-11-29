@@ -4,7 +4,7 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   //-----------------------------------------------------------------
-  // /api/pins/
+  // GET /api/pins/
   //-----------------------------------------------------------------
 
   //get all pins
@@ -39,10 +39,9 @@ module.exports = (db) => {
     });
   });
 
-  //get pin by pin ID
-  router.get("/", (req, res) => {});
-
-  //add pin
+  //-----------------------------------------------------------------
+  // POST /api/pins/ --  add new pin
+  //-----------------------------------------------------------------
 
   router.post("/", (req, res) => {
     const userID = req.session.user_id; //get users cookie
@@ -138,12 +137,27 @@ module.exports = (db) => {
 // /api/pins/:id
 //-----------------------------------------------------------------
 
+//get pin by pin ID
+router.get("/:pinID", (req, res) => {
+  const userID = req.session.user_id; //get users cookie
+  isUserLoggedIn(userID, db).then((isLoggedIn) => {
+    if (!isLoggedIn) {
+      //user is already logged in
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+    const { pinID } = req.params;
+
+    return res.json({
+      auth: true,
+      message: "success",
+    });
+  });
+});
 //-----------------------------------------------------------------
 // /api/pins/:id/edit -- edits an existing pin
-//-----------------------------------------------------------------
-
-//-----------------------------------------------------------------
-// /api/pins/new -- creates a new pin
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
