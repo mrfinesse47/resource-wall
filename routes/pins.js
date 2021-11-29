@@ -42,7 +42,7 @@ module.exports = (db) => {
   // /api/pins/owned
   //-----------------------------------------------------------------
 
-  router.get("/api/pins/owned", (req, res) => {
+  router.get("/owned", (req, res) => {
     const userID = req.session.user_id; //get users cookie
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
       if (!isLoggedIn) {
@@ -53,10 +53,21 @@ module.exports = (db) => {
           message: "not logged in",
         });
       }
-      db.getOwnedPins(userID).then((pins) => {
-        console.log(pins);
-        res.json({ auth: true, message: "successfully got pins", pins });
-      });
+
+      db.getOwnedPins(userID)
+        .then((pins) => {
+          res.json({
+            auth: true,
+            message: "successfully got users pins",
+            pins,
+          });
+        })
+        .catch(() => {
+          res.status(500).json({
+            auth: false,
+            message: "internal server error",
+          });
+        });
     });
   });
 
