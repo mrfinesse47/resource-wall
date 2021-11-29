@@ -77,7 +77,7 @@ const email = "example@example.com";
 // });
 
 const testNewInfo = {
-  first_name: 'evan',
+  first_name: '',
   last_name: 'fish',
   email: 'example@example.com',
   password: 'test'
@@ -87,10 +87,10 @@ const testNewInfo = {
 // dbHelpers.updateUserInfo(email, testNewInfo).then((result) => {
 //   console.log('updateInfo', result)
 // });
+
 // ADD USER //
-// dbHelpers.addUser(testNewInfo).then((result) => {
-//   console.log('addUser', result)
-// });
+// dbHelpers.addUser(testNewInfo)
+
 // // GET USER BY ID //
 // dbHelpers.getUserById(1).then((result) => {
 //   console.log('getUsetById', result)
@@ -155,11 +155,13 @@ const testNewInfo = {
 //   console.log('addFavorite', result)
 // })
 
-// const testID = 16
-// // GET OWNED PINS //
-// dbHelpers.getOwnedPins(testID).then((result) => {
-//   console.log('OwnedPins', result)
-// });
+
+// GET OWNED PINS //
+// tested id as int
+const testID = '16'
+dbHelpers.getOwnedPins(testID).then((result) => {
+  console.log('OwnedPins', result)
+});
 
 // // GET FAV PINS //
 // dbHelpers.getFavPins(testID).then((result) => {
@@ -176,12 +178,12 @@ const testNewInfo = {
 // comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
 // tested conditions: all
 
-const testPinSearch = {
-  tag: 'Geography'
-}
+// const testPinSearch = {
+//   tag: 'Geography'
+// }
 
-dbHelpers.searchPins(testPinSearch).then((result) => {
-  console.log('search', result)
-})
+// dbHelpers.searchPins(testPinSearch).then((result) => {
+//   console.log('search', result)
+// })
 
 
