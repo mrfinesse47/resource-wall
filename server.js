@@ -106,7 +106,7 @@ const testNewInfo = {
 //   description: "is cell a cell?",
 //   content_type: "Text",
 //   content: "if cell is a cell would a group of cells be tissue?",
-//   tag: "Biology"
+//   tag: "Science"
 // }
 
 // const testPin2 = {
@@ -115,7 +115,7 @@ const testNewInfo = {
 //   description: `please help i'm having a mental breakdown`,
 //   content_type: 'Text',
 //   content: 'are we eating people? like how soylent green is people?',
-//   tag: 'Biology'
+//   tag: 'Science'
 // }
 
 // dbHelpers.addPin(testPin).then((result) => {
@@ -166,13 +166,22 @@ const testNewInfo = {
 //   console.log('FavPins', result)
 // })
 
-// PIN SEARCH //
-const testPinSearch = {
-  title: 'Art',
-  rating: 1,
-  tag: 'Art'
-}
-
-dbHelpers.getPins(testPinSearch).then((result) => {
-  console.log('search', result)
+// ALL PINS //
+dbHelpers.getAllPins().then((result) => {
+  console.log('getAll', result)
 })
+
+
+// PIN SEARCH //
+// comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
+// tested conditions: all, title + rating
+
+// const testPinSearch = {
+//   title: 'Science'
+// }
+
+// dbHelpers.searchPins(testPinSearch).then((result) => {
+//   console.log('search', result)
+// })
+
+

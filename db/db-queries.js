@@ -142,7 +142,17 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   }
 
-  const getPins = function (pin) {
+  const getAllPins = function() {
+    return db.query(`
+    SELECT *
+    FROM pins
+    LIMIT 15;
+    `)
+    .then(result => result.rows)
+    .catch((err) => console.log(err))
+  }
+
+  const searchPins = function (pin) {
     const queryParams = [];
     let queryString = `
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
@@ -170,12 +180,11 @@ module.exports = (db) => {
 
     queryString += `
     ORDER BY pins.created_at
-    LIMIT 10;
     `;
 
     return db.query(queryString, queryParams).then((result) => result.rows)
   }
 
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getPins };
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins };
 };
