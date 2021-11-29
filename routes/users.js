@@ -30,7 +30,7 @@ module.exports = (db) => {
       .then((isLoggedIn) => {
         res.json({ auth: isLoggedIn });
       })
-      .catch(() => {
+      .catch((err) => {
         res.status(500).json({
           auth: false,
           message: "internal server error",
