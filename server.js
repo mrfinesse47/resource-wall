@@ -72,9 +72,9 @@ app.listen(PORT, () => {
 // --------------------------------------------------------------------------------------------------------------------------//
 
 const email = "example@example.com";
-dbHelpers.getUserByEmail(email).then((result) => {
-  console.log('getUserByEmail', result);
-});
+// dbHelpers.getUserByEmail(email).then((result) => {
+//   console.log('getUserByEmail', result);
+// });
 
 const testNewInfo = {
   first_name: 'evan',
@@ -88,9 +88,9 @@ const testNewInfo = {
 //   console.log('updateInfo', result)
 // });
 // ADD USER //
-dbHelpers.addUser(testNewInfo).then((result) => {
-  console.log('addUser', result)
-});
+// dbHelpers.addUser(testNewInfo).then((result) => {
+//   console.log('addUser', result)
+// });
 // // GET USER BY ID //
 // dbHelpers.getUserById(1).then((result) => {
 //   console.log('getUsetById', result)
@@ -153,4 +153,15 @@ dbHelpers.addUser(testNewInfo).then((result) => {
 // }
 // dbHelpers.addFavorite(favoriteTest).then((result) => {
 //   console.log('addFavorite', result)
+// })
+
+// const testID = 16
+// // GET OWNED PINS //
+// dbHelpers.getOwnedPins(testID).then((result) => {
+//   console.log('OwnedPins', result)
+// });
+
+// // GET FAV PINS //
+// dbHelpers.getFavPins(testID).then((result) => {
+//   console.log('FavPins', result)
 // })

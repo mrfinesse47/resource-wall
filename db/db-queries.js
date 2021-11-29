@@ -121,9 +121,29 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
+  const getOwnedPins = function(id) {
+    return db.query(`
+    SELECT *
+    FROM pins
+    WHERE owner_id = $1
+    `, [id])
+      .then(result => result.rows)
+      .catch((err) => console.log(err))
+  };
+
+  const getFavPins = function(id) {
+    return db.query(`
+    SELECT pins.*
+    FROM pins
+    JOIN favorite_pins ON pins.id = favorite_pins.pin_id
+    WHERE favorite_pins.user_id = $1
+    `, [id])
+      .then(result => result.rows)
+      .catch((err) => console.log(err))
+  }
 
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite };
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins };
 };
 
 
