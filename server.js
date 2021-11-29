@@ -157,11 +157,11 @@ const testNewInfo = {
 
 
 // GET OWNED PINS //
-// tested id as int
-const testID = '16'
-dbHelpers.getOwnedPins(testID).then((result) => {
-  console.log('OwnedPins', result)
-});
+// tested id as int and as string both work
+// const testID = '16'
+// dbHelpers.getOwnedPins(testID).then((result) => {
+//   console.log('OwnedPins', result)
+// });
 
 // // GET FAV PINS //
 // dbHelpers.getFavPins(testID).then((result) => {
