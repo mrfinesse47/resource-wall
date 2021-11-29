@@ -27,16 +27,9 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const userID = req.session.user_id;
 
-    console.log("here");
-
-    if (!userID) {
-      return res.json({
-        auth: false,
-        message: "not logged in"
-      });
-    }
-
     db.getUserById(userID).then((dbusr) => {
+      //the user id from cookie matches an id in the database
+      console.log("db user", dbusr);
       if (dbusr) {
         //user is already logged in
         console.log("already logged in");
@@ -55,6 +48,7 @@ module.exports = (db) => {
             if (req.body.password === user.password) {
               //check the user password vs the form password
               req.session.user_id = user.id;
+              console.log(req.session.user_id);
               console.log("authenticated");
               res.json({
                 auth: true,
@@ -88,15 +82,65 @@ module.exports = (db) => {
             });
         });
     });
+  });
 
-    router.post("/logout", (req, res) => {
-      req.session = null; //deletes user cookies
-      console.log("reaching logout");
-      res.json({
-        auth: false,
-        message: "sucessfully logged out user"
-      });
+  router.post("/logout", (req, res) => {
+    req.session = null; //deletes user cookies
+    res.json({
+      auth: false,
+      message: "sucessfully logged out user"
     });
+  });
+
+  router.post("/signup", (req, res) => {
+    const userID = req.session.user_id;
+
+    db.getUserById(userID).then((dbusr) => {
+      //the user id from cookie matches an id in the database
+      console.log("db user", dbusr);
+      if (dbusr) {
+        //user is already logged in
+        console.log("already logged in");
+        return res.json({
+          auth: true,
+          message: "already logged in"
+        });
+      }
+
+      const user = {
+        first_name: req.body.FirstName,
+        last_name: req.body.LastName,
+        email: req.body.email,
+        password: req.body.password,
+      };
+      // const values = [user.first_name, user.last_name, user.email, user.password]
+      db.addUser(user)
+        .then((result) => {
+          if (!result) {
+            res.json({
+              auth: false,
+              message: "not succesful in registering user",
+            });
+            return console.log("not successful in adding new user");
+          }
+          console.log("successfully added user to db: ", result);
+          req.session.user_id = result.id; //set the cookie according to the userid returned from the database
+          res.json({
+            auth: true,
+            message: "succesful registration"
+          });
+        })
+        .catch((err) => {
+          console.log("db error", err);
+          res
+            .status(500)
+            .json({
+              auth: false,
+              message: "internal server error"
+            });
+        });
+    });
+    // db.addUser()
   });
   return router;
 };

@@ -9,6 +9,6 @@ CREATE TABLE pins (
   content_type TEXT NOT NULL,
   content TEXT NOT NULL,
   tag VARCHAR(140) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
