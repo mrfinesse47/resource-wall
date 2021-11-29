@@ -37,5 +37,28 @@ module.exports = (db) => {
         });
     });
   });
+
+  //-----------------------------------------------------------------
+  // /api/pins/owned
+  //-----------------------------------------------------------------
+
+  router.get("/api/pins/owned", (req, res) => {
+    const userID = req.session.user_id; //get users cookie
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        console.log("user not logged in");
+        return res.json({
+          auth: false,
+          message: "not logged in",
+        });
+      }
+      db.getOwnedPins(userID).then((pins) => {
+        console.log(pins);
+        res.json({ auth: true, message: "successfully got pins", pins });
+      });
+    });
+  });
+
   return router;
 };

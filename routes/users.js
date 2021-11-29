@@ -18,10 +18,37 @@ module.exports = (db) => {
   // });
 
   //-----------------------------------------------------------------
+  // /api/users/auth
+  //-----------------------------------------------------------------
+
+  router.get("/auth", (req, res) => {
+    if (!req.session.user_id) {
+      res.json({ auth: false, message: "user has no cookie" });
+    }
+    const userID = req.session.user_id; //get users id from their cookie
+    isUserLoggedIn(userID, db)
+      .then((isLoggedIn) => {
+        res.json({ auth: isLoggedIn });
+      })
+      .catch(() => {
+        res.status(500).json({
+          auth: false,
+          message: "internal server error",
+        });
+      });
+  });
+
+  //-----------------------------------------------------------------
   // /api/users/login
   //-----------------------------------------------------------------
 
   router.post("/login", (req, res) => {
+    // if (!(req.session.user_id && req.session.email)) {
+    //   return res.json({
+    //     auth: false,
+    //     message: "empty fields",
+    //   });
+    // }
     const userID = req.session.user_id; //get users id from their cookie
 
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
@@ -37,9 +64,8 @@ module.exports = (db) => {
 
       db.getUserByEmail(req.body.email)
         .then((user) => {
+          console.log(user, "db user");
           if (!user) {
-            //if the user exists in the database
-
             //user does not exist in db as per email
             console.log("email does not exist");
             return res.json({
