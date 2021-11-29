@@ -4,6 +4,132 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   //-----------------------------------------------------------------
+  // GET /api/pins/favorites/ --gets all the favorited pins
+  //-----------------------------------------------------------------
+
+  router.get("/favorites", (req, res) => {
+    const userID = req.session.user_id; //get users cookie
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        console.log("user not logged in");
+        return res.json({
+          auth: false,
+          message: "not logged in",
+        });
+      }
+      db.getFavPins(Number(userID))
+        .then((pins) => {
+          res.json({
+            auth: true,
+            message: "successful in getting users favorite pins",
+            pins,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            auth: true,
+            message: "internal server error",
+          });
+        });
+    });
+  });
+
+  //   const getFavPins = function (id) {
+  //     return db
+  //       .query(
+  //         `
+  //     SELECT pins.*
+  //     FROM pins
+  //     JOIN favorite_pins ON pins.id = favorite_pins.pin_id
+  //     WHERE favorite_pins.user_id = $1
+  //     `,
+  //         [id]
+  //       )
+  //       .then((result) => result.rows)
+  //       .catch((err) => console.log(err));
+  //   };
+
+  //-----------------------------------------------------------------
+  // POST /api/pins/favorites/ --adds a favorite pin
+  //-----------------------------------------------------------------
+
+  router.post("/favorites", (req, res) => {
+    const userID = req.session.user_id; //get users cookie
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        console.log("user not logged in");
+        return res.json({
+          auth: false,
+          message: "not logged in",
+        });
+      }
+      console.log(req.body.id);
+      db.addFavorite((userID, req.body.id))
+        .then((pin) => {
+          console.log(pin);
+          res.json({
+            auth: true,
+            message: "successful in adding new favorite pin",
+            pin,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            auth: true,
+            message: "internal server error",
+          });
+        });
+    });
+  });
+
+  //   const addFavorite = function(object) {
+  //     return db.query(`
+  //     INSERT INTO favorite_pins (user_id, pin_id)
+  //     VALUES ($1, $2)
+  //     RETURNING *;
+  //     `, [object.user_id, object.pin_id])
+  //       .then(result => result.rows[0])
+  //       .catch((err) => console.log(err))
+  //   };
+
+  //-----------------------------------------------------------------
+  // /api/pins/owned
+  //-----------------------------------------------------------------
+
+  router.get("/owned", (req, res) => {
+    const userID = req.session.user_id; //get users cookie
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        console.log("user not logged in");
+        return res.json({
+          auth: false,
+          message: "not logged in",
+        });
+      }
+
+      db.getOwnedPins(userID)
+        .then((pins) => {
+          res.json({
+            auth: true,
+            message: "successfully got users pins",
+            pins,
+          });
+        })
+        .catch(() => {
+          res.status(500).json({
+            auth: true,
+            message: "internal server error",
+          });
+        });
+    });
+  });
+
+  //-----------------------------------------------------------------
   // /api/pins/:id
   //-----------------------------------------------------------------
 
@@ -36,11 +162,6 @@ module.exports = (db) => {
             message: "internal server error",
           });
         });
-
-      // return res.json({
-      //   auth: true,
-      //   message: "success",
-      // });
     });
   });
   //-----------------------------------------------------------------
@@ -48,6 +169,8 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   //get all pins
+
+  //right now the db limits it to 15
 
   router.get("/", (req, res) => {
     const userID = req.session.user_id; //get users cookie
@@ -116,13 +239,14 @@ module.exports = (db) => {
         return res.json({ auth: false, message: "incomplete form" });
       }
 
-      //   [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag])
-      //   .then(result => result.rows[0])
-
       db.addPin(pin)
         .then((result) => {
           console.log(result);
-          res.json({ auth: true, message: "success in adding a new pin" });
+          res.json({
+            auth: true,
+            message: "success in adding a new pin",
+            pin: result,
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -131,54 +255,16 @@ module.exports = (db) => {
     });
   });
 
+  //get all information about a paticular pin (rating,comments,likes)
+
   //-----------------------------------------------------------------
-  // /api/pins/owned
+  // /api/pins/:id/edit -- edits an existing pin
   //-----------------------------------------------------------------
 
-  router.get("/owned", (req, res) => {
-    const userID = req.session.user_id; //get users cookie
-    isUserLoggedIn(userID, db).then((isLoggedIn) => {
-      if (!isLoggedIn) {
-        //user is already logged in
-        console.log("user not logged in");
-        return res.json({
-          auth: false,
-          message: "not logged in",
-        });
-      }
+  //-----------------------------------------------------------------
+  // /api/pins/:edit
+  //-----------------------------------------------------------------
 
-      db.getOwnedPins(userID)
-        .then((pins) => {
-          res.json({
-            auth: true,
-            message: "successfully got users pins",
-            pins,
-          });
-        })
-        .catch(() => {
-          res.status(500).json({
-            auth: true,
-            message: "internal server error",
-          });
-        });
-    });
-  });
-
+  //if the user owns a pin on the expanded view they can edit it
   return router;
 };
-
-//-----------------------------------------------------------------
-// /api/pins/favorites/ --gets all the favorited pins
-//-----------------------------------------------------------------
-
-//get all information about a paticular pin (rating,comments,likes)
-
-//-----------------------------------------------------------------
-// /api/pins/:id/edit -- edits an existing pin
-//-----------------------------------------------------------------
-
-//-----------------------------------------------------------------
-// /api/pins/:edit
-//-----------------------------------------------------------------
-
-//if the user owns a pin on the expanded view they can edit it
