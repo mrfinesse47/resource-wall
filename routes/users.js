@@ -11,14 +11,18 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 //const fakeUser = require("../fake-data/user.json");
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    res.json({
-      users: "hello",
-    });
-  });
+  // router.get("/", (req, res) => {
+  //   // res.json({
+  //   //   users: "hello",
+  //   // });
+  // });
+
+  //-----------------------------------------------------------------
+  // /api/users/login
+  //-----------------------------------------------------------------
 
   router.post("/login", (req, res) => {
-    const userID = req.session.user_id;
+    const userID = req.session.user_id; //get users id from their cookie
 
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
       //the user is already logged in
@@ -73,6 +77,10 @@ module.exports = (db) => {
     });
   });
 
+  //-----------------------------------------------------------------
+  // /api/users/logout
+  //-----------------------------------------------------------------
+
   router.post("/logout", (req, res) => {
     req.session = null; //deletes user cookies
     res.json({
@@ -81,8 +89,14 @@ module.exports = (db) => {
     });
   });
 
+  //-----------------------------------------------------------------
+  // /api/users/signup
+  //-----------------------------------------------------------------
+
   router.post("/signup", (req, res) => {
     const userID = req.session.user_id;
+
+    //first thing is to check if the user is already logged in
 
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
       if (isLoggedIn) {
@@ -93,6 +107,8 @@ module.exports = (db) => {
           message: "already logged in",
         });
       }
+
+      //if they arent logged in we can then go about creating a user
 
       const user = {
         first_name: req.body.FirstName,
