@@ -1,21 +1,21 @@
-const createPinElement = () => {
+const createPinElement = (obj) => {
+  console.log(obj);
   //this will be pulled in and assembled from ajax
   //somehow the id will have to be dynamic for an onclick event
-  return ` <article class="pin" id="12345">
+  return ` <article class="pin" id="${obj.id}">
     <header class="image-container">
-      <img
-        src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg"
-        alt=""
-      />
+
     </header>
     <footer>
-      <h3 class="title">Title</h3>
+      <h3 class="title">${obj.title}</h3>
       <p class="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-        corrupti!
+      ${obj.description}
+      </p>
+      <p class="content">
+      ${obj.content}
       </p>
       <div class="info">
-        <h5>Tag</h5>
+        <h5>${obj.tag}</h5>
         <div class="rating">
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -27,5 +27,7 @@ const createPinElement = () => {
     </footer>
   </article>`;
 };
+
+
 
 // needs to be dynamic
