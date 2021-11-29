@@ -4,6 +4,46 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   //-----------------------------------------------------------------
+  // /api/pins/:id
+  //-----------------------------------------------------------------
+
+  //get pin by pin ID
+  router.get("/:pinID", (req, res) => {
+    const userID = req.session.user_id; //get users cookie
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        return res.json({
+          auth: false,
+          message: "not logged in",
+        });
+      }
+      const { pinID } = req.params;
+
+      db.getPinById(pinID)
+        .then((pin) => {
+          res.json({
+            auth: true,
+            message: "successfully retrieved pin by ID",
+            pin,
+          });
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            auth: true,
+            message: "internal server error",
+          });
+        });
+
+      // return res.json({
+      //   auth: true,
+      //   message: "success",
+      // });
+    });
+  });
+  //-----------------------------------------------------------------
   // GET /api/pins/
   //-----------------------------------------------------------------
 
@@ -133,29 +173,6 @@ module.exports = (db) => {
 
 //get all information about a paticular pin (rating,comments,likes)
 
-//-----------------------------------------------------------------
-// /api/pins/:id
-//-----------------------------------------------------------------
-
-//get pin by pin ID
-router.get("/:pinID", (req, res) => {
-  const userID = req.session.user_id; //get users cookie
-  isUserLoggedIn(userID, db).then((isLoggedIn) => {
-    if (!isLoggedIn) {
-      //user is already logged in
-      return res.json({
-        auth: false,
-        message: "not logged in",
-      });
-    }
-    const { pinID } = req.params;
-
-    return res.json({
-      auth: true,
-      message: "success",
-    });
-  });
-});
 //-----------------------------------------------------------------
 // /api/pins/:id/edit -- edits an existing pin
 //-----------------------------------------------------------------
