@@ -12,14 +12,6 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    // db.query(`SELECT * FROM users;`)
-    //   .then((data) => {
-    //     // const users = data.rows;
-    //     res.json({ users: "hello" });
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).json({ error: err.message });
-    //   });
     res.json({
       users: "hello",
     });
@@ -28,8 +20,9 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const userID = req.session.user_id;
 
-    isUserLoggedIn(userID, db).then((auth) => {
-      if (auth) {
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      //the user is already logged in
+      if (isLoggedIn) {
         console.log("already logged in");
         return res.json({
           auth: true,
@@ -40,32 +33,33 @@ module.exports = (db) => {
 
       db.getUserByEmail(req.body.email)
         .then((user) => {
-          if (user) {
+          if (!user) {
             //if the user exists in the database
-            if (req.body.password === user.password) {
-              //check the user password vs the form password
-              req.session.user_id = user.id;
-              console.log(req.session.user_id);
-              console.log("authenticated");
-              res.json({
-                auth: true,
-                message: "success",
-              });
-            } else {
-              console.log("not authenticated");
-              res.json({
-                auth: false,
-                message: "bad password",
-              });
-            }
-          } else {
+
             //user does not exist in db as per email
             console.log("email does not exist");
-            res.json({
+            return res.json({
               auth: false,
               message: "not a valid email address",
             });
           }
+          if (req.body.password !== user.password) {
+            //check the user password vs the form password
+
+            console.log("not authenticated");
+            return res.json({
+              auth: false,
+              message: "bad password",
+            });
+          }
+          req.session.user_id = user.id;
+          //sets the cookie for the client
+          console.log(req.session.user_id);
+          console.log("authenticated");
+          res.json({
+            auth: true,
+            message: "success",
+          });
         })
         .catch((err) => {
           //db error
@@ -90,10 +84,8 @@ module.exports = (db) => {
   router.post("/signup", (req, res) => {
     const userID = req.session.user_id;
 
-    db.getUserById(userID).then((dbusr) => {
-      //the user id from cookie matches an id in the database
-
-      if (dbusr) {
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (isLoggedIn) {
         //user is already logged in
         console.log("already logged in");
         return res.json({
@@ -108,15 +100,15 @@ module.exports = (db) => {
         email: req.body.email,
         password: req.body.password,
       };
-      // const values = [user.first_name, user.last_name, user.email, user.password]
+
       db.addUser(user)
         .then((result) => {
           if (!result) {
-            res.json({
+            console.log("not successful in adding new user");
+            return res.json({
               auth: false,
               message: "not succesful in registering user",
             });
-            return console.log("not successful in adding new user");
           }
           console.log("successfully added user to db: ", result);
           req.session.user_id = result.id; //set the cookie according to the userid returned from the database
@@ -133,7 +125,6 @@ module.exports = (db) => {
           });
         });
     });
-    // db.addUser()
   });
   return router;
 };
