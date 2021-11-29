@@ -9,5 +9,10 @@ const expandedPins = () => {
   $("#pin-container").append($pin);
 
   const $comment = createCommentElement();
+
+  $("#comment-section").append($comment);
+  $("#comment-section").append($comment);
+  $("#comment-section").append($comment);
+  $("#comment-section").append($comment);
   $("#comment-section").append($comment);
 };

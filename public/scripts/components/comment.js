@@ -1,6 +1,6 @@
 const createCommentElement = (comment) => {
   return `
-  <article class="comment">
+  <article class="comment" id="comment-list">
   <header class="comment-header">
     <div class="name">
       <h6 class="FirstName">
