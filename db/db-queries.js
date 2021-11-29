@@ -110,12 +110,12 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addFavorite = function(object) {
+  const addFavorite = function(id, pinId) {
     return db.query(`
     INSERT INTO favorite_pins (user_id, pin_id)
     VALUES ($1, $2)
     RETURNING *;
-    `, [object.user_id, object.pin_id])
+    `, [id, pinId])
       .then(result => result.rows[0])
       .catch((err) => console.log(err))
   };

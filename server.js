@@ -148,13 +148,11 @@ const testNewInfo = {
 // })
 
 // ADD FAVORITE //
-// const favoriteTest = {
-//   user_id: 1,
-//   pin_id: 1,
-// }
-// dbHelpers.addFavorite(favoriteTest).then((result) => {
-//   console.log('addFavorite', result)
-// })
+const user = 16;
+const pinId = 3;
+dbHelpers.addFavorite(user, pinId).then((result) => {
+  console.log('addFavorite', result)
+})
 
 
 // GET OWNED PINS //
