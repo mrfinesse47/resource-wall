@@ -37,13 +37,11 @@ const pins = () => {
     event.preventDefault();
     $.ajax({
         method: 'POST',
-        data: {
-          action: 'logout'
-        },
         url: 'api/users/logout',
       })
-      .done(function () {
-        render("login")
+      .done(function (json) {
+        console.log(json);
+
       })
       .fail(function () {
         render("login") //should either render pins or give a notification that logout failed

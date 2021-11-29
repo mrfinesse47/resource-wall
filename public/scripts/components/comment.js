@@ -1,4 +1,4 @@
-const CreateCommentElement = (comment) => {
+const createCommentElement = (comment) => {
   return `
   <article class="comment">
   <header class="comment-header">

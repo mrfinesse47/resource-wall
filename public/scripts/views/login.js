@@ -27,7 +27,7 @@ const login = () => {
         render("pins")
       })
       .fail(function () {
-        render("pins") // should re-render login once back end is hooked up
+        // render("pins") // should re-render login once back end is hooked up
       });
   })
 }

@@ -91,6 +91,7 @@ module.exports = (db) => {
 
     router.post("/logout", (req, res) => {
       req.session = null; //deletes user cookies
+      console.log("reaching logout");
       res.json({
         auth: false,
         message: "sucessfully logged out user"
