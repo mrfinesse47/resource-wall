@@ -24,37 +24,39 @@ const pins = () => {
 
   const loadPins = function () {
     $.ajax({
-      method: 'GET',
-      url: "/pins",
-      data: $("").serialize(),
-      dataType: "json",
-      success: function (data) {
-        renderPins(data);
-
-      }
-
-    });
+        method: 'GET',
+        url: "api/pins",
+        cache: false,
+        dataType: "json",
+      })
+      .done(function (obj) {
+        console.log(obj);
+      })
+      .fail(function () {
+        console.log("something went wrong in loadPins ajax") // should return an error here
+      });
   };
 
+  loadPins();
 
   const $pin = createPinElement();
   //after generating the element
   $("#pins-container").append($pin);
 
   //we have to bind a click listener onto the new item after it is appended
-  $("#12345").click(function () {
-    alert("12345 clicked");
-  });
+  // $("#12345").click(function () {
+  //   alert("12345 clicked");
+  // });
 
   //we can append as many as we want.
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
+  // $("#pins-container").append($pin);
 
 
 
