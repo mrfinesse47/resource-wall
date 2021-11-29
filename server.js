@@ -184,6 +184,15 @@ const testNewInfo = {
 
 // dbHelpers.searchPins(testPinSearch).then((result) => {
 //   console.log('search', result)
-// })
+// });
 
+// PIN BY ID //
+// const testID = 3
+// dbHelpers.getPinById(testID).then((result) => {
+//   console.log('Pin By Id', result)
+// });
 
+// PIN COMMENTS BY PIN ID //
+// dbHelpers.getPinCommentsById(testID).then((result) => {
+//   console.log('Pin Comments', result)
+// });
