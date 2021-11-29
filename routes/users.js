@@ -7,6 +7,7 @@
 
 const express = require("express");
 const router = express.Router();
+const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 //const fakeUser = require("../fake-data/user.json");
 
 module.exports = (db) => {
@@ -27,19 +28,15 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const userID = req.session.user_id;
 
-    db.getUserById(userID).then((dbusr) => {
-      //the user id from cookie matches an id in the database
-      console.log("db user", dbusr);
-      if (dbusr) {
-        //user is already logged in
+    isUserLoggedIn(userID, db).then((auth) => {
+      if (auth) {
         console.log("already logged in");
         return res.json({
           auth: true,
-          message: "already logged in"
+          message: "already logged in",
         });
       }
-
-      //user is not logged in
+      // user is not logged in
 
       db.getUserByEmail(req.body.email)
         .then((user) => {
@@ -52,13 +49,13 @@ module.exports = (db) => {
               console.log("authenticated");
               res.json({
                 auth: true,
-                message: "success"
+                message: "success",
               });
             } else {
               console.log("not authenticated");
               res.json({
                 auth: false,
-                message: "bad password"
+                message: "bad password",
               });
             }
           } else {
@@ -66,7 +63,7 @@ module.exports = (db) => {
             console.log("email does not exist");
             res.json({
               auth: false,
-              message: "not a valid email address"
+              message: "not a valid email address",
             });
           }
         })
@@ -74,12 +71,10 @@ module.exports = (db) => {
           //db error
           console.log("db error");
           console.log(err);
-          res
-            .status(500)
-            .json({
-              auth: false,
-              message: "internal server error"
-            });
+          res.status(500).json({
+            auth: false,
+            message: "internal server error",
+          });
         });
     });
   });
@@ -88,7 +83,7 @@ module.exports = (db) => {
     req.session = null; //deletes user cookies
     res.json({
       auth: false,
-      message: "sucessfully logged out user"
+      message: "sucessfully logged out user",
     });
   });
 
@@ -97,13 +92,13 @@ module.exports = (db) => {
 
     db.getUserById(userID).then((dbusr) => {
       //the user id from cookie matches an id in the database
-      console.log("db user", dbusr);
+
       if (dbusr) {
         //user is already logged in
         console.log("already logged in");
         return res.json({
           auth: true,
-          message: "already logged in"
+          message: "already logged in",
         });
       }
 
@@ -127,17 +122,15 @@ module.exports = (db) => {
           req.session.user_id = result.id; //set the cookie according to the userid returned from the database
           res.json({
             auth: true,
-            message: "succesful registration"
+            message: "succesful registration",
           });
         })
         .catch((err) => {
           console.log("db error", err);
-          res
-            .status(500)
-            .json({
-              auth: false,
-              message: "internal server error"
-            });
+          res.status(500).json({
+            auth: false,
+            message: "internal server error",
+          });
         });
     });
     // db.addUser()
