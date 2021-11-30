@@ -13,14 +13,14 @@ const expandedPins = (obj) => {
   $('#favorite-container').append($favoriteBtn);
 
   const $appendComment = (obj) => {
-    $("#comment-section").append(createCommentElement(obj))
+    $("#comment-prepend").prepend(createCommentElement(obj.comment[0]))
   }
 
 
   const renderComments = (obj) => {
     console.log(obj);
     obj.comments.forEach(($comment) => {
-      $("#comment-section").append(createCommentElement($comment))
+      $("#comment-prepend").prepend(createCommentElement($comment))
     })
   }
 
@@ -35,7 +35,7 @@ const expandedPins = (obj) => {
       .done(function (obj) {
         console.log(obj, "321321312");
         if (obj.auth) {
-          $appendComment(obj.comment);
+          $appendComment(obj);
         } else {
           render("login", obj)
         }
