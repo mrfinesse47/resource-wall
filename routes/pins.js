@@ -18,7 +18,8 @@ module.exports = (db) => {
           message: "not logged in",
         });
       }
-      db.getFavPins(Number(userID))
+
+      db.getFavPins(userID)
         .then((pins) => {
           res.json({
             auth: true,
@@ -66,8 +67,8 @@ module.exports = (db) => {
           message: "not logged in",
         });
       }
-      console.log(req.body.id);
-      db.addFavorite((userID, req.body.id))
+      console.log("user id", userID);
+      db.addFavorite(userID, req.body.id)
         .then((pin) => {
           console.log(pin);
           res.json({
@@ -153,7 +154,6 @@ module.exports = (db) => {
             message: "successfully retrieved pin by ID",
             pin,
           });
-          console.log(result);
         })
         .catch((err) => {
           console.log(err);
