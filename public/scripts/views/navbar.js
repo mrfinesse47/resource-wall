@@ -88,6 +88,27 @@ const navBarView = (auth) => {
       });
   })
 
+
+  $('#nav-search').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: "api/search"
+      })
+      .done(function (obj) {
+        console.log(obj);
+        if (obj.auth) {
+          render("pins", obj);
+        } else {
+          render("login", obj)
+        }
+
+      })
+      .fail(function () {
+        // render("pins") // should re-render login once back end is hooked up
+      });
+  })
+
   if (auth) {
 
     $('#logout-btn').click(function (event) {

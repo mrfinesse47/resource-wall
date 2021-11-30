@@ -5,7 +5,7 @@ const createExpandedPinElement = (obj) => {
   <h3 class="title">
   ${obj.pin.title}
   </h3>
-  <header class="image-container">
+  <header class="image-container" id="expanded-pin-header">
     <img
       src="${obj.pin.thumbnail_url}"
     />
