@@ -148,24 +148,24 @@ const testNewInfo = {
 // })
 
 // ADD FAVORITE //
-const user = 16;
-const pinId = 3;
-dbHelpers.addFavorite(user, pinId).then((result) => {
-  console.log('addFavorite', result)
-})
+// const user = 16;
+// const pinId = 3;
+// dbHelpers.addFavorite(user, pinId).then((result) => {
+//   console.log('addFavorite', result)
+// })
 
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-// const testID = '16'
+const testID = '16'
 // dbHelpers.getOwnedPins(testID).then((result) => {
 //   console.log('OwnedPins', result)
 // });
 
 // // GET FAV PINS //
-// dbHelpers.getFavPins(testID).then((result) => {
-//   console.log('FavPins', result)
-// })
+dbHelpers.getFavPins(testID).then((result) => {
+  console.log('FavPins', result)
+})
 
 // ALL PINS //
 // dbHelpers.getAllPins().then((result) => {

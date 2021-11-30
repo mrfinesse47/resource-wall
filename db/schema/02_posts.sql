@@ -6,10 +6,8 @@ CREATE TABLE pins (
 
   title VARCHAR(255) NOT NULL,
   description VARCHAR(140) NOT NULL,
-  content_type TEXT NOT NULL,
-  -- url TEXT,
+  thumbnail_url TEXT,
   content TEXT NOT NULL,
   tag TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW()
 );
-
