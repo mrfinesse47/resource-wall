@@ -9,7 +9,47 @@ module.exports = (db) => {
   // /api/pins/:id/comments
   //-----------------------------------------------------------------
 
-  router.post("/:id/comments", (req, res) => {});
+  router.post("/:pinID/comments", (req, res) => {
+    const { isLoggedIn } = req; //gets this from middleware
+    const userID = req.session.user_id; //from the cookie
+
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+
+    const { pinID } = req.params;
+
+    // user_id, pin_id, comment
+
+    const comment = {
+      user_id: userID,
+      pin_id: pinID,
+      comment: req.body.comment,
+    };
+
+    console.log(comment);
+
+    db.addComment(comment)
+      .then((result) => {
+        res.json({
+          auth: true,
+          message: "successfully created comment",
+          comment: result,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          auth: true,
+          message: "internal server error",
+        });
+      });
+
+    // addComment();
+  });
 
   //-----------------------------------------------------------------
   // GET /api/pins/favorites/ --gets all the favorited pins
