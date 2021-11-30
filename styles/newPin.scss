@@ -1,44 +1,64 @@
+@import "./variables.scss";
+
 #modal-holder {
   display: flex;
-  margin-right: 12em;
-  margin-top: 2em;
-  justify-content: flex-end;
+  justify-content: center;
+  padding: 1em 2em;
+  margin: 5em 2em;
+  background-color: $background-color;
+  border-radius: 3em;
+  width: 35em;
 
   .newpin-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    letter-spacing: .05em;
   }
 
-  #pin-description-box {
-    margin: 0;
+  #create-pin-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: .05em;
   }
 
-  #pin-content-box {
-    margin: 0;
+  .mb-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30em;
+
+    #create-content {
+      text-align: start;
+      height: 20em;
+    }
+
   }
 
-  #pin-title-box {
-    margin: 0;
+  #createPinBtn {
+    margin-top: 0.2em;
+    border: none;
+    color: whitesmoke;
+    background-color: #5f5449;
+    width: 5em;
+    height: 2em;
+    border-radius: 3rem;
+    letter-spacing: 0.07em;
   }
 
-  #img-URL-box {
-    margin: 0;
+  #cancel-redirect {
+    color: #5f5449;
   }
 
-  #URL-box {
-    margin: 0;
-  }
-
-  input,
-  textarea {
+  modal-holder input,
+  #modal-holder textarea {
     border-radius: 3rem;
     border: 2px;
-    height: 2rem;
-    padding: 0 1vw;
-    text-align: center;
+    padding: 0.7em 1.5em;
   }
 }
+
 
 // id="submit-new--pin"
