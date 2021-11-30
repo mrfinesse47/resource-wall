@@ -168,23 +168,24 @@ module.exports = (db) => {
       }
       const { pinID } = req.params;
 
-      db.getPinById(pinID)
-        .then((pin) => {
-          if (!pin) {
-            return res.json({
+      Promise.all([db.getPinById(pinID), db.getPinCommentsById(pinID)])
+        .then((values) => {
+          console.log(values);
+          if (!values[0] || !values[1]) {
+            res.json({
               auth: true,
-              message: "Not successful in retrieving pin",
-              pin,
+              message: "not successfull in getting users pins",
+              pins,
             });
           }
           res.json({
             auth: true,
             message: "successfully retrieved pin by ID",
-            pin,
+            pin: values[0],
+            comments: values[1],
           });
         })
         .catch((err) => {
-          console.log(err);
           res.status(500).json({
             auth: true,
             message: "internal server error",
