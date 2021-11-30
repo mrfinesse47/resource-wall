@@ -1,0 +1,40 @@
+#modal-holder {
+  display: flex;
+  margin-right: 12em;
+  margin-top: 2em;
+  justify-content: flex-end;
+
+  #modal-body {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #URL-box {
+    margin-top: .4em;
+  }
+
+  #img-URL-box {
+    margin-top: 1em;
+  }
+
+  #pin-url {
+    margin-top: 1em;
+  }
+
+  #pin-title-box {
+    margin-top: 1em;
+  }
+
+  #pin-description-box {
+    margin-top: 1em;
+  }
+
+  input,
+  textarea {
+    border-radius: 3rem;
+    border: 1px;
+    height: 2rem;
+    padding: 0 1vw;
+    text-align: center;
+  }
+}

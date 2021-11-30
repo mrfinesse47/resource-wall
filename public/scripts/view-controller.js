@@ -14,6 +14,7 @@ const render = (view, auth) => {
   // then checks to see which page to render
 
   if ((view === "pins")) {
+    newPin();
     pins();
   }
 
@@ -26,6 +27,7 @@ const render = (view, auth) => {
   }
 
   if ((view === "userPins")) {
+    newPin();
     userPins();
   }
 
