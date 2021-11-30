@@ -89,10 +89,12 @@ const navBarView = (auth) => {
   })
 
 
-  $('#nav-search').click(function (event) {
-    event.preventDefault();
+  const input = document.querySelector('input[type="search"]');
+  input.onsearch = () => {
+    console.log($(input.value).serialize(), "inside search");
     $.ajax({
         method: 'POST',
+        data: $(input.value).serialize(),
         url: "api/search"
       })
       .done(function (obj) {
@@ -105,9 +107,12 @@ const navBarView = (auth) => {
 
       })
       .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
+        console.log("search failed")
       });
-  })
+
+  };
+
+
 
   if (auth) {
 

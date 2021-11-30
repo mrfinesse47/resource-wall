@@ -19,8 +19,10 @@ const navBar = (auth) => {
   <div class="nav-links"><div id="body">
   <div class="search-box">
   <button class="btn-search"><i class="fas fa-search"></i></button>
+
   <input type="search" class="input-search" id="nav-search" placeholder="Type to Search...">
-</div>
+
+  </div>
 </div>
   <button type="button" id="logout-btn">Log Out</button>
   </div>
