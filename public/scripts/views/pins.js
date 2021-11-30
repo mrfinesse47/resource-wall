@@ -23,9 +23,9 @@ const pins = () => {
           })
           .done(function (obj) {
             if (obj.auth) {
-              render("expandedPins", true);
+              render("expandedPins", obj);
             } else {
-              render("login", false);
+              render("login", obj);
             }
           })
           .fail(function () {
@@ -61,10 +61,10 @@ const pins = () => {
         method: 'POST',
         url: 'api/users/logout',
       })
-      .done(function (json) {
-        console.log(json);
-        if (!json.auth) {
-          render("login");
+      .done(function (obj) {
+
+        if (!obj.auth) {
+          render("login", obj);
         }
       })
       .fail(function () {

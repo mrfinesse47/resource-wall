@@ -1,4 +1,68 @@
 const navBarView = (auth) => {
   const $navBar = navBar(auth);
   $($navBar).appendTo('#nav-placeholder');
+
+
+  $('#my-pins').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: "api/pins/owned"
+      })
+      .done(function (obj) {
+        console.log(obj);
+        if (obj.auth) {
+          render("userPins", obj);
+        } else {
+          render("login", obj)
+        }
+
+      })
+      .fail(function () {
+        // render("pins") // should re-render login once back end is hooked up
+      });
+  })
+
+
+  $('#home').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: "api/pins"
+      })
+      .done(function (obj) {
+        console.log(obj);
+        if (obj.auth) {
+          render("pins", obj);
+        } else {
+          render("login", obj)
+        }
+
+      })
+      .fail(function () {
+        // render("pins") // should re-render login once back end is hooked up
+      });
+  })
+
+
+
+
+  $('#logout-btn').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: 'api/users/logout',
+      })
+      .done(function (obj) {
+
+        if (!obj.auth) {
+          render("login", obj);
+        }
+      })
+      .fail(function () {
+
+        //should either render pins or give a notification that logout failed
+      });
+  })
+
 }

@@ -28,7 +28,7 @@ const createNewPinElement = () => {
         </div>
         <p id="pin-title-box">Title</p>
         <div class="newpin-form"">
-          <input id=" pin-title" type="text" name="Title" placeholder="example Title">
+          <input id=" pin-title" type="text" name="title" placeholder="example Title">
         </div>
         <p id="pin-description-box">Description</p>
         <div class="newpin-form"">
@@ -38,11 +38,19 @@ const createNewPinElement = () => {
         <div class="newpin-form"">
         <input id=" pin-content" type="text" name="content" placeholder="Your thoughts go here!">
         </div>
+        <p id="pin-content-box">Tags</p>
+        <div class="newpin-form"">
+        <input id=" pin-content" type="text" name="tag" placeholder="tag!">
+        </div>
+        <p id="pin-content-box">Tags</p>
+        <div class="newpin-form"">
+        <input id=" pin-content" type="text" name="content_type" placeholder="tag!">
+        </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
+          <button type="button" id="submit-new-pin" class="btn btn-primary">Create</button>
         </div>
       </div>
     </div>

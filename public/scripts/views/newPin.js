@@ -6,7 +6,30 @@ const newPin = () => {
   const $newPin = createNewPinElement();
   $("#modal-holder").append($newPin);
 
+
+
 }
+
+// $("#submit-new-pin).submit(function (event) {
+//     event.preventDefault();
+
+//     $.ajax({
+//       method: 'POST',
+//       data: $(this).serialize(),
+//       url: 'api/pins/',
+//     })
+//     .done(function (obj) {
+//       console.log(obj)
+//       if (obj.auth) {
+//         render("pins", obj.auth);
+//       }
+
+//     })
+//     .fail(function () {
+//       // render("pins") // should re-render login once back end is hooked up
+//     });
+
+
 
 
 

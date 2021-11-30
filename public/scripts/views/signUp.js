@@ -19,10 +19,10 @@ const signUp = () => {
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
-          render("pins", obj.auth);
+          render("pins", obj);
         }
         if (!obj.auth) {
-          render("login", obj.auth);
+          render("login", obj);
         }
       })
       .fail(function () {
@@ -38,9 +38,9 @@ const signUp = () => {
       })
       .done(function (obj) {
         if (!obj.auth) {
-          render("login", obj.auth)
+          render("login", obj)
         } else {
-          render("pins", obj.auth)
+          render("pins", obj)
         }
       })
       .fail(function () {

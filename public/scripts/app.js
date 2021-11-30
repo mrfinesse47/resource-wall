@@ -13,9 +13,9 @@ $(document).ready(function () {
     .done(function (obj) {
       if (obj.auth) {
         console.log("123123123123");
-        render("pins", true);
+        render("pins", obj);
       } else {
-        render("signUp", false);
+        render("signUp", obj);
       }
     })
     .fail(function () {

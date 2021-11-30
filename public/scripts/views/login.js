@@ -23,7 +23,7 @@ const login = () => {
       .done(function (obj) {
         console.log(obj)
         if (obj.auth) {
-          render("pins", obj.auth);
+          render("pins", obj);
         }
 
       })

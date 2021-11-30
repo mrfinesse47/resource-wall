@@ -22,7 +22,7 @@ const navBar = (auth) => {
     return `<nav id="navigation">
     <div class="container">
       <div>
-        <span id="logo">
+        <span id="home">
           <p>HOME</p>
         </span>
       </div>
