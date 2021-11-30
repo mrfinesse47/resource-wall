@@ -133,13 +133,13 @@ const email = "example@example.com";
 
 // const id = 1;
 
-const testPin = {
-  title: "is cell from dragon ball a cell",
-  description: "is cell a cell?",
-  content: "if cell is a cell would a group of cells be tissue? I need to know cause this is Science",
-  tag: "Science",
-  thumbnail_url: 'www.example.com'
-};
+// const testPin = {
+//   title: "is cell from dragon ball a cell",
+//   description: "is cell a cell?",
+//   content: "if cell is a cell would a group of cells be tissue? I need to know cause this is Science",
+//   tag: "Science",
+//   thumbnail_url: 'www.example.com'
+// };
 
 // const testPin2 = {
 //   title: 'is it canibalism if i eat an alaska roll?',

@@ -7,7 +7,7 @@ CREATE TABLE pins (
   title VARCHAR(255) NOT NULL,
   description VARCHAR(140) NOT NULL,
   content TEXT NOT NULL,
-  tag TEXT NOT NULL,
+  tag_id INTEGER REFERENCES tags(id),
   created_at TIMESTAMP DEFAULT NOW(),
-  thumbnail_url TEXT
+  url TEXT
 );
