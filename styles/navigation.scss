@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 93%;
     margin: 0 auto;
     height: inherit;
   }
@@ -29,14 +28,18 @@
 
   .nav-links {
     display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   .nav-bar-items {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    flex-grow: 1;
   }
 
-  #my-pins {
+  .nav-buttons {
     border: none;
     background: inherit;
     font-family: Inter;
@@ -44,7 +47,7 @@
     font-weight: 600;
     font-size: 100%;
     line-height: 100%;
-
+    white-space: nowrap;
     color: black;
   }
 
@@ -64,24 +67,10 @@
     box-shadow: 3px 4px 5px grey;
   }
 
-  #home {
-    border: none;
-    background: inherit;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 100%;
-    line-height: 100%;
 
-    color: black;
-  }
 
-  #home:hover {
+  .nav-buttons {
     color: grey;
-  }
-
-  #my-pins:hover {
-    color: gray;
   }
 
   #body {
