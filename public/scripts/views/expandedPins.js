@@ -7,7 +7,7 @@ const expandedPins = (obj) => {
   const $pin = createExpandedPinElement(obj);
   $("#pin-container").append($pin);
 
-  const $createDiv = `<div class="favorite-container"></div>`
+  const $createDiv = `<div id="favorite-container"></div>`
   $($createDiv).appendTo('#expanded-pin-header');
   const $favoriteBtn = createFavoriteElement();
   $('#favorite-container').append($favoriteBtn);

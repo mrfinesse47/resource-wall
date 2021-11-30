@@ -1,7 +1,7 @@
 const createFavoriteElement = () => {
-  return `<div class="like-container">
-  <div class="like-cnt unchecked" id="like-cnt">
-  <i class="like-btn material-icons">thumb_up</i>
-</div>
-</div>`
+  return `<label for="id-of-input" class="custom-checkbox">
+  <input type="checkbox" id="id-of-input" />
+  <i class="glyphicon glyphicon-star-empty"></i>
+  <i class="glyphicon glyphicon-star"></i>
+</label>`
 }
