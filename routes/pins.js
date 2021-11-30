@@ -3,6 +3,14 @@ const router = express.Router();
 const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
+  router.post("/search", (req, res) => {});
+
+  //-----------------------------------------------------------------
+  // /api/pins/:id/comments
+  //-----------------------------------------------------------------
+
+  router.post("/:id/comments", (req, res) => {});
+
   //-----------------------------------------------------------------
   // GET /api/pins/favorites/ --gets all the favorited pins
   //-----------------------------------------------------------------
