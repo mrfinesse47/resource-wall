@@ -21,6 +21,13 @@ module.exports = (db) => {
 
       db.getFavPins(userID)
         .then((pins) => {
+          if (!pins) {
+            return res.json({
+              auth: true,
+              message: "not successful in getting users favorite pins",
+              pins,
+            });
+          }
           res.json({
             auth: true,
             message: "successful in getting users favorite pins",
@@ -70,6 +77,13 @@ module.exports = (db) => {
       console.log("user id", userID);
       db.addFavorite(userID, req.body.id)
         .then((pin) => {
+          if (!pin) {
+            return res.json({
+              auth: true,
+              message: "not successful in adding new favorite pin",
+              pin,
+            });
+          }
           console.log(pin);
           res.json({
             auth: true,
@@ -115,6 +129,13 @@ module.exports = (db) => {
 
       db.getOwnedPins(userID)
         .then((pins) => {
+          if (!pins) {
+            res.json({
+              auth: true,
+              message: "not successfull in getting users pins",
+              pins,
+            });
+          }
           res.json({
             auth: true,
             message: "successfully got users pins",
@@ -149,6 +170,13 @@ module.exports = (db) => {
 
       db.getPinById(pinID)
         .then((pin) => {
+          if (!pin) {
+            return res.json({
+              auth: true,
+              message: "Not successful in retrieving pin",
+              pin,
+            });
+          }
           res.json({
             auth: true,
             message: "successfully retrieved pin by ID",
@@ -241,6 +269,13 @@ module.exports = (db) => {
 
       db.addPin(pin)
         .then((result) => {
+          if (!pin) {
+            return res.json({
+              auth: true,
+              message: "not successful in adding a new pin",
+              pin: result,
+            });
+          }
           console.log(result);
           res.json({
             auth: true,

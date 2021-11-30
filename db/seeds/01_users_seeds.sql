@@ -1,6 +1,7 @@
 -- Users table seeds here (Example)
 INSERT INTO users (first_name, last_name, email, password)
-VALUES ('Nicole', 'Dunn','quis@outlook.com','password'),
+VALUES
+  ('Nicole', 'Dunn','test@test.com','123'),
   ('Cole', 'Monroe','proin.nisl.sem@google.edu','password'),
   ('Luke', 'Gray','nunc.ullamcorper@outlook.net','password'),
   ('Orlando', 'Ross','mauris@protonmail.edu','password'),

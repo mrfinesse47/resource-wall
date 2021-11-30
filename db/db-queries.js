@@ -24,7 +24,6 @@ module.exports = (db) => {
       });
   };
 
-
   const updateUserInfo = function (email, newInfo) {
 
     const queryParams = [];
@@ -135,7 +134,7 @@ module.exports = (db) => {
 
   const getFavPins = function(id) {
     return db.query(`
-    SELECT pins.*
+    SELECT pins.*, favorite_pins.id
     FROM pins
     JOIN favorite_pins ON pins.id = favorite_pins.pin_id
     WHERE favorite_pins.user_id = $1
