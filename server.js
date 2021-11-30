@@ -62,6 +62,7 @@ app.use((req, res, next) => {
         req.isLoggedIn = false;
       } else {
         req.isLoggedIn = true;
+        req.userID = userID;
       }
       next();
     })
