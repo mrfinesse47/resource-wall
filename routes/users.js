@@ -22,7 +22,7 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/auth", (req, res) => {
-    console.log(req.session.user_id);
+    console.log("user ID", req.session.user_id);
     if (!req.session.user_id) {
       return res.json({ auth: false, message: "user has no cookie" });
     }
