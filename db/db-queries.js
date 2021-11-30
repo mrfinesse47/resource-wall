@@ -80,9 +80,9 @@ module.exports = (db) => {
       });
   };
 
-  const addPin = function (id, object) {
+  const addPin = function (object) {
     let queryString = `INSERT INTO pins (owner_id, title, description, content, tag, created_at`;
-    const queryParams = [id, object.title, object.description, object.content, object.tag];
+    const queryParams = [object.owner_id, object.title, object.description, object.content, object.tag];
     if (object.thumbnail_url) {
       queryString += ', thumbnail_url)';
       queryParams.push(object.thumbnail_url);

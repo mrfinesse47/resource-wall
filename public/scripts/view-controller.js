@@ -38,4 +38,8 @@ const render = (view, obj) => {
   if ((view === "favoritePins")) {
     favoritePins();
   }
+
+  if ((view === "newPin")) {
+    newPin();
+  }
 };

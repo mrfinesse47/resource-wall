@@ -1,32 +1,51 @@
 const newPin = () => {
-  const $createDiv = `<div id="modal-holder">
-  </div>`
-  $($createDiv).appendTo('#pre-main');
+  const $createDiv = `<article id="modal-holder">
+  </article>`;
+  $($createDiv).appendTo('#main-container');
 
   const $newPin = createNewPinElement();
   $("#modal-holder").append($newPin);
 
 
-  $('#newpin-form').submit(function (event) {
+  $('#create-pin').submit(function (event) {
+    console.log("23123");
     event.preventDefault();
     $.ajax({
         method: 'POST',
-        data: $(this).serialize(),
-        url: 'api/users/newpin',
+        data: $('#create-pin').serialize(),
+        url: 'api/pins',
       })
       .done(function (obj) {
         if (obj.auth) {
           render("pins", obj);
         }
+      })
+  })
 
+
+
+  $('#cancel-redirect').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: "api/users/auth",
+      })
+      .done(function (obj) {
+        if (!obj.auth) {
+          render("login", obj)
+        } else {
+          render("pins", obj)
+        }
       })
       .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
+        console.log("something went wrong in signup redirect") //should either render pins or give a notification that logout failed
+
       });
   })
 
-}
 
+
+}
 
 
 

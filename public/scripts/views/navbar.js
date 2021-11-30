@@ -23,6 +23,29 @@ const navBarView = (auth) => {
       });
   })
 
+
+
+  $('#pin-creation').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: "api/users/auth"
+      })
+      .done(function (obj) {
+        console.log(obj);
+        if (obj.auth) {
+          render("newPin", obj);
+        } else {
+          render("login", obj)
+        }
+
+      })
+      .fail(function () {
+        // render("pins") // should re-render login once back end is hooked up
+      });
+  })
+
+
   $('#my-favorites').click(function (event) {
     event.preventDefault();
     $.ajax({

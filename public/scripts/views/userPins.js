@@ -47,6 +47,6 @@ const userPins = () => {
 
   loadPins();
 
-  newPin();
+
 
 };

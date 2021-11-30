@@ -9,7 +9,8 @@ const expandedPins = (obj) => {
   $("#pin-container").append($pin);
 
   const renderComments = (obj) => {
-    obj.comment.forEach(($comment) => {
+    console.log(obj);
+    obj.comments.forEach(($comment) => {
       $("#comment-section").append(createCommentElement($comment))
     })
   }

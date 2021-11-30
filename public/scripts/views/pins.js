@@ -55,6 +55,6 @@ const pins = () => {
 
   loadPins();
 
-  newPin();
+
 
 };

@@ -6,10 +6,13 @@ const navBar = (auth) => {
   <button type="button" id="home">Home
   </button>
   <button type="button" id="my-pins">My pins</button>
-  <form id="search-bar">
+
   <button type="button" id="my-favorites">Favorited</button>
-  <form id="search-bar">
+
+  <button type="button" id="pin-creation">Create Pin</button>
+
   <span>
+  <form id="search-bar">
   <input type="search" id="query" placeholder="Search">
   <button>Search</button>
   </span>

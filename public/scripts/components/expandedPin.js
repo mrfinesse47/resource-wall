@@ -7,7 +7,7 @@ const createExpandedPinElement = (obj) => {
   </h3>
   <header class="image-container">
     <img
-      src="${obj.pin.image}"
+      src="${obj.pin.thumbnail_url}"
     />
   </header>
   <footer>

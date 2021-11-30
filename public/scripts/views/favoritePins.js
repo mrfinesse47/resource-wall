@@ -46,6 +46,6 @@ const favoritePins = () => {
 
   loadPins();
 
-  newPin();
+
 
 };
