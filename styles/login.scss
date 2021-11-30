@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   padding: 2em 3em;
-  background: #CEDFD9;
+  background: #cedfd9;
   border-radius: 3rem;
   margin: 10rem 0;
   justify-content: space-between;
@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: .6em;
+    padding: 0.6em;
     width: 20rem;
   }
 
@@ -31,41 +31,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   #loginbtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: .2em;
+    margin-top: 0.2em;
     border: none;
     color: whitesmoke;
-    background-color: #5F5449;
+    background-color: #5f5449;
     width: 5em;
     height: 2em;
     border-radius: 3rem;
     letter-spacing: 0.07em;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-  }
-
-  #register {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: .2em;
-    border: none;
-    color: whitesmoke;
-    background-color: #5F5449;
-    width: 5em;
-    height: 2em;
-    border-radius: 3rem;
-    letter-spacing: 0.07em;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
   }
 
   #sign-up-redirect {
@@ -81,7 +60,7 @@
   }
 
   a:hover {
-    color: #5F5449;
+    color: #5f5449;
   }
 
   a:link {

@@ -4,8 +4,6 @@
   background-color: $background-color;
   height: 5rem;
 
-
-
   .container {
     display: flex;
     justify-content: space-between;
@@ -14,7 +12,6 @@
     margin: 0 auto;
     height: inherit;
   }
-
 
   div {
     background-color: $background-color;
@@ -37,7 +34,6 @@
   .nav-bar-items {
     display: flex;
     align-items: center;
-
   }
 
   #my-pins {
@@ -60,27 +56,12 @@
     font-weight: 600;
     font-size: 100%;
     line-height: 180%;
-    padding: 0.3em .7em;
-    color: #FBFBFB;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
+    padding: 0.3em 0.7em;
+    color: #fbfbfb;
   }
 
   #logout-btn:hover {
     box-shadow: 3px 4px 5px grey;
-  }
-
-  #pin-creation {
-    border: none;
-    background: inherit;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 100%;
-    line-height: 100%;
-
-    color: black;
   }
 
   #home {

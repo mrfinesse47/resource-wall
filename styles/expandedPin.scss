@@ -3,7 +3,6 @@
 #main-container {
   display: flex;
 
-
   #pin-container {
     display: flex;
     justify-content: center;
@@ -15,10 +14,8 @@
       align-items: center;
       flex-grow: 1;
 
-
       #commentBtn {
         margin: 1em 1em;
-
       }
     }
 
@@ -34,12 +31,10 @@
 
       .comment-text {
         display: flex;
-        padding: 1em 1em;
-
       }
 
       .comment-time {
-        font-size: .8em;
+        font-size: 0.8em;
       }
     }
 
@@ -63,7 +58,6 @@
       }
     }
 
-
     #expanded-pin {
       display: flex;
       flex-wrap: wrap;
@@ -86,7 +80,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
 
         img {
           display: flex;

@@ -3,12 +3,14 @@
 #pins-container {
   max-width: 1100px;
   width: 85%;
+  // background-color: white;
   display: flex;
+
   flex-direction: row;
+  //justify-content: space-evenly;
   gap: 10px 20px;
   justify-content: center;
   flex-wrap: wrap;
-  font-family: Test Söhne Breit;
 
   .pin {
     background-color: $background-color;
@@ -20,43 +22,27 @@
     .image-container {
       width: 100%;
     }
-
     img {
       width: 100%;
     }
-
     footer {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       padding: 0 7%;
-      height: 15em;
-
-      .tag-rating {
-        display: flex;
-        align-items: flex-end;
-
-      }
 
       .title {
         text-align: center;
       }
-
       .info {
-        // display: flex;
-        // justify-content: space-between;
-        // display: inline-block;
-
-        p {
-          display: inline-block;
-          margin: 0 0;
-        }
+        display: flex;
+        justify-content: space-between;
       }
-
       .rating {
-        display: inline-block;
-        // display: flex;
-        // align-items: center;
+        display: flex;
+        align-items: center;
+        .fa-star {
+          display: block;
+          font-size: 0.75em;
+          color: darkorange;
+        }
       }
     }
   }
