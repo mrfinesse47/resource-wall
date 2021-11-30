@@ -168,55 +168,20 @@ module.exports = (db) => {
     .catch((err) => console.log(err))
   };
 
-  const searchPins = function (pin) {
-    const queryParams = [];
+  const searchPins = function(pin) {
+    const queryParam = `%${pin}%`;
     let queryString = `
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
-    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
-    `;
-
-    if (pin.title) {
-      queryParams.push(`%${pin.title}%`);
-      queryString += `WHERE title LIKE $${queryParams.length} `;
-    }
-
-    if (pin.tag) {
-      queryString += `${queryParams.length ? 'AND' : 'WHERE'} `;
-      queryParams.push(pin.tag);
-      queryString += `tag = $${queryParams.length}`
-    }
-
-    queryString += `GROUP BY pins.id`
-
-    if (pin.minimum_rating) {
-      queryParams.push(pin.minimum_rating);
-      queryString += `HAVING AVG(pin_ratings.rating) > $${queryParams.length}`
-    }
-
-    queryString += `
-    ORDER BY pins.created_at
-    `;
-
-    return db.query(queryString, queryParams)
-      .then((result) => result.rows)
-      .catch((err) => console.log(err))
-  };
-
-  const searchPinsTest = function(pin) {
-    const queryParam = `%pin%`;
-    let queryString = `
-    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
-    FROM pins
-    LEFT JOIN pin_ratings on pind.id = pin_ratings.pin_id
-    WHERE pins.title LIKE '%x%'
-    OR pins.tag LIKE '%x%'
-    OR pins.description LIKE '%x%'
-    OR pins.content LIKE '%x%'
+    LEFT JOIN pin_ratings on pins.id = pin_ratings.pin_id
+    WHERE LOWER(pins.title) LIKE LOWER($1)
+    OR LOWER(pins.tag) LIKE LOWER($1)
+    OR LOWER(pins.description) LIKE LOWER($1)
+    OR LOWER(pins.content) LIKE LOWER($1)
     GROUP BY pins.id
     ORDER BY pins.created_at
-    `
-    return db.query(queryString, queryParam)
+    `;
+    return db.query(queryString, [queryParam])
       .then((result) => result.rows)
   }
 
@@ -245,14 +210,15 @@ module.exports = (db) => {
 
   const getCommentById = function(commentId) {
     return db.query(`
-    SELECT users.first_name, users.last_name, comment.*
+    SELECT users.first_name, users.last_name, comments.*
     FROM comments
     JOIN users ON comments.user_id = users.id
-    WHERE comments.id = $1;
+    WHERE comments.id = $1
+    ORDER BY created_at;
     `, [commentId])
       .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, searchPinsTest, getCommentById };
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById };
 };
