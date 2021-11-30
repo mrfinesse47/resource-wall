@@ -1,3 +1,5 @@
+const { query } = require("express");
+
 module.exports = (db) => {
 
   const getUserByEmail = function (email) {
@@ -24,74 +26,80 @@ module.exports = (db) => {
       });
   };
 
-
   const updateUserInfo = function (user_id, newInfo) {
 
     const queryParams = [];
-    let queryString = `UPDATE users
-    SET`
+    let queryString = `UPDATE users SET`;
 
     if (newInfo.first_name) {
       queryParams.push(`${newInfo.first_name}`);
-      // console.log('1',queryParams);
       queryString += ` first_name = $${queryParams.length}`;
     }
 
     if (newInfo.last_name) {
       queryString += `${queryParams.length ? ', last_name = ' : ' last_name = '}`;
       queryParams.push(`${newInfo.last_name}`);
-      // console.log('2',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.email) {
       queryString += `${queryParams.length ? ', email = ' : ' email = '}`;
       queryParams.push(`${newInfo.email}`);
-      // console.log('3',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.password) {
       queryString += `${queryParams.length ? ', password = ' : 'password = '}`;
       queryParams.push(`${newInfo.password}`);
-      // console.log('4',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
-    queryParams.push(user_id)
-    queryString += `
-    WHERE id = $${queryParams.length}
-    RETURNING *
-    `
+    queryParams.push(user_id);
+    queryString += ` WHERE id = $${queryParams.length} RETURNING *`;
 
-    return db.query(queryString, queryParams).then((result) => result.rows[0])
-  }
+    return db.query(queryString, queryParams).then((result) => result.rows[0]);
+  };
 
   const addUser = function(user) {
-    const values = [user.first_name, user.last_name, user.email, user.password]
+    const values = [user.first_name, user.last_name, user.email, user.password];
     return db.query(`INSERT INTO users (first_name, last_name, email, password)
-    VALUES ($1, $2, $3, $4);`, values)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;`, values)
       .then((result) => {
         if (result) {
-          return result.rows[0]
+          return result.rows[0];
         } else {
-          return null
+          return null;
         }
       })
       .catch((err) => {
-        console.log(err)
-        return null
-      })
-  }
+        console.log(err);
+        return null;
+      });
+  };
 
-  const addPin = function(object) {
-    return db.query(`
-    INSERT INTO pins (owner_id, title, description, thumbnail_url, content, tag, created_at)
-    VALUES ($1, $2, $3, $4, $5, $6, now())
-    RETURNING *;
-    `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag])
+  const addPin = function(id, object) {
+    let queryString = `INSERT INTO pins (owner_id, title, description, content, tag, created_at`;
+    const queryParams = [id, object.title, object.description, object.content, object.tag];
+    if (object.thumbnail_url) {
+      queryString += ', thumbnail_url)';
+      queryParams.push(object.thumbnail_url);
+    } else {
+      queryString += ')';
+    }
+    queryString += ` VALUES ($1, $2, $3, $4, $5, now()`
+
+    if(object.thumbnail_url) {
+      queryString += `, $6)`;
+    } else {
+      queryString += `)`;
+    }
+    queryString += ` RETURNING *;`;
+
+    return db.query(queryString, queryParams)
       .then(result => result.rows[0])
-  }
+      .catch((err) => console.log(err))
+  };
 
   const addRating = function(object) {
     return db.query(`
@@ -149,13 +157,16 @@ module.exports = (db) => {
 
   const getAllPins = function() {
     return db.query(`
-    SELECT *
+    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
+    LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
+    GROUP BY pins.id
+    ORDER BY created_at
     LIMIT 15;
     `)
     .then(result => result.rows)
     .catch((err) => console.log(err))
-  }
+  };
 
   const searchPins = function (pin) {
     const queryParams = [];
@@ -187,8 +198,10 @@ module.exports = (db) => {
     ORDER BY pins.created_at
     `;
 
-    return db.query(queryString, queryParams).then((result) => result.rows)
-  }
+    return db.query(queryString, queryParams)
+      .then((result) => result.rows)
+      .catch((err) => console.log(err))
+  };
 
   const getPinById = function(id) {
     return db.query(`
@@ -200,7 +213,7 @@ module.exports = (db) => {
     `, [id])
       .then((result) => result.rows[0])
       .catch((err) => console.log(err))
-  }
+  };
 
   const getPinCommentsById = function(id) {
     return db.query(`
@@ -211,7 +224,7 @@ module.exports = (db) => {
     `, [id])
       .then((result) => result.rows)
       .catch((err) => console.log(err))
-  }
+  };
 
   return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById };
 };

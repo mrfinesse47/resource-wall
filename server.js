@@ -76,109 +76,102 @@ const email = "example@example.com";
 // dbHelpers.getUserByEmail(email).then((result) => {
 //   console.log('getUserByEmail', result);
 // });
-const testId = 1;
-const testNewInfo = {
-<<<<<<< HEAD
-  first_name: 'evan',
-  last_name: 'fish',
-  email: 'example@example.com',
-  password: 'test'
-=======
-  first_name: "evan",
-  last_name: "fish",
-  email: "example@example.com",
-  password: "test",
->>>>>>> 8f2ebba7c9d909c7747cf6cfca3b7a65ea2485e6
-};
+// const testId = 1;
+// const testNewInfo = {
+//   first_name: 'evan',
+//   last_name: 'fish',
+//   email: 'exale@exale.com',
+//   password: 'test'
+// };
 
 // // UPDATE USER INFO //
-dbHelpers.updateUserInfo(testId, testNewInfo).then((result) => {
-  console.log('updateInfo', result)
-});
+// dbHelpers.updateUserInfo(testId, testNewInfo).then((result) => {
+//   console.log('updateInfo', result);
+// });
 
 // ADD USER //
-// dbHelpers.addUser(testNewInfo)
+// dbHelpers.addUser(testNewInfo).then((result) => {
+//   console.log('addUser', result);
+// });
 
 // // GET USER BY ID //
 // dbHelpers.getUserById(1).then((result) => {
-//   console.log('getUsetById', result)
+//   console.log('getUsetById', result);
 // });
 
 // dbHelpers.getUserById(1).then((result) => {
-//   console.log('getUserById', result)
+//   console.log('getUserById', result);
 // });
 
+// const id = 1;
+
 // const testPin = {
-//   owner_id: 1,
-//   title: "is cell from dbz a cell",
+//   title: "is cell from dragon ball a cell",
 //   description: "is cell a cell?",
-//   content_type: "Text",
 //   content: "if cell is a cell would a group of cells be tissue?",
-//   tag: "Science"
-// }
+//   tag: "Science",
+//   thumbnail_url: 'www.example.com'
+// };
 
 // const testPin2 = {
-//   owner_id: 2,
 //   title: 'is it canibalism if i eat an alaska roll?',
 //   description: `please help i'm having a mental breakdown`,
-//   content_type: 'Text',
 //   content: 'are we eating people? like how soylent green is people?',
 //   tag: 'Science'
-// }
+// };
 
-// dbHelpers.addPin(testPin).then((result) => {
-//   console.log('addPin', result)
-// })
+// dbHelpers.addPin(id, testPin).then((result) => {
+//   console.log('addPin', result);
+// });
 
-// dbHelpers.addPin(testPin2).then((result) => {
-//   console.log('addPin2', result)
-// })
+// dbHelpers.addPin(id, testPin2).then((result) => {
+//   console.log('addPin2', result);
+// });
 
 // ADD RATING //
 // const ratingTest = {
 //   user_id: 1,
 //   pin_id: 1,
 //   rating: 4
-// }
+// };
 // dbHelpers.addRating(ratingTest).then((result) => {
-//   console.log('addRating', result)
-// })
+//   console.log('addRating', result);
+// });
 
 // ADD COMMENT //
 // const commentTest = {
 //   user_id: 1,
 //   pin_id: 1,
 //   comment: 'CLICK THIS TO RECIEVE FREE BITCOIN',
-// }
+// };
+
 // dbHelpers.addComment(commentTest).then((result) => {
-//   console.log('addComment', result)
-// })
+//   console.log('addComment', result);
+// });
 
 // ADD FAVORITE //
 // const user = 16;
 // const pinId = 3;
 // dbHelpers.addFavorite(user, pinId).then((result) => {
-//   console.log('addFavorite', result)
-// })
-
+//   console.log('addFavorite', result);
+// });
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-const testID = '16'
+// const testID = '16'
 // dbHelpers.getOwnedPins(testID).then((result) => {
-//   console.log('OwnedPins', result)
+//   console.log('OwnedPins', result);
 // });
 
 // // GET FAV PINS //
-dbHelpers.getFavPins(testID).then((result) => {
-  console.log('FavPins', result)
-})
+// dbHelpers.getFavPins(testID).then((result) => {
+//   console.log('FavPins', result);
+// });
 
 // ALL PINS //
 // dbHelpers.getAllPins().then((result) => {
-//   console.log('getAll', result)
-// })
-
+//   console.log('getAll', result);
+// });
 
 // PIN SEARCH //
 // comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
@@ -186,19 +179,19 @@ dbHelpers.getFavPins(testID).then((result) => {
 
 // const testPinSearch = {
 //   tag: 'Geography'
-// }
+// };
 
 // dbHelpers.searchPins(testPinSearch).then((result) => {
-//   console.log('search', result)
+//   console.log('search', result);
 // });
 
 // PIN BY ID //
 // const testID = 3
 // dbHelpers.getPinById(testID).then((result) => {
-//   console.log('Pin By Id', result)
+//   console.log('Pin By Id', result);
 // });
 
 // PIN COMMENTS BY PIN ID //
 // dbHelpers.getPinCommentsById(testID).then((result) => {
-//   console.log('Pin Comments', result)
+//   console.log('Pin Comments', result);
 // });
