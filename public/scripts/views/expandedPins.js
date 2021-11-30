@@ -12,6 +12,11 @@ const expandedPins = (obj) => {
   const $favoriteBtn = createFavoriteElement();
   $('#favorite-container').append($favoriteBtn);
 
+  const $appendComment = (obj) => {
+    $("#comment-section").append(createCommentElement(obj))
+  }
+
+
   const renderComments = (obj) => {
     console.log(obj);
     obj.comments.forEach(($comment) => {
@@ -28,8 +33,9 @@ const expandedPins = (obj) => {
         url: `api/pins/${obj.pin.id}/comments`
       })
       .done(function (obj) {
+        console.log(obj, "321321312");
         if (obj.auth) {
-          render("expandedPins", obj);
+          $appendComment(obj.comment);
         } else {
           render("login", obj)
         }
