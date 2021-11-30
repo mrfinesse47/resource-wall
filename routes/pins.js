@@ -7,7 +7,24 @@ module.exports = (db) => {
   // POST /api/pins/search
   //-----------------------------------------------------------------
 
-  router.post("/search", (req, res) => {});
+  router.post("/search", (req, res) => {
+    const { isLoggedIn, userID } = req; //gets this from middleware
+
+    console.log(req.params);
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+
+    res.json({
+      auth: true,
+      message: "search route hit",
+    });
+
+    // db.searchPins()
+  });
 
   //-----------------------------------------------------------------
   // GET /api/pins/:id/comments
