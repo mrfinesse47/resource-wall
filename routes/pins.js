@@ -202,6 +202,7 @@ module.exports = (db) => {
   //right now the db limits it to 15
 
   router.get("/", (req, res) => {
+    console.log("#####login status", req.isLoggedIn);
     const userID = req.session.user_id; //get users cookie
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
       if (!isLoggedIn) {
@@ -250,7 +251,7 @@ module.exports = (db) => {
         owner_id: userID, //from the user cookie once authenticated
         title: req.body.title,
         description: req.body.description,
-        content_type: req.body.content_type,
+        thumbnail_url: req.body.thumbnail_url,
         content: req.body.content,
         tag: req.body.tag,
       };
@@ -260,7 +261,7 @@ module.exports = (db) => {
           pin.owner_id &&
           pin.title &&
           pin.description &&
-          pin.content_type &&
+          pin.url &&
           pin.content &&
           pin.tag
         )

@@ -15,6 +15,8 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+const isUserLoggedIn = require("./routes/helpers/isUserLoggedIn");
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -46,6 +48,23 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const pinsRoutes = require("./routes/pins");
 const dbHelpers = require("./db/db-queries")(db);
+
+//middleware to check if the user is logged in or not
+//it passes req.isLoggedin to all routes
+
+app.use((req, res, next) => {
+  const userID = req.session.user_id; //get users cookie
+
+  isUserLoggedIn(userID, dbHelpers).then((isLoggedIn) => {
+    if (!isLoggedIn) {
+      //user is already logged in
+      req.isLoggedIn = false;
+    } else {
+      req.isLoggedIn = true;
+    }
+    next();
+  });
+});
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
