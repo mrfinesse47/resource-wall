@@ -180,9 +180,8 @@ module.exports = (db) => {
   // /api/users/:id/edit
   //-----------------------------------------------------------------
 
-  router.post("/:userID/edit", (req, res) => {
-    const cookieUserID = req.session.user_id;
-    const { userID } = req.params;
+  router.post("/edit", (req, res) => {
+    const userID = req.session.user_id;
 
     const user = {
       first_name: req.body.FirstName,
@@ -193,15 +192,6 @@ module.exports = (db) => {
 
     if (!(user.first_name && user.last_name && user.email && user.password)) {
       return res.json({ auth: false, message: "incomplete form" });
-    }
-
-    console.log(cookieUserID, userID);
-
-    if (cookieUserID != userID) {
-      return res.json({
-        auth: false,
-        message: "cannot edit another users details",
-      });
     }
 
     isUserLoggedIn(userID, db).then((isLoggedIn) => {
