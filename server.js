@@ -139,15 +139,15 @@ const email = "example@example.com";
 // });
 
 // ADD COMMENT //
-// const commentTest = {
-//   user_id: 1,
-//   pin_id: 1,
-//   comment: 'CLICK THIS TO RECIEVE FREE BITCOIN',
-// };
+const commentTest = {
+  user_id: 1,
+  pin_id: 1,
+  comment: 'CLICK THIS TO RECIEVE FREE BITCOIN',
+};
 
-// dbHelpers.addComment(commentTest).then((result) => {
-//   console.log('addComment', result);
-// });
+dbHelpers.addComment(commentTest).then((result) => {
+  console.log('addComment', result);
+});
 
 // ADD FAVORITE //
 // const user = 16;
@@ -195,3 +195,7 @@ const email = "example@example.com";
 // dbHelpers.getPinCommentsById(testID).then((result) => {
 //   console.log('Pin Comments', result);
 // });
+
+// REFACTORED SEARCH FUNCTION //
+
+// GET COMMENT BY COMMENT ID //

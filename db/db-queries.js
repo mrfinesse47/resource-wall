@@ -117,7 +117,7 @@ module.exports = (db) => {
     VALUES ($1, $2, $3, now())
     RETURNING *;
     `, [object.user_id, object.pin_id, object.comment])
-      .then(result => result.rows)
+      .then(result => result.rows[0])
       .catch((err) => console.log(err))
   };
 
@@ -203,6 +203,23 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
+  const searchPinsTest = function(pin) {
+    const queryParam = `%pin%`;
+    let queryString = `
+    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    FROM pins
+    LEFT JOIN pin_ratings on pind.id = pin_ratings.pin_id
+    WHERE pins.title LIKE '%x%'
+    OR pins.tag LIKE '%x%'
+    OR pins.description LIKE '%x%'
+    OR pins.content LIKE '%x%'
+    GROUP BY pins.id
+    ORDER BY pins.created_at
+    `
+    return db.query(queryString, queryParam)
+      .then((result) => result.rows)
+  }
+
   const getPinById = function(id) {
     return db.query(`
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
@@ -226,5 +243,16 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById };
+  const getCommentById = function(commentId) {
+    return db.query(`
+    SELECT users.first_name, users.last_name, comment.*
+    FROM comments
+    JOIN users ON comments.user_id = users.id
+    WHERE comments.id = $1;
+    `, [commentId])
+      .then((result) => result.rows[0])
+      .catch((err) => console.log(err))
+  };
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, searchPinsTest, getCommentById };
 };
