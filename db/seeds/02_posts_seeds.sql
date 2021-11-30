@@ -11,13 +11,13 @@ VALUES
   (15,'Title: Git','Git Cheat Sheet','image','http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf','Lorem',5, '2019-12-27T08:00:00.000Z'),
   (8,'Title: Art','Cool art technique','image','https://images.unsplash.com/photo-1548685913-fe6678babe8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFpbnQlMjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80','Lorem',14, '2018-12-27T08:00:00.000Z'),
   (7,'Title: Javascript','Cool site for coding challenges','text','https://leetcode.com/','Lorem',3, '2018-12-27T08:00:00.000Z'),
-  (11,'Title: SQL','Article on SQL operation order','text','https://sqlbolt.com/lesson/select_queries_order_of_execution','Lorem',4, '2020-12-11T08:00:00.000Z');
+  (11,'Title: SQL','Article on SQL operation order','text','https://sqlbolt.com/lesson/select_queries_order_of_execution','Lorem',4, '2020-12-11T08:00:00.000Z'),
   (8,'Title: History','History of Japan','video','https://www.youtube.com/watch?v=Mh5LY4Mz15o','Lorem',11, '2020-12-27T08:00:00.000Z'),
   (11,'Title: SQL','PSQL syntax guide','text','https://www.postgresqltutorial.com/','Lorem',4, '2020-04-27T08:00:00.000Z');
 
 INSERT INTO pins (owner_id, title, description, content_type, content, tag, created_at)
 VALUES (12,'Title: Psychology','This is a description','text','Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',12, '2020-05-02T08:00:00.000Z'),
-  (6,'Title: SQL','This is a description','text''Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',4, '2020-03-27T08:00:00.000Z'),
+  (6,'Title: SQL','This is a description','text','Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',4, '2020-03-27T08:00:00.000Z'),
   (11,'Title: Psychology','Stanford Prison Experiment','text','Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',12, '2019-11-27T08:00:00.000Z'),
   (8,'Title: English','Analysis of Romeo and Juliet','text','Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',9, '2019-01-27T08:00:00.000Z'),
   (5,'Title: Geography','Review of the water cycle','text','Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cum, quia dolores qui minima, cumque voluptas iusto corporis expedita repellat ab nisi neque assumenda tempore! Nulla rerum itaque quam quo!',10, '2019-12-27T08:00:00.000Z');

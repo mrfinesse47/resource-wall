@@ -4,7 +4,7 @@ VALUES
 ('HTML', 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
 ('CSS', 'https://media.istockphoto.com/photos/stylesheet-on-a-screen-programming-concept-picture-id1250984508?k=20&m=1250984508&s=170667a&w=0&h=tuvzyc_-Ji3W-sKy5nFn_cPkWJPP-3Uw-bHq8_AKCBM='),
 ('SQL', 'https://media.istockphoto.com/photos/database-development-picture-id182660832?k=20&m=182660832&s=170667a&w=0&h=5jWYBJ98B0cBWQlx6mmpdZQE78yALeZPsuT2-UEJmvk='),
-('Git', 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2l0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60')
+('Git', 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2l0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
 ('Biology', 'https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60'),
 ('Chemistry', 'https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hlbWlzdHJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
 ('Physics', 'https://images.unsplash.com/photo-1633493702341-4d04841df53b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBoeXNpY3N8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60'),
