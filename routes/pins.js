@@ -92,21 +92,6 @@ module.exports = (db) => {
     });
   });
 
-  //   const getFavPins = function (id) {
-  //     return db
-  //       .query(
-  //         `
-  //     SELECT pins.*
-  //     FROM pins
-  //     JOIN favorite_pins ON pins.id = favorite_pins.pin_id
-  //     WHERE favorite_pins.user_id = $1
-  //     `,
-  //         [id]
-  //       )
-  //       .then((result) => result.rows)
-  //       .catch((err) => console.log(err));
-  //   };
-
   //-----------------------------------------------------------------
   // POST /api/pins/favorites/ --adds a favorite pin
   //-----------------------------------------------------------------
@@ -148,16 +133,6 @@ module.exports = (db) => {
         });
     });
   });
-
-  //   const addFavorite = function(object) {
-  //     return db.query(`
-  //     INSERT INTO favorite_pins (user_id, pin_id)
-  //     VALUES ($1, $2)
-  //     RETURNING *;
-  //     `, [object.user_id, object.pin_id])
-  //       .then(result => result.rows[0])
-  //       .catch((err) => console.log(err))
-  //   };
 
   //-----------------------------------------------------------------
   // /api/pins/owned
