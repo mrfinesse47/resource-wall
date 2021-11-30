@@ -7,29 +7,25 @@ const newPin = () => {
   $("#modal-holder").append($newPin);
 
 
+  $('#newpin-form').submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        data: $(this).serialize(),
+        url: 'api/users/newpin',
+      })
+      .done(function (obj) {
+        if (obj.auth) {
+          render("pins", obj);
+        }
+
+      })
+      .fail(function () {
+        // render("pins") // should re-render login once back end is hooked up
+      });
+  })
 
 }
-
-// $("#submit-new-pin).submit(function (event) {
-//     event.preventDefault();
-
-//     $.ajax({
-//       method: 'POST',
-//       data: $(this).serialize(),
-//       url: 'api/pins/',
-//     })
-//     .done(function (obj) {
-//       console.log(obj)
-//       if (obj.auth) {
-//         render("pins", obj.auth);
-//       }
-
-//     })
-//     .fail(function () {
-//       // render("pins") // should re-render login once back end is hooked up
-//     });
-
-
 
 
 
