@@ -75,18 +75,18 @@ const email = "example@example.com";
 // dbHelpers.getUserByEmail(email).then((result) => {
 //   console.log('getUserByEmail', result);
 // });
-
+const testId = 1;
 const testNewInfo = {
-  first_name: '',
+  first_name: 'evan',
   last_name: 'fish',
   email: 'example@example.com',
   password: 'test'
-}
+};
 
 // // UPDATE USER INFO //
-// dbHelpers.updateUserInfo(email, testNewInfo).then((result) => {
-//   console.log('updateInfo', result)
-// });
+dbHelpers.updateUserInfo(testId, testNewInfo).then((result) => {
+  console.log('updateInfo', result)
+});
 
 // ADD USER //
 // dbHelpers.addUser(testNewInfo)
@@ -147,11 +147,11 @@ const testNewInfo = {
 // })
 
 // ADD FAVORITE //
-const user = 16;
-const pinId = 3;
-dbHelpers.addFavorite(user, pinId).then((result) => {
-  console.log('addFavorite', result)
-})
+// const user = 16;
+// const pinId = 3;
+// dbHelpers.addFavorite(user, pinId).then((result) => {
+//   console.log('addFavorite', result)
+// })
 
 
 // GET OWNED PINS //

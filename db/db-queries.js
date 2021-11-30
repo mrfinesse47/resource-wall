@@ -25,38 +25,42 @@ module.exports = (db) => {
   };
 
 
-  const updateUserInfo = function (email, newInfo) {
+  const updateUserInfo = function (user_id, newInfo) {
 
     const queryParams = [];
     let queryString = `UPDATE users
     SET`
 
     if (newInfo.first_name) {
-      queryParams.push(`${newInfo.name}`);
+      queryParams.push(`${newInfo.first_name}`);
+      // console.log('1',queryParams);
       queryString += ` first_name = $${queryParams.length}`;
     }
 
     if (newInfo.last_name) {
       queryString += `${queryParams.length ? ', last_name = ' : ' last_name = '}`;
-      queryParams.push(`${newInfo.name}`);
+      queryParams.push(`${newInfo.last_name}`);
+      // console.log('2',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.email) {
       queryString += `${queryParams.length ? ', email = ' : ' email = '}`;
       queryParams.push(`${newInfo.email}`);
+      // console.log('3',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
     if (newInfo.password) {
       queryString += `${queryParams.length ? ', password = ' : 'password = '}`;
       queryParams.push(`${newInfo.password}`);
+      // console.log('4',queryParams);
       queryString += `$${queryParams.length}`;
     }
 
-    queryParams.push(email)
+    queryParams.push(user_id)
     queryString += `
-    WHERE email = $${queryParams.length}
+    WHERE id = $${queryParams.length}
     RETURNING *
     `
 
