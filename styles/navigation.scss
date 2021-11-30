@@ -50,7 +50,7 @@
     color: black;
   }
 
-  #logout {
+  #logout-btn {
     border: none;
     background: hsl(0, 79%, 23%);
     box-shadow: 3px 4px 5px rgba(95, 84, 73, 0.39);
@@ -65,7 +65,7 @@
     -o-transition: all .2s ease-in-out;
   }
 
-  #logout:hover {
+  #logout-btn:hover {
     box-shadow: 3px 4px 5px grey;
   }
 

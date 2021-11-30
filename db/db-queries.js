@@ -86,12 +86,11 @@ module.exports = (db) => {
 
   const addPin = function(object) {
     return db.query(`
-    INSERT INTO pins (owner_id, title, description, content_type, content, tag, created_at)
+    INSERT INTO pins (owner_id, title, description, thumbnail_url, content, tag, created_at)
     VALUES ($1, $2, $3, $4, $5, $6, now())
     RETURNING *;
     `, [object.owner_id, object.title, object.description, object.content_type, object.content, object.tag])
       .then(result => result.rows[0])
-    //testing, remove .rows[0] in production
   }
 
   const addRating = function(object) {
@@ -139,7 +138,7 @@ module.exports = (db) => {
 
   const getFavPins = function(id) {
     return db.query(`
-    SELECT pins.*
+    SELECT pins.*, favorite_pins.id
     FROM pins
     JOIN favorite_pins ON pins.id = favorite_pins.pin_id
     WHERE favorite_pins.user_id = $1

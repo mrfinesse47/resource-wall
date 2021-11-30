@@ -1,0 +1,121 @@
+@import "./variables.scss";
+
+#main-container {
+  display: flex;
+
+
+  #pin-container {
+    display: flex;
+    justify-content: center;
+    padding: 6em 4em;
+
+    #comment-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+
+
+      #commentBtn {
+        margin: 1em 1em;
+
+      }
+    }
+
+    #comment-list {
+      display: flex;
+      flex-direction: column;
+      border-style: solid;
+      border-radius: 2em;
+      border-width: 1px;
+      padding: 0em 1em;
+      width: 40em;
+      margin-top: 1.5em;
+
+      .comment-text {
+        display: flex;
+
+      }
+
+      .comment-time {
+        font-size: .8em;
+      }
+    }
+
+    .new-comment {
+      display: flex;
+      justify-content: flex-start;
+      margin: 2em;
+
+      #comment-box {
+        display: flex;
+        flex-direction: column;
+        width: 40em;
+        height: 10em;
+        resize: none;
+        border-radius: 2em;
+
+        input,
+        textarea {
+          padding: 1em 1em;
+        }
+      }
+    }
+
+
+    #expanded-pin {
+      display: flex;
+      flex-wrap: wrap;
+      width: 40%;
+      justify-content: center;
+      background-color: $background-color;
+      margin: 2em;
+      min-width: 550px;
+      flex-grow: 1;
+
+      .info {
+        padding-bottom: 1em;
+      }
+
+      .description {
+        text-align: justify;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        img {
+          display: flex;
+          width: 90%;
+        }
+      }
+
+      footer {
+        padding: 0 7%;
+
+        .title {
+          text-align: center;
+        }
+
+        .info {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .rating {
+          display: flex;
+          align-items: center;
+
+          .fa-star {
+            display: block;
+            font-size: 0.75em;
+            color: darkorange;
+          }
+        }
+      }
+    }
+  }
+}

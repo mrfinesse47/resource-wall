@@ -9,7 +9,6 @@ const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 
-
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -45,12 +44,14 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const pinsRoutes = require("./routes/pins");
 const dbHelpers = require("./db/db-queries")(db);
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
 app.use("/api/widgets", widgetsRoutes(dbHelpers));
+app.use("/api/pins", pinsRoutes(dbHelpers));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -77,10 +78,17 @@ const email = "example@example.com";
 // });
 const testId = 1;
 const testNewInfo = {
+<<<<<<< HEAD
   first_name: 'evan',
   last_name: 'fish',
   email: 'example@example.com',
   password: 'test'
+=======
+  first_name: "evan",
+  last_name: "fish",
+  email: "example@example.com",
+  password: "test",
+>>>>>>> 8f2ebba7c9d909c7747cf6cfca3b7a65ea2485e6
 };
 
 // // UPDATE USER INFO //
@@ -156,15 +164,15 @@ dbHelpers.updateUserInfo(testId, testNewInfo).then((result) => {
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-// const testID = '16'
+const testID = '16'
 // dbHelpers.getOwnedPins(testID).then((result) => {
 //   console.log('OwnedPins', result)
 // });
 
 // // GET FAV PINS //
-// dbHelpers.getFavPins(testID).then((result) => {
-//   console.log('FavPins', result)
-// })
+dbHelpers.getFavPins(testID).then((result) => {
+  console.log('FavPins', result)
+})
 
 // ALL PINS //
 // dbHelpers.getAllPins().then((result) => {

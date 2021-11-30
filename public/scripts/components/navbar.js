@@ -1,5 +1,5 @@
-const navBar = (condition) => {
-  if (condition === 'loggedIn') {
+const navBar = (auth) => {
+  if (auth) {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">
@@ -14,7 +14,7 @@ const navBar = (condition) => {
   </form>
   </div>
   <div class="nav-links">
-  <button type="button" id="logout">Log Out</button>
+  <button type="button" id="logout-btn">Log Out</button>
   </div>
   </div>
   </nav>`

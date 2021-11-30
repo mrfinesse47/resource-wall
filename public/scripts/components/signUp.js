@@ -1,6 +1,6 @@
 const signUpElement = () => {
   return `
-  <form method="POST" action="/api/users/signup" class="signup-form">
+  <form method="POST" action="/api/users/signup" id="sign-up-user" class="signup-form">
   <p id="signup-title">Sign Up</p>
 
   <div class="signup-form">
