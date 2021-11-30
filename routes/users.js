@@ -26,14 +26,14 @@ module.exports = (db) => {
     if (!req.session.user_id) {
       return res.json({
         auth: false,
-        message: "user has no cookie"
+        message: "user has no cookie",
       });
     }
     const userID = req.session.user_id; //get users id from their cookie
     isUserLoggedIn(userID, db)
       .then((isLoggedIn) => {
         return res.json({
-          auth: isLoggedIn
+          auth: isLoggedIn,
         });
       })
       .catch((err) => {
@@ -140,7 +140,7 @@ module.exports = (db) => {
     if (!(user.first_name && user.last_name && user.email && user.password)) {
       return res.json({
         auth: false,
-        message: "incomplete form"
+        message: "incomplete form",
       });
     }
 
@@ -158,10 +158,12 @@ module.exports = (db) => {
 
       //if they arent logged in we can then go about creating a user
 
+      console.log(user);
+
       db.addUser(user)
         .then((result) => {
           if (!result) {
-            console.log("not successful in adding new user");
+            //console.log("not successful in adding new user");
             return res.json({
               auth: false,
               message: "not succesful in registering user",
