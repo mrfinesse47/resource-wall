@@ -3,26 +3,25 @@ const navBar = (auth) => {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">
-  <button type="button" id="home"><i class="fas fa-thumbtack"></i>
+  <button type="button" class="nav-buttons" id="home"><i class="fas fa-thumbtack"></i>
   </button>
 
-  <button type="button" id="my-pins">My pins
+  <button type="button" class="nav-buttons" id="my-pins">My pins
   </button>
 
-  <button type="button" id="my-favorites">Favorited
+  <button type="button" class="nav-buttons" id="my-favorites">Favorited
   </button>
 
-  <button type="button" id="pin-creation">Create Pin
+  <button type="button" class="nav-buttons" id="pin-creation">Create Pin
   </button>
 
-  <span>
-  <form id="search-bar">
-  <input type="search" id="query" placeholder="Search">
-  <button>Search</button>
-  </span>
-  </form>
   </div>
-  <div class="nav-links">
+  <div class="nav-links"><div id="body">
+  <div class="search-box">
+  <button class="btn-search"><i class="fas fa-search"></i></button>
+  <input type="search" class="input-search" placeholder="Type to Search...">
+</div>
+</div>
   <button type="button" id="logout-btn">Log Out</button>
   </div>
   </div>
