@@ -30,4 +30,18 @@ const createPinElement = (obj) => {
 
 
 
-// needs to be dynamic
+
+// <div class="card" id="${obj.id} style=" width: 18rem">
+//     <img class="card-img-top" src="..." alt="Card image cap" />
+//     <div class="card-body">
+//       <h5 class="card-title">{obj.title}</h5>
+//       <p class="description">
+//         ${obj.description}
+//       </p>
+//       <p class="card-text">
+//         ${obj.content}
+//       </p>
+//       <div class="rating">
+//       </div>
+//     </div>
+//   </div>

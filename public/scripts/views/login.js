@@ -31,4 +31,22 @@ const login = () => {
         // render("pins") // should re-render login once back end is hooked up
       });
   })
+
+
+  $('#register').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+      })
+      .done(function (obj) {
+        render("login")
+        if (!obj.auth) {
+          render("signUp", obj.auth)
+        }
+      })
+      .fail(function () {
+        console.log("something went wrong in signup redirect") //should either render pins or give a notification that logout failed
+
+      });
+  })
 }

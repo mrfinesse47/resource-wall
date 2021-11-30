@@ -12,10 +12,10 @@ const signUp = () => {
     event.preventDefault();
 
     $.ajax({
-      method: "POST",
-      data: $(this).serialize(),
-      url: "api/users/signup",
-    })
+        method: "POST",
+        data: $(this).serialize(),
+        url: "api/users/signup",
+      })
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
@@ -29,4 +29,25 @@ const signUp = () => {
         console.log("something went wrong in signup ajax"); // should return an error here
       });
   });
+
+
+  $('#loginredirect').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+      })
+      .done(function (obj) {
+        if (!obj.auth) {
+          render("login", obj.auth)
+        } else {
+          render("pins", obj.auth)
+        }
+      })
+      .fail(function () {
+        console.log("something went wrong in signup redirect") //should either render pins or give a notification that logout failed
+
+      });
+  })
+
+
 };

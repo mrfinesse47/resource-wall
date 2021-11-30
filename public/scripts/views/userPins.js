@@ -3,32 +3,49 @@ const userPins = () => {
   </div>`
   $($createPinContainer).appendTo('#main-container');
 
-  // Move somewhere to reduce redundancy
 
-  //and then it appends everything to the screen
-  //maybe we do a foreach loop
+  const renderPins = function (obj) {
+    obj.pins.forEach(($pin) => {
+      $("#pins-container").append(createPinElement($pin));
+
+      $(`#${$pin.id}`).click(function (event) {
+        console.log("123");
+        $.ajax({
+            method: 'GET',
+            url: `api/pins/${$pin.id}`,
+          })
+          .done(function (obj) {
+            if (obj.auth) {
+              render("expandedPins", true);
+            } else {
+              render("login", false);
+            }
+          })
+          .fail(function () {
+            //should either render pins or give a notification that logout failed
+          });
+      })
+    })
+  };
 
 
-  //you would call AJAX here and send it into the createpin element with the ID and whatnot
-  const $pin = createPinElement();
-  //after generating the element
-  $("#pins-container").append($pin);
 
-  //we have to bind a click listener onto the new item after it is appended
-  $("#12345").click(function () {
-    alert("12345 clicked");
-  });
+  const loadPins = function () {
+    $.ajax({
+        method: 'GET',
+        url: `api/pins/owned`,
+        cache: false,
+        dataType: "json",
+      })
+      .done(function (obj) {
+        renderPins(obj);
+      })
+      .fail(function () {
+        console.log("something went wrong in loadPins ajax") // should return an error here
+      });
+  };
 
-  //we can append as many as we want.
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-  $("#pins-container").append($pin);
-
+  loadPins();
 
 
   $('#logout-btn').click(function (event) {

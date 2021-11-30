@@ -15,7 +15,7 @@ const loginElement = () => {
   </div>
 
   <div class="login-form" id="sign-up-redirect">
-      <a href="api/users/register">Register</a>
+  <button id="register">Register</button>
   </div>
 </form>
 `
