@@ -175,5 +175,70 @@ module.exports = (db) => {
         });
     });
   });
+
+  //-----------------------------------------------------------------
+  // /api/users/:id/edit
+  //-----------------------------------------------------------------
+
+  router.post("/:userID/edit", (req, res) => {
+    const cookieUserID = req.session.user_id;
+    const { userID } = req.params;
+
+    const user = {
+      first_name: req.body.FirstName,
+      last_name: req.body.LastName,
+      email: req.body.email,
+      password: req.body.password,
+    };
+
+    if (!(user.first_name && user.last_name && user.email && user.password)) {
+      return res.json({ auth: false, message: "incomplete form" });
+    }
+
+    console.log(cookieUserID, userID);
+
+    if (cookieUserID != userID) {
+      return res.json({
+        auth: false,
+        message: "cannot edit another users details",
+      });
+    }
+
+    isUserLoggedIn(userID, db).then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        //user is already logged in
+        console.log("not  logged in");
+        return res.json({
+          auth: true,
+          message: "not logged in",
+        });
+      }
+      console.log(user);
+
+      db.updateUserInfo(user.email, user)
+        .then((result) => {
+          if (!result) {
+            return res.json({
+              auth: true,
+              message: "not successful in changing user details",
+            });
+          }
+          res.json({
+            auth: true,
+            message: "successful in changing user details",
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            auth: false,
+            message: "internal server error",
+          });
+        });
+    });
+  });
+
+  // const updateUserInfo = function (email, newInfo) {}
+
   return router;
 };
