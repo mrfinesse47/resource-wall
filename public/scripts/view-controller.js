@@ -6,6 +6,7 @@ const render = (view, obj) => {
   $('#login-article').remove();
   $('#navigation').remove();
   $('#pins-container').remove();
+  $('#pin-container').remove();
   $('#signup-article').remove();
   $('#modal-holder').remove();
 
@@ -21,7 +22,7 @@ const render = (view, obj) => {
 
   if ((view === "userPins")) {
     newPin();
-    pins();
+    userPins();
   }
 
   if ((view === "login")) {
@@ -30,10 +31,6 @@ const render = (view, obj) => {
 
   if ((view === "signUp")) {
     signUp();
-  }
-
-  if ((view === "userPins")) {
-    userPins(obj);
   }
 
   if ((view === "expandedPins")) {

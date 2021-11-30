@@ -9,8 +9,6 @@ const login = () => {
   const $login = loginElement();
   $("#login-article").append($login);
 
-  // creates the navbar in the logged out state and appends it to the body
-
 
   // ajax call for submission of login form
   $('#login-form').submit(function (event) {
@@ -37,6 +35,7 @@ const login = () => {
     event.preventDefault();
     $.ajax({
         method: 'GET',
+        url: "api/users/auth",
       })
       .done(function (obj) {
         render("login")

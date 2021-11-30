@@ -7,7 +7,7 @@ const navBarView = (auth) => {
     event.preventDefault();
     $.ajax({
         method: 'GET',
-        url: "api/pins/owned"
+        url: "api/users/auth"
       })
       .done(function (obj) {
         console.log(obj);
@@ -28,7 +28,7 @@ const navBarView = (auth) => {
     event.preventDefault();
     $.ajax({
         method: 'GET',
-        url: "api/pins"
+        url: "api/users/auth"
       })
       .done(function (obj) {
         console.log(obj);

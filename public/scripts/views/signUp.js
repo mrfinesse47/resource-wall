@@ -35,6 +35,7 @@ const signUp = () => {
     event.preventDefault();
     $.ajax({
         method: 'GET',
+        url: "api/users/auth",
       })
       .done(function (obj) {
         if (!obj.auth) {
