@@ -31,7 +31,7 @@ const navBar = (auth) => {
   } else {
     return `<nav id="navigation">
     <div class="container">
-    <div class="nav-bar-items">
+    <div id="nav-loggedout" class="nav-bar-items">
     <button type="button" class="nav-buttons" id="home"><i class="fas fa-thumbtack"></i>
     </button>
     </div>
