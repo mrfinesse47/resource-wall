@@ -21,14 +21,3 @@ const loginElement = () => {
 `
 }
 // needs to be dynamic
-
-
-// <button type="button" name="computer_science" class="btn btn-group-sm">Computer Science</button>
-// <button type="button" name="chemistry" class="btn btn-group-sm">Chemistry</button>
-// <button type="button" name="philosophy" class="btn btn-group-sm">Philosophy</button>
-// <button type="button" name="art" class="btn btn-group-sm">Art</button>
-// <button type="button" name="physics" class="btn btn-group-sm">Physics</button>
-// <button type="button" name="biology" class="btn btn-group-sm">Biology</button>
-{
-  /* <button type="button" name="english" class="btn btn-group-sm">English</button> */
-}

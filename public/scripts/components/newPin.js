@@ -29,7 +29,7 @@ const createNewPinElement = () => {
 </div>
 
 <div class="mb-3" id="cancel">
-<button id="cancel-redirect">cancel</button>
+<button class="btn btn-link" id="cancel-redirect">cancel</button>
 </div>
 
 </form>

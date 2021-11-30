@@ -3,13 +3,17 @@ const navBar = (auth) => {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">
-  <button type="button" id="home">Home
+  <button type="button" id="home"><i class="fas fa-thumbtack"></i>
   </button>
-  <button type="button" id="my-pins">My pins</button>
 
-  <button type="button" id="my-favorites">Favorited</button>
+  <button type="button" id="my-pins">My pins
+  </button>
 
-  <button type="button" id="pin-creation">Create Pin</button>
+  <button type="button" id="my-favorites">Favorited
+  </button>
+
+  <button type="button" id="pin-creation">Create Pin
+  </button>
 
   <span>
   <form id="search-bar">
@@ -26,14 +30,11 @@ const navBar = (auth) => {
   } else {
     return `<nav id="navigation">
     <div class="container">
-      <div>
-        <span id="home">
-          <p>HOME</p>
-        </span>
-      </div>
-      <div class="nav-links">
-      </div>
+    <div class="nav-bar-items">
+    <button type="button" id="home"><i class="fas fa-thumbtack"></i>
+    </button>
     </div>
-  </nav>`
+    </div>
+    </nav>`
   }
 }
