@@ -16,13 +16,12 @@ const pins = () => {
       $("#pins-container").append(createPinElement($pin));
 
       $(`#${$pin.id}`).click(function (event) {
-        console.log("123");
         $.ajax({
             method: 'GET',
             url: `api/pins/${$pin.id}`,
           })
           .done(function (obj) {
-            console.log(obj);
+            console.log(obj)
             if (obj.auth) {
               render("expandedPins", obj);
             } else {
@@ -46,6 +45,7 @@ const pins = () => {
         dataType: "json",
       })
       .done(function (obj) {
+        console.log(obj);
         renderPins(obj);
       })
       .fail(function () {
@@ -55,5 +55,6 @@ const pins = () => {
 
   loadPins();
 
+  newPin();
 
 };

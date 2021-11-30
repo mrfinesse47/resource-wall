@@ -16,12 +16,10 @@ const render = (view, obj) => {
   // then checks to see which page to render
 
   if ((view === "pins")) {
-    newPin();
     pins();
   }
 
   if ((view === "userPins")) {
-    newPin();
     userPins();
   }
 
@@ -35,5 +33,9 @@ const render = (view, obj) => {
 
   if ((view === "expandedPins")) {
     expandedPins(obj);
+  }
+
+  if ((view === "favoritePins")) {
+    favoritePins();
   }
 };

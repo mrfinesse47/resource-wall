@@ -1,4 +1,4 @@
-const userPins = () => {
+const favoritePins = () => {
   const $createPinContainer = `<div id="pins-container">
   </div>`
   $($createPinContainer).appendTo('#main-container');
@@ -33,11 +33,10 @@ const userPins = () => {
   const loadPins = function () {
     $.ajax({
         method: 'GET',
-        url: `api/pins/owned`,
+        url: `api/pins/favorites`,
         dataType: "json",
       })
       .done(function (obj) {
-        console.log(obj);
         renderPins(obj);
       })
       .fail(function () {

@@ -5,16 +5,13 @@ const expandedPins = (obj) => {
 
 
 
-
   const $pin = createExpandedPinElement(obj);
-  //after generating the element
   $("#pin-container").append($pin);
 
-  const $comment = createCommentElement();
-
-  $("#comment-section").append($comment);
-  $("#comment-section").append($comment);
-  $("#comment-section").append($comment);
-  $("#comment-section").append($comment);
-  $("#comment-section").append($comment);
+  const renderComments = (obj) => {
+    obj.comment.forEach(($comment) => {
+      $("#comment-section").append(createCommentElement($comment))
+    })
+  }
+  renderComments(obj)
 };

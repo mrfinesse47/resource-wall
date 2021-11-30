@@ -7,6 +7,8 @@ const navBar = (auth) => {
   </button>
   <button type="button" id="my-pins">My pins</button>
   <form id="search-bar">
+  <button type="button" id="my-favorites">Favorited</button>
+  <form id="search-bar">
   <span>
   <input type="search" id="query" placeholder="Search">
   <button>Search</button>

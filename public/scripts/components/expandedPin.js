@@ -1,5 +1,5 @@
 const createExpandedPinElement = (obj) => {
-  console.log(obj.pin.title);
+  const rating = Math.round(obj.pin.average_rating * 10) / 10;
   return `
   <article id="expanded-pin">
   <h3 class="title">
@@ -23,7 +23,7 @@ const createExpandedPinElement = (obj) => {
       </h5>
       <div class="rating">
        <p id="average-rating">
-       ${obj.pin.average_rating}
+      Rating: ${rating} / 5
        </p>
       </div>
     </div>

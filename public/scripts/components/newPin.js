@@ -42,10 +42,7 @@ const createNewPinElement = () => {
         <div class="newpin-form"">
         <input id=" pin-content" type="text" name="tag" placeholder="tag!">
         </div>
-        <p id="pin-content-box">Tags</p>
-        <div class="newpin-form"">
-        <input id=" pin-content" type="text" name="content_type" placeholder="tag!">
-        </div>
+
 
         </div>
         <div class="modal-footer">

@@ -22,27 +22,43 @@
     .image-container {
       width: 100%;
     }
+
     img {
       width: 100%;
     }
+
     footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       padding: 0 7%;
+      height: 15em;
+
+      .tag-rating {
+        display: flex;
+        align-items: flex-end;
+
+      }
 
       .title {
         text-align: center;
       }
+
       .info {
-        display: flex;
-        justify-content: space-between;
-      }
-      .rating {
-        display: flex;
-        align-items: center;
-        .fa-star {
-          display: block;
-          font-size: 0.75em;
-          color: darkorange;
+        // display: flex;
+        // justify-content: space-between;
+        // display: inline-block;
+
+        p {
+          display: inline-block;
+          margin: 0 0;
         }
+      }
+
+      .rating {
+        display: inline-block;
+        // display: flex;
+        // align-items: center;
       }
     }
   }

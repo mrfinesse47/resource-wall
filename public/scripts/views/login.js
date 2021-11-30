@@ -38,9 +38,8 @@ const login = () => {
         url: "api/users/auth",
       })
       .done(function (obj) {
-        render("login")
         if (!obj.auth) {
-          render("signUp", obj.auth)
+          render("signUp", obj)
         }
       })
       .fail(function () {

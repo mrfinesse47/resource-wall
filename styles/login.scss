@@ -51,6 +51,23 @@
     -o-transition: all .3s ease-in-out;
   }
 
+  #register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .2em;
+    border: none;
+    color: whitesmoke;
+    background-color: #5F5449;
+    width: 5em;
+    height: 2em;
+    border-radius: 3rem;
+    letter-spacing: 0.07em;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+  }
+
   #sign-up-redirect {
     margin-top: 0.3em;
   }

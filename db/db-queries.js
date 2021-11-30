@@ -1,4 +1,6 @@
-const { query } = require("express");
+const {
+  query
+} = require("express");
 
 module.exports = (db) => {
 
@@ -60,7 +62,7 @@ module.exports = (db) => {
     return db.query(queryString, queryParams).then((result) => result.rows[0]);
   };
 
-  const addUser = function(user) {
+  const addUser = function (user) {
     const values = [user.first_name, user.last_name, user.email, user.password];
     return db.query(`INSERT INTO users (first_name, last_name, email, password)
     VALUES ($1, $2, $3, $4)
@@ -78,7 +80,7 @@ module.exports = (db) => {
       });
   };
 
-  const addPin = function(id, object) {
+  const addPin = function (id, object) {
     let queryString = `INSERT INTO pins (owner_id, title, description, content, tag, created_at`;
     const queryParams = [id, object.title, object.description, object.content, object.tag];
     if (object.thumbnail_url) {
@@ -89,7 +91,7 @@ module.exports = (db) => {
     }
     queryString += ` VALUES ($1, $2, $3, $4, $5, now()`
 
-    if(object.thumbnail_url) {
+    if (object.thumbnail_url) {
       queryString += `, $6)`;
     } else {
       queryString += `)`;
@@ -101,7 +103,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addRating = function(object) {
+  const addRating = function (object) {
     return db.query(`
     INSERT INTO pin_ratings (user_id, pin_id, rating)
     VALUES ($1, $2, $3)
@@ -111,7 +113,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addComment = function(object) {
+  const addComment = function (object) {
     return db.query(`
     INSERT INTO comments (user_id, pin_id, comment, created_at)
     VALUES ($1, $2, $3, now())
@@ -121,7 +123,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addFavorite = function(id, pinId) {
+  const addFavorite = function (id, pinId) {
     return db.query(`
     INSERT INTO favorite_pins (user_id, pin_id)
     VALUES ($1, $2)
@@ -131,7 +133,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const getOwnedPins = function(id) {
+  const getOwnedPins = function (id) {
     return db.query(`
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
@@ -144,7 +146,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const getFavPins = function(id) {
+  const getFavPins = function (id) {
     return db.query(`
     SELECT pins.*, favorite_pins.id
     FROM pins
@@ -155,7 +157,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   }
 
-  const getAllPins = function() {
+  const getAllPins = function () {
     return db.query(`
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
@@ -164,8 +166,8 @@ module.exports = (db) => {
     ORDER BY created_at
     LIMIT 15;
     `)
-    .then(result => result.rows)
-    .catch((err) => console.log(err))
+      .then(result => result.rows)
+      .catch((err) => console.log(err))
   };
 
   const searchPins = function (pin) {
@@ -203,7 +205,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const getPinById = function(id) {
+  const getPinById = function (id) {
     return db.query(`
     SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
     FROM pins
@@ -215,10 +217,11 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const getPinCommentsById = function(id) {
+  const getPinCommentsById = function (id) {
     return db.query(`
-    SELECT *
+    SELECT users.first_name, users.last_name, comments.*
     FROM comments
+    JOIN users ON comments.user_id = users.id
     WHERE pin_id = $1
     ORDER BY created_at;
     `, [id])
@@ -226,5 +229,20 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById };
+  return {
+    getUserByEmail,
+    updateUserInfo,
+    addUser,
+    getUserById,
+    addPin,
+    addRating,
+    addComment,
+    addFavorite,
+    getOwnedPins,
+    getFavPins,
+    getAllPins,
+    searchPins,
+    getPinById,
+    getPinCommentsById
+  };
 };

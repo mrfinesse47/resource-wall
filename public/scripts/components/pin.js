@@ -1,47 +1,40 @@
 const createPinElement = (obj) => {
-  console.log(obj);
+  let des = obj.description;
+  let cont = obj.content;
+  const rating = Math.round(obj.average_rating * 10) / 10;
+  if (des.length > 50) {
+    des = des.slice(0, 50) + "...";
+  }
+  if (cont.length > 150) {
+    cont = cont.slice(0, 150) + "...";
+  }
+
   //this will be pulled in and assembled from ajax
   //somehow the id will have to be dynamic for an onclick event
   return ` <article class="pin" id="${obj.id}">
     <header class="image-container">
-
-    </header>
+    <img src="${obj.thumbnail_url}"
+    >
+   </header>
     <footer>
+    <div>
       <h3 class="title">${obj.title}</h3>
       <p class="description">
-      ${obj.description}
+      ${des}
       </p>
       <p class="content">
-      ${obj.content}
+      ${cont}
       </p>
+      </div>
+      <div class="tag-rating>
       <div class="info">
-        <h5>${obj.tag}</h5>
-        <div class="rating">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        </div>
+
+        <span class="rating">
+        ${obj.tag}
+        ${rating} / 5
+        </span>
+      </div>
       </div>
     </footer>
   </article>`;
 };
-
-
-
-
-// <div class="card" id="${obj.id} style=" width: 18rem">
-//     <img class="card-img-top" src="..." alt="Card image cap" />
-//     <div class="card-body">
-//       <h5 class="card-title">{obj.title}</h5>
-//       <p class="description">
-//         ${obj.description}
-//       </p>
-//       <p class="card-text">
-//         ${obj.content}
-//       </p>
-//       <div class="rating">
-//       </div>
-//     </div>
-//   </div>

@@ -1,19 +1,20 @@
 const createCommentElement = (comment) => {
+  console.log(comment);
   return `
   <article class="comment" id="comment-list">
   <header class="comment-header">
     <div class="name">
       <h6 class="FirstName">
-        FirstName
+        ${first_name} ${last_name}
     </div>
   </header>
   <p class="comment-text">
-   comment text goes here blah blah blah blah
+   ${comment.comment}
   </p>
-  <hr class="tweet-line"/>
+  <hr class="comment-line"/>
   <footer class="comment-footer">
     <p class="comment-time">
-      Jan 1, 2001
+      ${comment.created_at}
     </p>
   </footer>
   </article>`
