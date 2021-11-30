@@ -10,7 +10,7 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
+
         if (obj.auth) {
           render("userPins", obj);
         } else {
@@ -32,7 +32,6 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
         if (obj.auth) {
           render("newPin", obj);
         } else {
@@ -53,7 +52,7 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
+
         if (obj.auth) {
           render("favoritePins", obj);
         } else {
@@ -95,7 +94,7 @@ const navBarView = (auth) => {
     $.ajax({
         method: 'POST',
         data: $(input.value).serialize(),
-        url: "api/search"
+        url: "api/pins/search"
       })
       .done(function (obj) {
         console.log(obj);
