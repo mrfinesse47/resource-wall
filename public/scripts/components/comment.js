@@ -1,5 +1,5 @@
 const createCommentElement = (obj) => {
-  console.log(obj);
+  console.log(obj, "123");
   return `
   <article class="comment" id="comment-list">
   <header class="comment-header">

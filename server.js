@@ -133,13 +133,13 @@ const email = "example@example.com";
 
 // const id = 1;
 
-// const testPin = {
-//   title: "is cell from dragon ball a cell",
-//   description: "is cell a cell?",
-//   content: "if cell is a cell would a group of cells be tissue?",
-//   tag: "Science",
-//   thumbnail_url: 'www.example.com'
-// };
+const testPin = {
+  title: "is cell from dragon ball a cell",
+  description: "is cell a cell?",
+  content: "if cell is a cell would a group of cells be tissue? I need to know cause this is Science",
+  tag: "Science",
+  thumbnail_url: 'www.example.com'
+};
 
 // const testPin2 = {
 //   title: 'is it canibalism if i eat an alaska roll?',
@@ -201,18 +201,6 @@ const email = "example@example.com";
 //   console.log('getAll', result);
 // });
 
-// PIN SEARCH //
-// comment - getPins works but currently due to seeds having too little fake data average rating seems a little obtuse
-// tested conditions: all
-
-// const testPinSearch = {
-//   tag: 'Geography'
-// };
-
-// dbHelpers.searchPins(testPinSearch).then((result) => {
-//   console.log('search', result);
-// });
-
 // PIN BY ID //
 // const testID = 3
 // dbHelpers.getPinById(testID).then((result) => {
@@ -222,4 +210,16 @@ const email = "example@example.com";
 // PIN COMMENTS BY PIN ID //
 // dbHelpers.getPinCommentsById(testID).then((result) => {
 //   console.log('Pin Comments', result);
+// });
+
+// REFACTORED SEARCH FUNCTION //
+// const testPhrase = 'art';
+// dbHelpers.searchPins(testPhrase).then((result) => {
+//   console.log('NewSearchTest', result)
+// });
+
+// GET COMMENT BY COMMENT ID //
+// const commentID = 1;
+// dbHelpers.getCommentById(commentID).then((result) => {
+//   console.log('commentID', result)
 // });
