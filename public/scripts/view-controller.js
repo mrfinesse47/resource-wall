@@ -34,6 +34,6 @@ const render = (view, obj) => {
   }
 
   if ((view === "expandedPins")) {
-    expandedPins();
+    expandedPins(obj);
   }
 };

@@ -14,6 +14,7 @@ const userPins = () => {
             url: `api/pins/${$pin.id}`,
           })
           .done(function (obj) {
+            console.log(obj);
             if (obj.auth) {
               render("expandedPins", obj);
             } else {

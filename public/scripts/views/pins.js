@@ -22,6 +22,7 @@ const pins = () => {
             url: `api/pins/${$pin.id}`,
           })
           .done(function (obj) {
+            console.log(obj);
             if (obj.auth) {
               render("expandedPins", obj);
             } else {
@@ -55,21 +56,4 @@ const pins = () => {
   loadPins();
 
 
-  $('#logout-btn').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        method: 'POST',
-        url: 'api/users/logout',
-      })
-      .done(function (obj) {
-
-        if (!obj.auth) {
-          render("login", obj);
-        }
-      })
-      .fail(function () {
-
-        //should either render pins or give a notification that logout failed
-      });
-  })
 };

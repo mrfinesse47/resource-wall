@@ -1,4 +1,4 @@
-const expandedPins = () => {
+const expandedPins = (obj) => {
   const $createExpandedPinContainer = `<div id="pin-container">
   </div>`
   $($createExpandedPinContainer).appendTo('#main-container');
@@ -6,7 +6,7 @@ const expandedPins = () => {
 
 
 
-  const $pin = createExpandedPinElement();
+  const $pin = createExpandedPinElement(obj);
   //after generating the element
   $("#pin-container").append($pin);
 

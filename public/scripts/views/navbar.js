@@ -44,25 +44,25 @@ const navBarView = (auth) => {
       });
   })
 
+  if (auth) {
 
+    $('#logout-btn').click(function (event) {
+      event.preventDefault();
+      $.ajax({
+          method: 'POST',
+          url: 'api/users/logout',
+        })
+        .done(function (obj) {
 
+          if (!obj.auth) {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
 
-  $('#logout-btn').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        method: 'POST',
-        url: 'api/users/logout',
-      })
-      .done(function (obj) {
-
-        if (!obj.auth) {
-          render("login", obj);
-        }
-      })
-      .fail(function () {
-
-        //should either render pins or give a notification that logout failed
-      });
-  })
+          //should either render pins or give a notification that logout failed
+        });
+    })
+  }
 
 }

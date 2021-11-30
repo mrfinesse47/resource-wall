@@ -1,32 +1,30 @@
 const createExpandedPinElement = (obj) => {
-
+  console.log(obj.pin.title);
   return `
   <article id="expanded-pin">
   <h3 class="title">
-  ${obj.title}
+  ${obj.pin.title}
   </h3>
   <header class="image-container">
     <img
-      src="${obj.image}"
+      src="${obj.pin.image}"
     />
   </header>
   <footer>
     <p class="description">
-    ${obj.description}
+    ${obj.pin.description}
     </p>
     <p class="content">
-    ${obj.content}
+    ${obj.pin.content}
     </p>
     <div class="info">
       <h5>
-      ${obj.tag}
+      ${obj.pin.tag}
       </h5>
       <div class="rating">
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <i class="fa fa-star" aria-hidden="true"></i>
+       <p id="average-rating">
+       ${obj.pin.average_rating}
+       </p>
       </div>
     </div>
   </footer>
