@@ -20,12 +20,18 @@ const createNewPinElement = () => {
 </div>
 
 <div class="mb-3">
+<label for="create-tag" class="form-label">Tag</label>
+<input type="text" class="form-control" id="create-tag" placeholder="Put a Tag!">
+</div>
+
+
+<div class="mb-3">
   <label for="create-content" class="form-label">Content</label>
   <textarea class="form-control" id="create-content" rows="3"></textarea>
 </div>
 
 <div class="mb-3" id="create-box">
-<button type="submit" id="createPinBtn" class="btn btn-primary">Create</button>
+<button type="submit" id="createPinBtn">Create</button>
 </div>
 
 <div class="mb-3" id="cancel">
