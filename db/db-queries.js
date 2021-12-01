@@ -173,6 +173,7 @@ module.exports = (db) => {
     .then((result) => result.rows)
     .catch((err) => console.log(err))
   };
+
   const searchPins = function(pin) {
     const queryParam = `%${pin}%`;
     let queryString = `
@@ -237,7 +238,17 @@ module.exports = (db) => {
     `, [user_id, pin_id])
       .then((result) => result.rows[0])
       .catch((err) => {console.log(err)})
-  }
+  };
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById, removeFavorite };
+  const getUserFavorites = function(user_id) {
+    return db.query(`
+    SELECT favorite_pins.id AS fav_id, favorite_pins.pin_id
+    FROM favorite_pins
+    WHERE user_id = $1`
+    ,[user_id])
+      .then((result) => result.rows)
+      .catch((err) => console.log(err))
+  };
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById, removeFavorite, getUserFavorites };
 };
