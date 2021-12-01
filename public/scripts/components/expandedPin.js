@@ -42,7 +42,7 @@ const createExpandedPinElement = (obj) => {
     <div class="error"></div>
     <textarea name="comment" id="comment-box" placeholder="Something to say?" required></textarea>
     <div class="footer">
-      <button type="submit" id="commentBtn">submit</button>
+      <button type="submit" id="commentBtn">Comment</button>
       <output name="counter" class="counter" for="comment-box"></output>
     </div>
   </form>

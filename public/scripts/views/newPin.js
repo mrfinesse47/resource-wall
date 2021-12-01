@@ -7,7 +7,7 @@ const newPin = () => {
   $("#modal-holder").append($newPin);
 
   $("#create-pin").submit(function (event) {
-    console.log("23123");
+    console.log($("#create-pin").serialize(), "23123");
     event.preventDefault();
     $.ajax({
       method: "POST",
@@ -23,9 +23,9 @@ const newPin = () => {
   $("#cancel-redirect").click(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-    })
+        method: "GET",
+        url: "api/users/auth",
+      })
       .done(function (obj) {
         if (!obj.auth) {
           render("login", obj);

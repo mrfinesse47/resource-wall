@@ -7,7 +7,7 @@ const createNewPinElement = () => {
 
 <div class="mb-3">
   <label for="create-title" class="form-label">Title</label>
-  <input type="text" class="form-control" name="title" id="create-title" name="title" placeholder="Title">
+  <input type="text" class="form-control" id="create-title" name="title" placeholder="Title">
 </div>
 
 
@@ -16,10 +16,6 @@ const createNewPinElement = () => {
   <input type="text" class="form-control" id="create-description" name="description" placeholder="Description goes here">
 </div>
 
-<div class="mb-3">
-<label for="create-tag" class="form-label">Tag</label>
-<input type="text" class="form-control" id="create-tag" name="tag" placeholder="Put a Tag!">
-</div>
 
 <div class="mb-3">
   <label for="create-img" class="form-label">Thumbnail</label>
@@ -32,6 +28,20 @@ const createNewPinElement = () => {
   <textarea class="form-control" id="create-content" name="content" rows="3"></textarea>
 </div>
 
+<label for="tags">Choose a tag:</label>
+<select name="tag" id="tag_dropdown">
+  <option value="1">Computer Science</option>
+  <option value="2">Biology</option>
+  <option value="3">Chemistry</option>
+  <option value="4">Physics</option>
+  <option value="5">English</option>
+  <option value="6">Geography</option>
+  <option value="7">History</option>
+  <option value="8">Psychology</option>
+  <option value="9">Philosophy </option>
+  <option value="10">Art</option>
+</select>
+
 <div class="mb-3" id="create-box">
 <button type="submit" id="createPinBtn">Create</button>
 </div>
@@ -43,3 +53,9 @@ const createNewPinElement = () => {
 </form>
   `;
 };
+
+
+// <div class="mb-3">
+// <label for="create-tag" class="form-label">Tag</label>
+// <input type="text" class="form-control" id="create-tag" name="tag" placeholder="Put a Tag!">
+// </div>

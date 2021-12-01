@@ -30,12 +30,12 @@ const createPinElement = (obj) => {
       <div class="info">
 
         <span class="rating">
-         ${obj.tag}
+         ${obj.name}
         ${rating} / 5
         </span>
-        
+
         <span>
-        
+
         <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
         </span>
       </div>

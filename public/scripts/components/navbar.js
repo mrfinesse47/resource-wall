@@ -1,5 +1,5 @@
-const navBar = (auth) => {
-  if (auth) {
+const navBar = (obj) => {
+  if (obj.auth) {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">
@@ -13,6 +13,10 @@ const navBar = (auth) => {
   </button>
 
   <button type="button" class="nav-buttons" id="pin-creation">Create Pin
+  </button>
+
+
+  <button type="button" class="nav-buttons" id="user-info">User Info
   </button>
 
   </div>
@@ -38,6 +42,7 @@ const navBar = (auth) => {
     <div class="container">
     <div id="nav-loggedout" class="nav-bar-items">
     <button type="button" class="nav-buttons" id="home"><i class="fas fa-thumbtack"></i>
+    <h2 id="Title">PinQuest</h2>
     </button>
     </div>
     </div>

@@ -7,7 +7,7 @@ const render = (view, obj) => {
   $("#signup-article").remove();
   $("#modal-holder").remove();
 
-  navBarView(obj.auth);
+  navBarView(obj);
 
   // then checks to see which page to render
 
@@ -37,6 +37,10 @@ const render = (view, obj) => {
 
   if (view === "newPin") {
     newPin(obj);
+  }
+
+  if (view === "userProfile") {
+    userProfile(obj);
   }
 
   // if (view === "searchPins") {

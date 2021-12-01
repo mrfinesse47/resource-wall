@@ -1,8 +1,8 @@
-const navBarView = (auth) => {
-  const $navBar = navBar(auth);
+const navBarView = (obj) => {
+  const $navBar = navBar(obj);
   $($navBar).appendTo("#nav-placeholder");
 
-  if (auth) {
+  if (obj.auth) {
 
     $("#my-pins").click(function (event) {
       event.preventDefault();
@@ -76,6 +76,26 @@ const navBarView = (auth) => {
           // render("pins") // should re-render login once back end is hooked up
         });
     });
+
+    $("#user-info").click(function (event) {
+      event.preventDefault();
+      $.ajax({
+          method: "GET",
+          url: "api/users/auth",
+        })
+        .done(function (obj) {
+          console.log(obj);
+          if (obj.auth) {
+            render("userProfile", obj)
+          } else {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          // render("pins") // should re-render login once back end is hooked up
+        });
+    });
+
 
     $("#search-id").submit(function (event) {
       event.preventDefault();

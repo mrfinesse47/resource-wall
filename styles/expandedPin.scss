@@ -18,8 +18,14 @@
       // max-width: 40em;
       min-width: inherit;
 
+      .footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+
       #commentBtn {
-        margin-top: .4em;
+        margin-top: 1em;
+        margin-right: 1.5em;
         padding: .4em 1em;
         border: none;
         background: $background-color;
@@ -40,9 +46,13 @@
       border-radius: 2em;
       border-width: 1px;
       padding: 0em 1em;
-      // width: 40em;
+      width: 40em;
       max-width: 40em;
       margin-top: 1.5em;
+
+      .comment-header {
+        padding-top: 1em;
+      }
 
       .comment-text {
         display: flex;
@@ -97,6 +107,7 @@
       padding: 1em 0.5em;
       justify-content: space-between;
       height: fit-content;
+      border-radius: 2em;
 
       #content-body {
         display: flex;
@@ -106,10 +117,11 @@
         padding: 1em 2em;
       }
 
+
       .title-like {
         display: flex;
         justify-content: flex-end;
-        padding: 1em 1em;
+        padding: .7em 1em;
       }
 
       .title {
@@ -138,6 +150,7 @@
           max-width: 100%;
           height: auto;
           padding-bottom: 1.5em;
+          border-radius: 1em;
         }
       }
 

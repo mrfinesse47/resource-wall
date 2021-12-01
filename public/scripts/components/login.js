@@ -15,7 +15,7 @@ const loginElement = () => {
   </div>
 
   <div class="login-form" id="sign-up-redirect">
-  <button id="register">Register</button>
+  <button class="btn btn-link" id="register">Register</button>
   </div>
 </form>
 `
