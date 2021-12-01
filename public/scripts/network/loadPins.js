@@ -8,6 +8,8 @@ const loadPins = function (url, callback) {
     .done(function (obj) {
       // console.log(obj);
 
+      console.log(obj);
+
       callback(obj);
     })
     .fail(function () {

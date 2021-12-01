@@ -265,31 +265,11 @@ module.exports = (db) => {
     //if user is logged in proceed with getting all pins from db
     db.getAllPins()
       .then((pins) => {
-        db.getFavPins(userID)
-          .then((favs) => {
-            pins.forEach((pin) => {
-              favs.forEach((fav) => {
-                if (pin.id === fav.id) {
-                  console.log("match", pin.id);
-                  pin.isFavorite = true;
-                } else {
-                  pin.isFavorite = false;
-                }
-              });
-            });
-            console.log(pins);
-            res.json({
-              auth: true,
-              message: "successfully got all pins",
-              pins,
-            });
-          })
-          .catch((err) => {
-            res.status(500).json({
-              auth: false,
-              message: "internal server error",
-            });
-          });
+        res.json({
+          auth: true,
+          message: "successfully got all pins",
+          pins,
+        });
       })
       .catch((err) => {
         res.status(500).json({
