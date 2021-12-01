@@ -1,4 +1,4 @@
-INSERT INTO tags (tag, thumbnail_url)
+INSERT INTO tags (name, thumbnail_url)
 VALUES
 ('Computer Science', 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2l0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
 ('Biology', 'https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60'),

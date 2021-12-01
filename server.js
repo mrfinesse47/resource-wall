@@ -225,6 +225,6 @@ app.listen(PORT, () => {
 // });
 
 // REFACTORED GET FAV PINS //
-dbHelpers.newGetFavPins(12).then((result) => {
-  console.log('newGetFav', result)
-})
+// dbHelpers.newGetFavPins(12).then((result) => {
+//   console.log('newGetFav', result)
+// })
