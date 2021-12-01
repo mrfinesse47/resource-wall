@@ -97,26 +97,26 @@ const navBarView = (auth) => {
         });
     });
 
-    const input = document.querySelector('input[type="search"]');
-    input.onsearch = () => {
-      console.log($(input.value).serialize(), "inside search");
-      $.ajax({
-          method: "POST",
-          data: $(input.value).serialize(),
-          url: "api/pins/search",
-        })
-        .done(function (obj) {
-          console.log(obj);
-          if (obj.auth) {
-            render("searchPins", obj);
-          } else {
-            render("login", obj);
-          }
-        })
-        .fail(function () {
-          console.log("search failed");
-        });
-    };
+    // const input = document.querySelector('input[type="search"]');
+    // input.onsearch = () => {
+    //   console.log($(input.value).serialize(), "inside search");
+    //   $.ajax({
+    //       method: "POST",
+    //       data: $(input.value).serialize(),
+    //       url: "api/pins/search",
+    //     })
+    //     .done(function (obj) {
+    //       console.log(obj);
+    //       if (obj.auth) {
+    //         render("searchPins", obj);
+    //       } else {
+    //         render("login", obj);
+    //       }
+    //     })
+    //     .fail(function () {
+    //       console.log("search failed");
+    //     });
+    // };
 
     $("#logout-btn").click(function (event) {
       event.preventDefault();

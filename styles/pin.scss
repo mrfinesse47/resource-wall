@@ -18,36 +18,53 @@
     width: 25%;
     min-width: 275px;
     flex-grow: 1;
+    border-radius: 1em;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
 
     .image-container {
       width: 100%;
     }
+
     img {
       width: 100%;
+      border-top-left-radius: 1em;
+      border-top-right-radius: 1em;
     }
+
     img:hover {
       cursor: pointer;
     }
+
     footer {
       .favorite {
         color: red;
         font-size: 20px;
       }
+
       .favorite:hover {
         cursor: pointer;
       }
+
       padding: 0 7%;
 
       .title {
         text-align: center;
       }
+
       .info {
         display: flex;
         justify-content: space-between;
       }
+
       .favorite {
         float: right;
       }
     }
+  }
+
+  .pin:hover {
+    box-shadow: 5px 6px 7px grey;
   }
 }
