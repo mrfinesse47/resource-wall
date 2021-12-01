@@ -7,7 +7,8 @@ const expandedPins = (obj) => {
   $("#pin-container").append($pin);
 
   console.log(obj, "expanedpins");
-  if (obj.favs.includes($pin.id)) {
+
+  if (obj.isFavorite) {
     $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
     $(`#${$pin.id} .favorite`).addClass("fa-heart");
   }

@@ -3,6 +3,7 @@ const pins = (obj) => {
   </div>`;
   $($createPinContainer).appendTo("#main-container");
 
+  console.log(obj, "in pins fn")
   const favorites = obj.favs;
 
   obj.pins.forEach(($pin) => {
@@ -40,9 +41,9 @@ const pins = (obj) => {
 
     $(`#${$pin.id} img`).click(function (event) {
       $.ajax({
-        method: "GET",
-        url: `api/pins/${$pin.id}`,
-      })
+          method: "GET",
+          url: `api/pins/${$pin.id}`,
+        })
         .done(function (obj) {
           console.log(obj);
           if (obj.auth) {

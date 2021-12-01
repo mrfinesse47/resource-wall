@@ -3,21 +3,26 @@ const createExpandedPinElement = (obj) => {
   const rating = Math.round(obj.pin.average_rating * 10) / 10;
   return `
   <article id="expanded-pin">
+  <header class="image-container" id="expanded-pin-header">
   <h3 class="title">
   ${obj.pin.title}
   </h3>
-  <header class="image-container" id="expanded-pin-header">
+  <div class="title-like">
+  <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
+  </div>
     <img
       src="${obj.pin.thumbnail_url}"
     />
-  </header>
-  <footer>
+    <section id="content-body">
     <p class="description">
     ${obj.pin.description}
     </p>
     <p class="content">
     ${obj.pin.content}
     </p>
+    </section>
+    </header>
+  <footer>
     <div class="info">
       <h5>
       ${obj.pin.tag}
@@ -35,10 +40,10 @@ const createExpandedPinElement = (obj) => {
   <section class="new-comment">
   <form method="POST" action="api/pins/${obj.pin.id}/comments" id="comment">
     <div class="error"></div>
-    <textarea name="comment" id="comment-box" placeholder="Something to say?"></textarea>
+    <textarea name="comment" id="comment-box" placeholder="Something to say?" required></textarea>
     <div class="footer">
       <button type="submit" id="commentBtn">submit</button>
-      <output name="counter" class="counter" for="comment-box">140</output>
+      <output name="counter" class="counter" for="comment-box"></output>
     </div>
   </form>
   </section>
