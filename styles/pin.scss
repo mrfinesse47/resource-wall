@@ -3,7 +3,7 @@
 #pins-container {
   max-width: 1100px;
   width: 85%;
-  // background-color: white;
+  // background-color: red;
   display: flex;
 
   flex-direction: row;
@@ -18,33 +18,47 @@
     width: 25%;
     min-width: 275px;
     flex-grow: 1;
+    border-radius: 2em;
+
+    .tag-rating {
+      padding-bottom: .5em;
+    }
 
     .image-container {
       width: 100%;
     }
+
     img {
       width: 100%;
+      border-top-left-radius: 2em;
+      border-top-right-radius: 2em;
     }
+
     img:hover {
       cursor: pointer;
     }
+
     footer {
       .favorite {
         color: red;
         font-size: 20px;
       }
+
       .favorite:hover {
         cursor: pointer;
       }
+
       padding: 0 7%;
 
       .title {
         text-align: center;
       }
+
       .info {
         display: flex;
         justify-content: space-between;
       }
+
       .favorite {
         float: right;
       }
