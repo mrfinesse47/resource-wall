@@ -132,7 +132,7 @@ module.exports = (db) => {
   // POST /api/pins/favorites/ --adds a favorite pin
   //-----------------------------------------------------------------
 
-  router.post("/favorites", (req, res) => {
+  router.post("/favorites/:pinID", (req, res) => {
     const { isLoggedIn, userID } = req; //gets this from middleware
 
     if (!isLoggedIn) {
@@ -141,8 +141,8 @@ module.exports = (db) => {
         message: "not logged in",
       });
     }
-    console.log("user id", userID);
-    db.addFavorite(userID, req.body.id)
+    // console.log("pin id", req.body.id);
+    db.addFavorite(userID, req.params.pinID)
       .then((pin) => {
         if (!pin) {
           return res.json({

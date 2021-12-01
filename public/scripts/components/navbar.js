@@ -3,7 +3,7 @@ const navBar = (auth) => {
     return `<nav id="navigation">
   <div class="container">
   <div class="nav-bar-items">
-  <button type="button" class="nav-buttons" id="home"><i class="fas fa-thumbtack"></i>
+  <button type="button" class="nav-buttons" id="home"><i class="fa fa-thumb-tack" aria-hidden="true"></i></i>
   </button>
 
   <button type="button" class="nav-buttons" id="my-pins">My pins
@@ -30,7 +30,7 @@ const navBar = (auth) => {
   <button type="button" id="logout-btn">Log Out</button>
   </div>
   </div>
-  </nav>`
+  </nav>`;
   } else {
     return `<nav id="navigation">
     <div class="container">
@@ -39,6 +39,6 @@ const navBar = (auth) => {
     </button>
     </div>
     </div>
-    </nav>`
+    </nav>`;
   }
-}
+};

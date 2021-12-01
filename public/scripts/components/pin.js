@@ -36,7 +36,7 @@ const createPinElement = (obj) => {
         
         <span>
         
-        <i class="fa fa-heart favorite" aria-hidden="true"></i>
+        <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
         </span>
       </div>
       </div>
