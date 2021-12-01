@@ -1,60 +1,59 @@
-const pins = () => {
+const pins = (obj) => {
   const $createPinContainer = `<div id="pins-container">
-  </div>`
-  $($createPinContainer).appendTo('#main-container');
+  </div>`;
+  $($createPinContainer).appendTo("#main-container");
 
+  const favorites = obj.favs;
 
-  // Move somewhere to reduce redundancy
+  obj.pins.forEach(($pin) => {
+    $("#pins-container").append(createPinElement($pin));
 
-  //and then it appends everything to the screen
-  //maybe we do a foreach loop
+    if (obj.favs.includes($pin.id)) {
+      $(`#${$pin.id} .favorite`).toggleClass("active");
+    }
 
+    $(`#${$pin.id} .favorite`).click(function () {
+      //here we can set a click handler for the heart
+      //in order to set favorites
+      //alert("clicked heart");
+      $(this).toggleClass("active");
+      //going to do a server request here and then toggle its state
+    });
 
-
-  const renderPins = function (obj) {
-    obj.pins.forEach(($pin) => {
-      $("#pins-container").append(createPinElement($pin));
-
-      $(`#${$pin.id}`).click(function (event) {
-        $.ajax({
-            method: 'GET',
-            url: `api/pins/${$pin.id}`,
-          })
-          .done(function (obj) {
-            console.log(obj)
-            if (obj.auth) {
-              render("expandedPins", obj);
-            } else {
-              render("login", obj);
-            }
-          })
-          .fail(function () {
-            //should either render pins or give a notification that logout failed
-          });
+    $(`#${$pin.id} img`).click(function (event) {
+      $.ajax({
+        method: "GET",
+        url: `api/pins/${$pin.id}`,
       })
-    })
-  };
+        .done(function (obj) {
+          console.log(obj);
+          if (obj.auth) {
+            render("expandedPins", obj);
+          } else {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          //should either render pins or give a notification that logout failed
+        });
+    });
+  });
 
+  // const loadPins = function () {
+  //   $.ajax({
+  //       method: 'GET',
+  //       url: "api/pins",
+  //       cache: false,
+  //       dataType: "json",
+  //     })
+  //     .done(function (obj) {
+  //       console.log(obj);
+  //       renderPins(obj);
+  //     })
+  //     .fail(function () {
+  //       console.log("something went wrong in loadPins ajax") // should return an error here
+  //     });
+  // };
 
-
-  const loadPins = function () {
-    $.ajax({
-        method: 'GET',
-        url: "api/pins",
-        cache: false,
-        dataType: "json",
-      })
-      .done(function (obj) {
-        console.log(obj);
-        renderPins(obj);
-      })
-      .fail(function () {
-        console.log("something went wrong in loadPins ajax") // should return an error here
-      });
-  };
-
-  loadPins();
-
-
-
+  // loadPins();
 };

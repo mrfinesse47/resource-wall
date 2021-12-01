@@ -80,18 +80,18 @@ module.exports = (db) => {
       });
   };
 
-  const addPin = function (object) {
-    let queryString = `INSERT INTO pins (owner_id, title, description, content, tag, created_at`;
-    const queryParams = [object.owner_id, object.title, object.description, object.content, object.tag];
-    if (object.thumbnail_url) {
-      queryString += ', thumbnail_url)';
-      queryParams.push(object.thumbnail_url);
+  const addPin = function(id, object) {
+    let queryString = `INSERT INTO pins (owner_id, title, description, content, tag_id, created_at`;
+    const queryParams = [id, object.title, object.description, object.content, object.tag];
+    if (object.url) {
+      queryString += ', url)';
+      queryParams.push(object.url);
     } else {
       queryString += ')';
     }
     queryString += ` VALUES ($1, $2, $3, $4, $5, now()`
 
-    if (object.thumbnail_url) {
+    if(object.url) {
       queryString += `, $6)`;
     } else {
       queryString += `)`;
@@ -135,11 +135,12 @@ module.exports = (db) => {
 
   const getOwnedPins = function (id) {
     return db.query(`
-    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(pin_ratings.rating) AS average_rating
     FROM pins
+    JOIN tags ON pins.tag_id = tags.id
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     WHERE owner_id = $1
-    GROUP BY pins.id
+    GROUP BY pins.id, tags.name, tags.thumbnail_url
     ORDER BY pins.created_at
     `, [id])
       .then(result => result.rows)
@@ -148,10 +149,13 @@ module.exports = (db) => {
 
   const getFavPins = function (id) {
     return db.query(`
-    SELECT pins.*, favorite_pins.id
-    FROM pins
-    JOIN favorite_pins ON pins.id = favorite_pins.pin_id
-    WHERE favorite_pins.user_id = $1
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(rating.rating) AS average_rating
+    FROM favorite_pins AS fav_pins
+    JOIN pins on pins.id = fav_pins.pin_id
+    LEFT JOIN pin_ratings AS rating ON rating.pin_id = pins.id
+    JOIN tags ON tags.id = pins.tag_id
+    WHERE fav_pins.user_id = $1
+    GROUP BY pins.id, tags.name, tags.thumbnail_url;
     `, [id])
       .then(result => result.rows)
       .catch((err) => console.log(err))
@@ -159,28 +163,28 @@ module.exports = (db) => {
 
   const getAllPins = function () {
     return db.query(`
-    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(pin_ratings.rating) AS average_rating
     FROM pins
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
-    GROUP BY pins.id
-    ORDER BY created_at
-    LIMIT 15;
+    JOIN tags ON pins.tag_id = tags.id
+    GROUP BY pins.id, tags.name, tags.thumbnail_url
+    ORDER BY created_at;
     `)
       .then(result => result.rows)
       .catch((err) => console.log(err))
   };
-
   const searchPins = function(pin) {
     const queryParam = `%${pin}%`;
     let queryString = `
-    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(pin_ratings.rating) AS average_rating
     FROM pins
     LEFT JOIN pin_ratings on pins.id = pin_ratings.pin_id
+    JOIN tags ON pins.tag_id = tags.id
     WHERE LOWER(pins.title) LIKE LOWER($1)
-    OR LOWER(pins.tag) LIKE LOWER($1)
+    OR LOWER(tags.name) LIKE LOWER($1)
     OR LOWER(pins.description) LIKE LOWER($1)
     OR LOWER(pins.content) LIKE LOWER($1)
-    GROUP BY pins.id
+    GROUP BY pins.id , tags.name, tags.thumbnail_url
     ORDER BY pins.created_at
     `;
     return db.query(queryString, [queryParam])
@@ -189,11 +193,12 @@ module.exports = (db) => {
 
   const getPinById = function (id) {
     return db.query(`
-    SELECT pins.*, AVG(pin_ratings.rating) AS average_rating
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(pin_ratings.rating) AS average_rating
     FROM pins
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
+    JOIN tags ON pins.tag_id = tags.id
     WHERE pins.id = $1
-    GROUP BY pins.id;
+    GROUP BY pins.id, tags.name, tags.thumbnail_url;
     `, [id])
       .then((result) => result.rows[0])
       .catch((err) => console.log(err))

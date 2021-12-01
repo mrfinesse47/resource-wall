@@ -5,16 +5,16 @@ $(document).ready(function () {
   //render("signUp", false);
 
   $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-      dataType: "json",
-      cache: false,
-    })
+    method: "GET",
+    url: "api/users/auth",
+    dataType: "json",
+    cache: false,
+  })
     .done(function (obj) {
-      console.log(obj)
+      console.log(obj);
       if (obj.auth) {
         console.log("123123123123");
-        render("pins", obj);
+        loadPins("api/pins", (obj) => render("pins", obj));
       } else {
         render("signUp", obj);
       }

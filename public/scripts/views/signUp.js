@@ -12,14 +12,14 @@ const signUp = () => {
     event.preventDefault();
 
     $.ajax({
-        method: "POST",
-        data: $(this).serialize(),
-        url: "api/users/signup",
-      })
+      method: "POST",
+      data: $(this).serialize(),
+      url: "api/users/signup",
+    })
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
-          render("pins", obj);
+          loadPins("api/pins", (obj) => render("pins", obj));
         }
         if (!obj.auth) {
           render("login", obj);
@@ -30,25 +30,21 @@ const signUp = () => {
       });
   });
 
-
-  $('#loginredirect').click(function (event) {
+  $("#loginredirect").click(function (event) {
     event.preventDefault();
     $.ajax({
-        method: 'GET',
-        url: "api/users/auth",
-      })
+      method: "GET",
+      url: "api/users/auth",
+    })
       .done(function (obj) {
         if (!obj.auth) {
-          render("login", obj)
+          render("login", obj);
         } else {
-          render("pins", obj)
+          loadPins("api/pins", (obj) => render("pins", obj));
         }
       })
       .fail(function () {
-        console.log("something went wrong in signup redirect") //should either render pins or give a notification that logout failed
-
+        console.log("something went wrong in signup redirect"); //should either render pins or give a notification that logout failed
       });
-  })
-
-
+  });
 };

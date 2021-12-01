@@ -11,7 +11,7 @@ const createPinElement = (obj) => {
 
   //this will be pulled in and assembled from ajax
   //somehow the id will have to be dynamic for an onclick event
-  return ` <article class="pin" id="${obj.id}">
+  return `<article class="pin" id="${obj.id}">
     <header class="image-container">
     <img src="${obj.thumbnail_url}"
     >
@@ -30,8 +30,13 @@ const createPinElement = (obj) => {
       <div class="info">
 
         <span class="rating">
-        ${obj.tag}
+         ${obj.tag}
         ${rating} / 5
+        </span>
+        
+        <span>
+        
+        <i class="fa fa-heart favorite" aria-hidden="true"></i>
         </span>
       </div>
       </div>

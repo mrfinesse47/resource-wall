@@ -1,5 +1,4 @@
 const createCommentElement = (obj) => {
-  console.log(obj, "123");
   return `
   <article class="comment" id="comment-list">
   <header class="comment-header">
@@ -17,6 +16,5 @@ const createCommentElement = (obj) => {
       ${obj.created_at}
     </p>
   </footer>
-  </article>`
-
-}
+  </article>`;
+};

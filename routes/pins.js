@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 
 module.exports = (db) => {
   //-----------------------------------------------------------------
@@ -8,11 +7,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/search", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const { isLoggedIn } = req; //gets this from middleware
 
-    console.log(req.params);
-    console.log(req.body);
-    console.log(req.data);
+    console.log(req.body.search);
+
     if (!isLoggedIn) {
       return res.json({
         auth: false,
@@ -20,12 +18,20 @@ module.exports = (db) => {
       });
     }
 
-    res.json({
-      auth: true,
-      message: "search route hit",
-    });
-
-    // db.searchPins()
+    db.searchPins(req.body.search)
+      .then((pins) => {
+        res.json({
+          auth: true,
+          message: "successful search",
+          pins,
+        });
+      })
+      .catch((err) => {
+        res.json({
+          auth: true,
+          message: "not successful in search",
+        });
+      });
   });
 
   //-----------------------------------------------------------------
@@ -57,15 +63,16 @@ module.exports = (db) => {
       comment: req.body.comment,
     };
 
-    // console.log(comment);
+    console.log("comment", comment);
 
     db.addComment(comment)
       .then((result) => {
-        console.log(result[0].id);
-        return db.getPinCommentsById(result[0].pin_id);
+        console.log(result.id);
+        return db.getPinCommentsById(result.pin_id);
       })
-      .then((comment) => {
-        console.log(comment);
+      .then((comments) => {
+        const comment = comments[comments.length - 1];
+        //sends back the users last comment
         res.json({
           auth: true,
           message: "successfully created comment",
@@ -288,30 +295,22 @@ module.exports = (db) => {
     }
 
     const pin = {
-      owner_id: userID, //from the user cookie once authenticated
+      // owner_id: userID, //from the user cookie once authenticated
       title: req.body.title,
       description: req.body.description,
       // content_type: req.body.content_type,
-      thumbnail_url: req.body.thumbnail_url,
+      url: req.body.thumbnail_url,
       content: req.body.content,
       tag: req.body.tag,
     };
 
-    console.log(pin);
-    if (
-      !(
-        pin.owner_id &&
-        pin.title &&
-        pin.description &&
-        pin.thumbnail_url &&
-        pin.content &&
-        pin.tag
-      )
-    ) {
+    // id, object.title, object.description, object.content, object.tag
+    // console.log(pin);
+    if (!(pin.title && pin.description && pin.content && pin.tag)) {
       return res.json({ auth: true, message: "incomplete form" });
     }
 
-    db.addPin(pin)
+    db.addPin(userID, pin)
       .then((result) => {
         if (!pin) {
           return res.json({
