@@ -29,9 +29,15 @@ const pins = (obj) => {
         // console.log($pin.id);
         // ${$pin.id}
         $.ajax({
+<<<<<<< HEAD
             method: "POST",
             url: `api/pins/favorites/${$pin.id}`,
           })
+=======
+          method: "POST",
+          url: `api/pins/favorites/${$pin.id}`,
+        })
+>>>>>>> master
           .done(function (obj) {
             console.log(obj);
             if (obj.auth) {
@@ -48,9 +54,15 @@ const pins = (obj) => {
 
       $(`#${$pin.id} img`).click(function (event) {
         $.ajax({
+<<<<<<< HEAD
             method: "GET",
             url: `api/pins/${$pin.id}`,
           })
+=======
+          method: "GET",
+          url: `api/pins/${$pin.id}`,
+        })
+>>>>>>> master
           .done(function (obj) {
             console.log(obj);
             if (obj.auth) {
