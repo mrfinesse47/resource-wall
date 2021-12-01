@@ -3,15 +3,24 @@ const pins = (obj) => {
   </div>`;
   $($createPinContainer).appendTo("#main-container");
 
-  // Move somewhere to reduce redundancy
-
-  //and then it appends everything to the screen
-  //maybe we do a foreach loop
+  const favorites = obj.favs;
 
   obj.pins.forEach(($pin) => {
     $("#pins-container").append(createPinElement($pin));
 
-    $(`#${$pin.id}`).click(function (event) {
+    if (obj.favs.includes($pin.id)) {
+      $(`#${$pin.id} .favorite`).toggleClass("active");
+    }
+
+    $(`#${$pin.id} .favorite`).click(function () {
+      //here we can set a click handler for the heart
+      //in order to set favorites
+      //alert("clicked heart");
+      $(this).toggleClass("active");
+      //going to do a server request here and then toggle its state
+    });
+
+    $(`#${$pin.id} img`).click(function (event) {
       $.ajax({
         method: "GET",
         url: `api/pins/${$pin.id}`,

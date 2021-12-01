@@ -176,8 +176,6 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/edit", (req, res) => {
-    const userID = req.session.user_id;
-
     const user = {
       first_name: req.body.FirstName,
       last_name: req.body.LastName,
@@ -189,38 +187,36 @@ module.exports = (db) => {
       return res.json({ auth: false, message: "incomplete form" });
     }
 
-    isUserLoggedIn(userID, db).then((isLoggedIn) => {
-      if (!isLoggedIn) {
-        //user is already logged in
-        console.log("not  logged in");
-        return res.json({
-          auth: true,
-          message: "not logged in",
-        });
-      }
-      console.log(user);
+    const { isLoggedIn, userID } = req; //gets this from middleware
 
-      db.updateUserInfo(user.email, user)
-        .then((result) => {
-          if (!result) {
-            return res.json({
-              auth: true,
-              message: "not successful in changing user details",
-            });
-          }
-          res.json({
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in to edit",
+      });
+    }
+    console.log(user);
+
+    db.updateUserInfo(userID, user)
+      .then((result) => {
+        if (!result) {
+          return res.json({
             auth: true,
-            message: "successful in changing user details",
+            message: "not successful in changing user details",
           });
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json({
-            auth: false,
-            message: "internal server error",
-          });
+        }
+        res.json({
+          auth: true,
+          message: "successful in changing user details",
         });
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          auth: false,
+          message: "internal server error",
+        });
+      });
   });
 
   // const updateUserInfo = function (email, newInfo) {}
