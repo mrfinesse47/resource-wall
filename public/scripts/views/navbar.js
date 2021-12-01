@@ -92,26 +92,26 @@ const navBarView = (auth) => {
 
 
 
-    $('#search-id').submit(function (event) {
-      event.preventDefault();
-      console.log($(this).serialize(), "its in here");
-      $.ajax({
-          method: 'POST',
-          data: $(this).serialize(),
-          url: "api/pins/search"
-        })
-        .done(function (obj) {
-          if (obj.auth) {
-            render("searchPins", obj);
-          } else {
-            render("login", obj)
-          }
+    // $('#search-id').submit(function (event) {
+    //   event.preventDefault();
+    //   console.log($(this).serialize(), "its in here");
+    //   $.ajax({
+    //       method: 'POST',
+    //       data: $(this).serialize(),
+    //       url: "api/pins/search"
+    //     })
+    //     .done(function (obj) {
+    //       if (obj.auth) {
+    //         render("searchPins", obj);
+    //       } else {
+    //         render("login", obj)
+    //       }
 
-        })
-        .fail(function () {
-          // render("pins") // should re-render login once back end is hooked up
-        });
-    })
+    //     })
+    //     .fail(function () {
+    //       // render("pins") // should re-render login once back end is hooked up
+    //     });
+    // })
 
 
 
