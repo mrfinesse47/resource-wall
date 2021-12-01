@@ -9,7 +9,7 @@ module.exports = (db) => {
   router.post("/search", (req, res) => {
     const { isLoggedIn } = req; //gets this from middleware
 
-    console.log(req.body.search);
+    console.log("search param", req.body.search);
 
     if (!isLoggedIn) {
       return res.json({
@@ -265,12 +265,31 @@ module.exports = (db) => {
     //if user is logged in proceed with getting all pins from db
     db.getAllPins()
       .then((pins) => {
-        console.log("success sending all pins");
-        res.json({
-          auth: true,
-          message: "successfully got all pins",
-          pins,
-        });
+        db.getFavPins(userID)
+          .then((favs) => {
+            pins.forEach((pin) => {
+              favs.forEach((fav) => {
+                if (pin.id === fav.id) {
+                  console.log("match", pin.id);
+                  pin.isFavorite = true;
+                } else {
+                  pin.isFavorite = false;
+                }
+              });
+            });
+            console.log(pins);
+            res.json({
+              auth: true,
+              message: "successfully got all pins",
+              pins,
+            });
+          })
+          .catch((err) => {
+            res.status(500).json({
+              auth: false,
+              message: "internal server error",
+            });
+          });
       })
       .catch((err) => {
         res.status(500).json({
