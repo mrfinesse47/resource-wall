@@ -8,35 +8,35 @@ const pins = (obj) => {
   obj.pins.forEach(($pin) => {
     $("#pins-container").append(createPinElement($pin));
 
-    if (obj.favs.includes($pin.id)) {
-      $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
-      $(`#${$pin.id} .favorite`).addClass("fa-heart");
-    }
+    // if (obj.favs.includes($pin.id)) {
+    //   $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
+    //   $(`#${$pin.id} .favorite`).addClass("fa-heart");
+    // }
 
-    $(`#${$pin.id} .favorite`).click(function () {
-      //here we can set a click handler for the heart
-      //in order to set favorites
-      //alert("clicked heart");
-      $(this).addClass("fa-heart ");
-      $(this).removeClass("fa-heart-o");
-      // ${$pin.id}
-      $.ajax({
-        method: "POST",
-        url: `api/pins/favorites/${$pin.id}`,
-      })
-        .done(function (obj) {
-          console.log(obj);
-          if (obj.auth) {
-            // render("expandedPins", obj);
-          } else {
-            render("login", obj);
-          }
-        })
-        .fail(function () {
-          //should either render pins or give a notification that logout failed
-        });
-      //going to do a server request here and then toggle its state
-    });
+    // $(`#${$pin.id} .favorite`).click(function () {
+    //   //here we can set a click handler for the heart
+    //   //in order to set favorites
+    //   //alert("clicked heart");
+    //   $(this).addClass("fa-heart ");
+    //   $(this).removeClass("fa-heart-o");
+    //   // ${$pin.id}
+    //   $.ajax({
+    //     method: "POST",
+    //     url: `api/pins/favorites/${$pin.id}`,
+    //   })
+    //     .done(function (obj) {
+    //       console.log(obj);
+    //       if (obj.auth) {
+    //         // render("expandedPins", obj);
+    //       } else {
+    //         render("login", obj);
+    //       }
+    //     })
+    //     .fail(function () {
+    //       //should either render pins or give a notification that logout failed
+    //     });
+    //   //going to do a server request here and then toggle its state
+    // });
 
     $(`#${$pin.id} img`).click(function (event) {
       $.ajax({
