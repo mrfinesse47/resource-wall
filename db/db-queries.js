@@ -99,7 +99,7 @@ module.exports = (db) => {
     queryString += ` RETURNING *;`;
 
     return db.query(queryString, queryParams)
-      .then(result => result.rows[0])
+      .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };
 
@@ -109,7 +109,7 @@ module.exports = (db) => {
     VALUES ($1, $2, $3)
     RETURNING *;
     `, [object.user_id, object.pin_id, object.rating])
-      .then(result => result.rows[0])
+      .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };
 
@@ -129,7 +129,7 @@ module.exports = (db) => {
     VALUES ($1, $2)
     RETURNING *;
     `, [id, pinId])
-      .then(result => result.rows[0])
+      .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };
 
@@ -143,7 +143,7 @@ module.exports = (db) => {
     GROUP BY pins.id, tags.name, tags.thumbnail_url
     ORDER BY pins.created_at
     `, [id])
-      .then(result => result.rows)
+      .then((result) => result.rows)
       .catch((err) => console.log(err))
   };
 
@@ -157,7 +157,7 @@ module.exports = (db) => {
     WHERE fav_pins.user_id = $1
     GROUP BY pins.id, tags.name, tags.thumbnail_url;
     `, [id])
-      .then(result => result.rows)
+      .then((result) => result.rows)
       .catch((err) => console.log(err))
   }
 
@@ -170,8 +170,8 @@ module.exports = (db) => {
     GROUP BY pins.id, tags.name, tags.thumbnail_url
     ORDER BY created_at;
     `)
-      .then(result => result.rows)
-      .catch((err) => console.log(err))
+    .then((result) => result.rows)
+    .catch((err) => console.log(err))
   };
   const searchPins = function(pin) {
     const queryParam = `%${pin}%`;
@@ -228,5 +228,16 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById };
+  const removeFavorite = function(user_id, pin_id) {
+    return db.query(`
+    DELETE FROM favorite_pins
+    WHERE user_id = $1
+    AND pin_id = $2
+    RETURNING *
+    `, [user_id, pin_id])
+      .then((result) => result.rows[0])
+      .catch((err) => {console.log(err)})
+  }
+
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById, removeFavorite };
 };
