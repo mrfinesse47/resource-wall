@@ -20,7 +20,9 @@ const navBar = (auth) => {
 
   <form id="search-id">
 
-  <button class="btn-search"><i class="fas fa-search"></i></button>
+  <button class="btn-search">
+  <i class="fas fa-search"></i>
+  </button>
 
   <input type="search" name="search" class="input-search" id="nav-search" placeholder="Type to Search...">
 
