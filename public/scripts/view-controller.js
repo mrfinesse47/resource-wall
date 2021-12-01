@@ -42,4 +42,8 @@ const render = (view, obj) => {
   if ((view === "newPin")) {
     newPin();
   }
+
+  if ((view === "searchPins")) {
+    searchPins();
+  }
 };

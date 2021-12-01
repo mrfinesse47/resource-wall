@@ -11,6 +11,8 @@ module.exports = (db) => {
     const { isLoggedIn, userID } = req; //gets this from middleware
 
     console.log(req.params);
+    console.log(req.body);
+    console.log(req.data);
     if (!isLoggedIn) {
       return res.json({
         auth: false,
@@ -290,6 +292,7 @@ module.exports = (db) => {
       title: req.body.title,
       description: req.body.description,
       // content_type: req.body.content_type,
+      thumbnail_url: req.body.thumbnail_url,
       content: req.body.content,
       tag: req.body.tag,
     };
@@ -300,7 +303,7 @@ module.exports = (db) => {
         pin.owner_id &&
         pin.title &&
         pin.description &&
-        // pin.content_type &&
+        pin.thumbnail_url &&
         pin.content &&
         pin.tag
       )
