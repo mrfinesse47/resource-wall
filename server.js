@@ -236,3 +236,7 @@ app.listen(PORT, () => {
 //   console.log('removeFav', result)
 // })
 
+// GET USER FAVORITES FOR MAIN PAGE//
+// dbHelpers.getUserFavorites(user_id).then((result) => {
+//   console.log('userFavoites', result)
+// })
