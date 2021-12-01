@@ -7,27 +7,27 @@ const createNewPinElement = () => {
 
 <div class="mb-3">
   <label for="create-title" class="form-label">Title</label>
-  <input type="text" class="form-control" name="title" id="create-title" placeholder="Title">
+  <input type="text" class="form-control" name="title" id="create-title" name="title" placeholder="Title">
 </div>
 
 <div class="mb-3">
   <label for="create-img" class="form-label">Thumbnail</label>
-  <input type="url" class="form-control" id="create-img" placeholder="optional img url">
+  <input type="url" class="form-control" id="create-img" name="thumbnail_url"  placeholder="optional img url">
 </div>
 <div class="mb-3">
   <label for="create-description" class="form-label">Description</label>
-  <input type="text" class="form-control" id="create-description" placeholder="Description goes here">
+  <input type="text" class="form-control" id="create-description" name="description" placeholder="Description goes here">
 </div>
 
 <div class="mb-3">
 <label for="create-tag" class="form-label">Tag</label>
-<input type="text" class="form-control" id="create-tag" placeholder="Put a Tag!">
+<input type="text" class="form-control" id="create-tag" name="tag" placeholder="Put a Tag!">
 </div>
 
 
 <div class="mb-3">
   <label for="create-content" class="form-label">Content</label>
-  <textarea class="form-control" id="create-content" rows="3"></textarea>
+  <textarea class="form-control" id="create-content" name="content" rows="3"></textarea>
 </div>
 
 <div class="mb-3" id="create-box">

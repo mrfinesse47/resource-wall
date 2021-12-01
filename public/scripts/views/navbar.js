@@ -90,6 +90,32 @@ const navBarView = (auth) => {
 
   if (auth) {
 
+
+
+    $('#search-id').submit(function (event) {
+      event.preventDefault();
+      console.log($(this).serialize(), "its in here");
+      $.ajax({
+          method: 'POST',
+          data: $(this).serialize(),
+          url: "api/pins/search"
+        })
+        .done(function (obj) {
+          if (obj.auth) {
+            render("searchPins", obj);
+          } else {
+            render("login", obj)
+          }
+
+        })
+        .fail(function () {
+          // render("pins") // should re-render login once back end is hooked up
+        });
+    })
+
+
+
+
     const input = document.querySelector('input[type="search"]');
     input.onsearch = () => {
       console.log($(input.value).serialize(), "inside search");
@@ -101,7 +127,7 @@ const navBarView = (auth) => {
         .done(function (obj) {
           console.log(obj);
           if (obj.auth) {
-            render("pins", obj);
+            render("searchPins", obj);
           } else {
             render("login", obj)
           }

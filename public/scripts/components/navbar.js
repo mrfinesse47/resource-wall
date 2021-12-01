@@ -17,12 +17,15 @@ const navBar = (auth) => {
 
   </div>
   <div class="nav-links"><div id="body">
-  <div class="search-box">
+
+  <form id="search-id">
+
   <button class="btn-search"><i class="fas fa-search"></i></button>
 
-  <input type="search" class="input-search" id="nav-search" placeholder="Type to Search...">
+  <input type="search" name="search" class="input-search" id="nav-search" placeholder="Type to Search...">
 
   </div>
+
 </div>
   <button type="button" id="logout-btn">Log Out</button>
   </div>
