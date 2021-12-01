@@ -72,7 +72,7 @@ app.listen(PORT, () => {
 //                                               TESTING DB QUERIES                                                          //
 // --------------------------------------------------------------------------------------------------------------------------//
 
-const email = "example@example.com";
+// const email = "example@example.com";
 // dbHelpers.getUserByEmail(email).then((result) => {
 //   console.log('getUserByEmail', result);
 // });
