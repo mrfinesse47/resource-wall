@@ -1,4 +1,5 @@
 const createExpandedPinElement = (obj) => {
+  //console.log("the obj id is:", obj.pin.id);
   const rating = Math.round(obj.pin.average_rating * 10) / 10;
   return `
   <article id="expanded-pin">
@@ -32,7 +33,7 @@ const createExpandedPinElement = (obj) => {
 
   <div id="comment-section">
   <section class="new-comment">
-  <form method="POST" action="/comments" id="comment-box">
+  <form method="POST" action="api/pins/${obj.pin.id}/comments" id="comment">
     <div class="error"></div>
     <textarea name="comment" id="comment-box" placeholder="Something to say?"></textarea>
     <div class="footer">
@@ -45,7 +46,6 @@ const createExpandedPinElement = (obj) => {
   </div>
   </div>
   `;
-
 };
 
 // needs to be dynamic

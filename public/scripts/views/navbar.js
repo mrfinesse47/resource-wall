@@ -86,7 +86,7 @@ const navBarView = (auth) => {
       })
         .done(function (obj) {
           if (obj.auth) {
-            render("searchPins", obj);
+            render("pins", obj);
           } else {
             render("login", obj);
           }

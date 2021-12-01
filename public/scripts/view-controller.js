@@ -1,6 +1,3 @@
-//the render function will read all the information from the database
-//and then render it to main the nav bar will not get re rendered
-
 const render = (view, obj) => {
   //first thing render does is empty the containers
   $("#login-article").remove();
@@ -15,7 +12,6 @@ const render = (view, obj) => {
   // then checks to see which page to render
 
   if (view === "pins") {
-    console.log(obj);
     pins(obj);
   }
 
@@ -43,9 +39,7 @@ const render = (view, obj) => {
     newPin(obj);
   }
 
-  //may not need you can just use the pins view
-
-  if (view === "searchPins") {
-    searchPins(obj);
-  }
+  // if (view === "searchPins") {
+  //   searchPins(obj);
+  // }
 };
