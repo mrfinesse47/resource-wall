@@ -224,7 +224,15 @@ app.listen(PORT, () => {
 //   console.log('commentID', result)
 // });
 
+// const user_id = 12;
+// const pin_id = 14;
 // REFACTORED GET FAV PINS //
-// dbHelpers.newGetFavPins(12).then((result) => {
-//   console.log('newGetFav', result)
+// dbHelpers.getFavPins(user_id).then((result) => {
+//   console.log('getFav', result)
 // })
+
+// REMOVE FAVORITE PIN //
+// dbHelpers.removeFavorite(user_id, pin_id).then((result) => {
+//   console.log('removeFav', result)
+// })
+
