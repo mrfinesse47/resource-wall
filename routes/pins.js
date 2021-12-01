@@ -129,7 +129,40 @@ module.exports = (db) => {
   });
 
   //-----------------------------------------------------------------
-  // POST /api/pins/favorites/ --adds a favorite pin
+  // POST /api/pins/favorites/:pinID/delete --removes a favorite pin
+  //-----------------------------------------------------------------
+
+  // removeFavorite
+
+  router.post("/favorites/:pinID/delete", (req, res) => {
+    const { isLoggedIn, userID } = req; //gets this from middleware
+
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+
+    db.removeFavorite(userID, req.params.pinID)
+      .then((pin) => {
+        res.json({
+          auth: true,
+          message: "successful deleting a favorite pin",
+          pin,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          auth: true,
+          message: "internal server error",
+        });
+      });
+  });
+
+  //-----------------------------------------------------------------
+  // POST /api/pins/favorites/:pinID --adds a favorite pin
   //-----------------------------------------------------------------
 
   router.post("/favorites/:pinID", (req, res) => {
