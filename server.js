@@ -103,21 +103,21 @@ const email = "example@example.com";
 //   console.log('getUserById', result);
 // });
 
+// ADD PIN //
 // const id = 1;
-
-const testPin = {
-  title: "is cell from dragon ball a cell",
-  description: "is cell a cell?",
-  content: "if cell is a cell would a group of cells be tissue? I need to know cause this is Science",
-  tag: "Science",
-  thumbnail_url: 'www.example.com'
-};
+// const testPin = {
+//   title: "is cell from dragon ball a cell",
+//   description: "is cell a cell?",
+//   content: "if cell is a cell would a group of cells be tissue? I need to know cause this is Science",
+//   tag: 2,
+//   url: 'www.example.com'
+// };
 
 // const testPin2 = {
 //   title: 'is it canibalism if i eat an alaska roll?',
 //   description: `please help i'm having a mental breakdown`,
 //   content: 'are we eating people? like how soylent green is people?',
-//   tag: 'Science'
+//   tag: 2
 // };
 
 // dbHelpers.addPin(id, testPin).then((result) => {
@@ -158,7 +158,7 @@ const testPin = {
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-// const testID = '16'
+// const testID = '3'
 // dbHelpers.getOwnedPins(testID).then((result) => {
 //   console.log('OwnedPins', result);
 // });
@@ -175,7 +175,7 @@ const testPin = {
 
 // PIN BY ID //
 // const testID = 3
-// dbHelpers.getPinById(testID).then((result) => {
+// dbHelpers.getPinById(16).then((result) => {
 //   console.log('Pin By Id', result);
 // });
 
@@ -185,7 +185,7 @@ const testPin = {
 // });
 
 // REFACTORED SEARCH FUNCTION //
-// const testPhrase = 'art';
+// const testPhrase = 'history of';
 // dbHelpers.searchPins(testPhrase).then((result) => {
 //   console.log('NewSearchTest', result)
 // });
