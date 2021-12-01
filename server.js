@@ -186,7 +186,7 @@ app.listen(PORT, () => {
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-// const testID = '3'
+// const testID = 13
 // dbHelpers.getOwnedPins(testID).then((result) => {
 //   console.log('OwnedPins', result);
 // });
@@ -223,3 +223,8 @@ app.listen(PORT, () => {
 // dbHelpers.getCommentById(commentID).then((result) => {
 //   console.log('commentID', result)
 // });
+
+// REFACTORED GET FAV PINS //
+dbHelpers.newGetFavPins(12).then((result) => {
+  console.log('newGetFav', result)
+})

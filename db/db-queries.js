@@ -149,11 +149,13 @@ module.exports = (db) => {
 
   const getFavPins = function (id) {
     return db.query(`
-    SELECT pins.*, tags.name, tags.thumbnail_url, favorite_pins.id
-    FROM pins
-    JOIN favorite_pins ON pins.id = favorite_pins.pin_id
-    JOIN tags ON pins.tag_id = tags.id
-    WHERE favorite_pins.user_id = $1
+    SELECT pins.*, tags.name, tags.thumbnail_url, AVG(rating.rating) AS average_rating
+    FROM favorite_pins AS fav_pins
+    JOIN pins on pins.id = fav_pins.pin_id
+    LEFT JOIN pin_ratings AS rating ON rating.pin_id = pins.id
+    JOIN tags ON tags.id = pins.tag_id
+    WHERE fav_pins.user_id = $1
+    GROUP BY pins.id, tags.name, tags.thumbnail_url;
     `, [id])
       .then(result => result.rows)
       .catch((err) => console.log(err))
@@ -166,8 +168,7 @@ module.exports = (db) => {
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     JOIN tags ON pins.tag_id = tags.id
     GROUP BY pins.id, tags.name, tags.thumbnail_url
-    ORDER BY created_at
-    LIMIT 20;
+    ORDER BY created_at;
     `)
       .then(result => result.rows)
       .catch((err) => console.log(err))
