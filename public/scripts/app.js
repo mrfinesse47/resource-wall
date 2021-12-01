@@ -11,6 +11,7 @@ $(document).ready(function () {
       cache: false,
     })
     .done(function (obj) {
+      console.log(obj)
       if (obj.auth) {
         console.log("123123123123");
         render("pins", obj);

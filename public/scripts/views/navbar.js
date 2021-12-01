@@ -10,7 +10,7 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
+
         if (obj.auth) {
           render("userPins", obj);
         } else {
@@ -32,7 +32,6 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
         if (obj.auth) {
           render("newPin", obj);
         } else {
@@ -53,7 +52,7 @@ const navBarView = (auth) => {
         url: "api/users/auth"
       })
       .done(function (obj) {
-        console.log(obj);
+
         if (obj.auth) {
           render("favoritePins", obj);
         } else {
@@ -89,32 +88,32 @@ const navBarView = (auth) => {
   })
 
 
-  const input = document.querySelector('input[type="search"]');
-  input.onsearch = () => {
-    console.log($(input.value).serialize(), "inside search");
-    $.ajax({
-        method: 'POST',
-        data: $(input.value).serialize(),
-        url: "api/search"
-      })
-      .done(function (obj) {
-        console.log(obj);
-        if (obj.auth) {
-          render("pins", obj);
-        } else {
-          render("login", obj)
-        }
-
-      })
-      .fail(function () {
-        console.log("search failed")
-      });
-
-  };
-
-
-
   if (auth) {
+
+    const input = document.querySelector('input[type="search"]');
+    input.onsearch = () => {
+      console.log($(input.value).serialize(), "inside search");
+      $.ajax({
+          method: 'POST',
+          data: $(input.value).serialize(),
+          url: "api/pins/search"
+        })
+        .done(function (obj) {
+          console.log(obj);
+          if (obj.auth) {
+            render("pins", obj);
+          } else {
+            render("login", obj)
+          }
+
+        })
+        .fail(function () {
+          console.log("search failed")
+        });
+
+    };
+
+
 
     $('#logout-btn').click(function (event) {
       event.preventDefault();
