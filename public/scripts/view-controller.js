@@ -6,6 +6,7 @@ const render = (view, obj) => {
   $("#pin-container").remove();
   $("#signup-article").remove();
   $("#modal-holder").remove();
+  $("#profile-article").remove();
 
   navBarView(obj);
 
