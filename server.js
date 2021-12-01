@@ -196,7 +196,7 @@ app.listen(PORT, () => {
 //   console.log('commentID', result)
 // });
 
-const user_id = 12;
+// const user_id = 12;
 // const pin_id = 14;
 // REFACTORED GET FAV PINS //
 // dbHelpers.getFavPins(user_id).then((result) => {
@@ -209,6 +209,6 @@ const user_id = 12;
 // })
 
 // GET USER FAVORITES FOR MAIN PAGE//
-dbHelpers.getUserFavorites(user_id).then((result) => {
-  console.log('userFavoites', result)
-})
+// dbHelpers.getUserFavorites(user_id).then((result) => {
+//   console.log('userFavoites', result)
+// })
