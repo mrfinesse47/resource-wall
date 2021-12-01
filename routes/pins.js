@@ -288,30 +288,22 @@ module.exports = (db) => {
     }
 
     const pin = {
-      owner_id: userID, //from the user cookie once authenticated
+      // owner_id: userID, //from the user cookie once authenticated
       title: req.body.title,
       description: req.body.description,
       // content_type: req.body.content_type,
-      thumbnail_url: req.body.thumbnail_url,
+      url: req.body.thumbnail_url,
       content: req.body.content,
       tag: req.body.tag,
     };
 
-    console.log(pin);
-    if (
-      !(
-        pin.owner_id &&
-        pin.title &&
-        pin.description &&
-        pin.thumbnail_url &&
-        pin.content &&
-        pin.tag
-      )
-    ) {
+    // id, object.title, object.description, object.content, object.tag
+    // console.log(pin);
+    if (!(pin.title && pin.description && pin.content && pin.tag)) {
       return res.json({ auth: true, message: "incomplete form" });
     }
 
-    db.addPin(pin)
+    db.addPin(userID, pin)
       .then((result) => {
         if (!pin) {
           return res.json({

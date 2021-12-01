@@ -3,47 +3,49 @@
 
 const render = (view, obj) => {
   //first thing render does is empty the containers
-  $('#login-article').remove();
-  $('#navigation').remove();
-  $('#pins-container').remove();
-  $('#pin-container').remove();
-  $('#signup-article').remove();
-  $('#modal-holder').remove();
+  $("#login-article").remove();
+  $("#navigation").remove();
+  $("#pins-container").remove();
+  $("#pin-container").remove();
+  $("#signup-article").remove();
+  $("#modal-holder").remove();
 
   navBarView(obj.auth);
 
-
   // then checks to see which page to render
 
-  if ((view === "pins")) {
-    pins();
+  if (view === "pins") {
+    console.log(obj);
+    pins(obj);
   }
 
-  if ((view === "userPins")) {
-    userPins();
+  // if (view === "userPins") {
+  //   userPins(obj);
+  // }
+
+  if (view === "login") {
+    login(obj);
   }
 
-  if ((view === "login")) {
-    login();
+  if (view === "signUp") {
+    signUp(obj);
   }
 
-  if ((view === "signUp")) {
-    signUp();
-  }
-
-  if ((view === "expandedPins")) {
+  if (view === "expandedPins") {
     expandedPins(obj);
   }
 
-  if ((view === "favoritePins")) {
-    favoritePins();
+  // if (view === "favoritePins") {
+  //   favoritePins(obj);
+  // }
+
+  if (view === "newPin") {
+    newPin(obj);
   }
 
-  if ((view === "newPin")) {
-    newPin();
-  }
+  //may not need you can just use the pins view
 
-  if ((view === "searchPins")) {
-    searchPins();
+  if (view === "searchPins") {
+    searchPins(obj);
   }
 };

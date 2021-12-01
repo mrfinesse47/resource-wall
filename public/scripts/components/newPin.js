@@ -10,10 +10,7 @@ const createNewPinElement = () => {
   <input type="text" class="form-control" name="title" id="create-title" name="title" placeholder="Title">
 </div>
 
-<div class="mb-3">
-  <label for="create-img" class="form-label">Thumbnail</label>
-  <input type="url" class="form-control" id="create-img" name="thumbnail_url"  placeholder="optional img url">
-</div>
+
 <div class="mb-3">
   <label for="create-description" class="form-label">Description</label>
   <input type="text" class="form-control" id="create-description" name="description" placeholder="Description goes here">
@@ -22,6 +19,11 @@ const createNewPinElement = () => {
 <div class="mb-3">
 <label for="create-tag" class="form-label">Tag</label>
 <input type="text" class="form-control" id="create-tag" name="tag" placeholder="Put a Tag!">
+</div>
+
+<div class="mb-3">
+  <label for="create-img" class="form-label">Thumbnail</label>
+  <input type="url" class="form-control" id="create-img" name="thumbnail_url"  placeholder="optional img url">
 </div>
 
 
@@ -39,5 +41,5 @@ const createNewPinElement = () => {
 </div>
 
 </form>
-  `
-}
+  `;
+};

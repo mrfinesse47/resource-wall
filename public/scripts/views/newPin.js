@@ -1,71 +1,43 @@
 const newPin = () => {
   const $createDiv = `<article id="modal-holder">
   </article>`;
-  $($createDiv).appendTo('#main-container');
+  $($createDiv).appendTo("#main-container");
 
   const $newPin = createNewPinElement();
   $("#modal-holder").append($newPin);
 
-
-  $('#create-pin').submit(function (event) {
+  $("#create-pin").submit(function (event) {
     console.log("23123");
     event.preventDefault();
     $.ajax({
-        method: 'POST',
-        data: $('#create-pin').serialize(),
-        url: 'api/pins',
-      })
-      .done(function (obj) {
-        if (obj.auth) {
-          render("pins", obj);
-        }
-      })
-  })
+      method: "POST",
+      data: $("#create-pin").serialize(),
+      url: "api/pins",
+    }).done(function (obj) {
+      if (obj.auth) {
+        loadPins("api/pins", (obj) => render("pins", obj));
+      }
+    });
+  });
 
-
-
-  $('#cancel-redirect').click(function (event) {
+  $("#cancel-redirect").click(function (event) {
     event.preventDefault();
     $.ajax({
-        method: 'GET',
-        url: "api/users/auth",
-      })
+      method: "GET",
+      url: "api/users/auth",
+    })
       .done(function (obj) {
         if (!obj.auth) {
-          render("login", obj)
+          render("login", obj);
         } else {
-          render("pins", obj)
+          loadPins("api/pins", (obj) => render("pins", obj));
         }
       })
       .fail(function () {
-        console.log("something went wrong in signup redirect") //should either render pins or give a notification that logout failed
-
+        console.log("something went wrong in signup redirect"); //should either render pins or give a notification that logout failed
       });
-  })
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
+};
 
 // $("#tweet-form").on('submit', function (event) {
 //   event.preventDefault();
