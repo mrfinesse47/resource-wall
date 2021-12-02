@@ -1,5 +1,9 @@
 @import "./variables.scss";
 
+.checked {
+  color: orange;
+}
+
 #pins-container {
   max-width: 1400px;
   width: 95%;
@@ -30,10 +34,6 @@
 
     .p {
       font-size: 14px;
-    }
-
-    .checked {
-      color: orange;
     }
 
     img {

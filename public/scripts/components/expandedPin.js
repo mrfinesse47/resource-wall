@@ -10,46 +10,44 @@ const createExpandedPinElement = (obj) => {
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>`
+      <span class="fa fa-star checked"></span>`;
     } else if (rating > 4) {
       return `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>`
+      <span class="fa fa-star"></span>`;
     } else if (rating > 3) {
       return `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`
+      <span class="fa fa-star"></span>`;
     } else if (rating > 2) {
       return `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`
+      <span class="fa fa-star"></span>`;
     } else if (rating > 1) {
       return `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`
+      <span class="fa fa-star"></span>`;
     } else if (rating >= 0) {
       return `
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`
+      <span class="fa fa-star"></span>`;
     }
-
-  }
-
+  };
 
   return `
   <article id="expanded-pin">
@@ -90,11 +88,11 @@ const createExpandedPinElement = (obj) => {
   </div>
 
   <div class="rating">
-    <span><input type="radio" name="rating" id="star5" value="5"><label for="star5">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="star4" value="4"><label for="star4">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="star3" value="3"><label for="star3">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="star2" value="2"><label for="star2">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="star1" value="1"><label for="star1">&#10038;</label></span>
+  <span class="fa fa-star 1"></span>
+  <span class="fa fa-star 2"></span>
+  <span class="fa fa-star 3"></span>
+  <span class="fa fa-star 4"></span>
+  <span class="fa fa-star 5"></span>
   </div>
 
 </div>

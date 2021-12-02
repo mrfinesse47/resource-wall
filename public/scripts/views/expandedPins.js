@@ -65,6 +65,20 @@ const expandedPins = (obj) => {
         });
     });
 
+    for (let i = 1; i <= 5; i++) {
+      $(`.fa-star.${i}`).hover(
+        function () {
+          $(this).addClass("checked");
+        },
+        function () {
+          $(this).removeClass("checked");
+        }
+      );
+      $(`.fa-star.${i}`).click(() => {
+        alert(`clicked ${i}`);
+      });
+    }
+
     $("#comment").submit(function (event) {
       event.preventDefault();
       $.ajax({
