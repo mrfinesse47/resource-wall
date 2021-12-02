@@ -1,4 +1,4 @@
-const login = () => {
+const login = (obj) => {
   // creates login-box and appends it to main-container
   const $createArticle = `<article id="login-article">
   </article>`;
@@ -12,10 +12,10 @@ const login = () => {
   $("#login-form").submit(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "POST",
-      data: $(this).serialize(),
-      url: "api/users/login",
-    })
+        method: "POST",
+        data: $(this).serialize(),
+        url: "api/users/login",
+      })
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
@@ -23,16 +23,16 @@ const login = () => {
         }
       })
       .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
+        console.log("something went wrong in login") // should re-render login once back end is hooked up
       });
   });
 
   $("#register").click(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-    })
+        method: "GET",
+        url: "api/users/auth",
+      })
       .done(function (obj) {
         if (!obj.auth) {
           render("signUp", obj);

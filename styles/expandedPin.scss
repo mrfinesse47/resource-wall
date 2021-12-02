@@ -46,7 +46,7 @@
       border-radius: 2em;
       border-width: 1px;
       padding: 0em 1em;
-      width: 40em;
+      // width: 40em;
       max-width: 40em;
       margin-top: 1.5em;
 
@@ -81,7 +81,7 @@
         width: 40em;
         max-width: 40em;
         height: 10em;
-        min-width: 20em;
+        // min-width: 20em;
         resize: none;
         border-radius: 2em;
         padding: 1em;
@@ -89,6 +89,10 @@
         input,
         textarea {
           padding: 1em 1em;
+          // width: calc(100vw - 20em);
+          /* calc and viewport to the rescue */
+          // height: calc(100vh - 20em);
+          position: fixed;
         }
       }
     }

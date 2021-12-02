@@ -6,7 +6,7 @@ const navBar = (obj) => {
   <button type="button" class="nav-buttons" id="home"><i class="fa fa-thumb-tack" aria-hidden="true"></i></i>
   </button>
 
-  <button type="button" class="nav-buttons" id="my-pins">My pins
+  <button type="button" class="nav-buttons" id="my-pins">My Pins
   </button>
 
   <button type="button" class="nav-buttons" id="my-favorites">Favorited

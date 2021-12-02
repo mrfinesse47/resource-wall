@@ -212,12 +212,22 @@ module.exports = (db) => {
   const addFavorite = function(id, pinId) {
     return db.query(`
     INSERT INTO favorite_pins (user_id, pin_id)
-    VALUES ($1, $2)
+    SELECT $1, $2
+    WHERE NOT EXISTS (
+        SELECT user_id, pin_id
+        FROM favorite_pins
+        WHERE user_id = $1 AND pin_id = $2
+    )
     RETURNING *;
     `, [id, pinId])
       .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };
+
+  // OLD FUNCTIONALITY
+  // INSERT INTO favorite_pins (user_id, pin_id)
+  // VALUES ($1, $2)
+  // RETURNING *;
 
   // EDIT
   // can edit one thing or everything, if statements check if the key exists will append the proper syntax

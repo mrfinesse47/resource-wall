@@ -25,7 +25,7 @@ const createExpandedPinElement = (obj) => {
   <footer>
     <div class="info">
       <h5>
-      ${obj.pin.tag}
+      ${obj.pin.name}
       </h5>
       <div class="rating">
        <p id="average-rating">

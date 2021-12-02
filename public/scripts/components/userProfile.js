@@ -10,17 +10,17 @@ const createUserProfileElement = () => {
 </section>
 
 <div>
-  <form method="POST" action="api/users/user_id/edit" id="edit-user-info" class="edit-info">
+  <form method="POST" action="api/users/edit" id="edit-user-info" class="edit-info">
     <h5 class="edit-info">Edit Your Info</h5>
 
     <div class="edit-info">
       <label for="edit-first-name" class="edit-info">First Name</label>
-      <input type="text" class="form-control" name="first_name" id="edit-first-name" placeholder="First Name">
+      <input type="text" class="form-control" name="FirstName" id="edit-first-name" placeholder="First Name">
     </div>
 
     <div class="edit-info">
       <label for="edit-last-name" class="edit-info">Last Name</label>
-      <input type="text" class="form-control" name="last_name" id="edit-last-name" placeholder="Last Name">
+      <input type="text" class="form-control" name="LastName" id="edit-last-name" placeholder="Last Name">
     </div>
 
     <div class="edit-info">
