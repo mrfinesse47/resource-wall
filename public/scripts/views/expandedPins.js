@@ -98,7 +98,8 @@ const expandedPins = (obj) => {
 
   $('input:radio').change(
     function () {
-      const userRating = this.value;
+      const userRating = $(this).serialize();
+      console.log(userRating, "userRating");
       $.ajax({
           method: "POST",
           data: userRating,

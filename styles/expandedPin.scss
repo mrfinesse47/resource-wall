@@ -113,6 +113,11 @@
       height: fit-content;
       border-radius: 2em;
 
+      // .fa-star {
+      //   color: orange;
+      //   font-size: 1.2em;
+      // }
+
       #user-rating {
         display: flex;
         flex-direction: row;
@@ -204,6 +209,8 @@
       footer {
         padding: 0 7%;
         padding-top: 10%;
+
+
 
         .title {
           text-align: center;
