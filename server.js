@@ -178,8 +178,8 @@ app.listen(PORT, () => {
 // });
 
 // ADD FAVORITE //
-// const user = 16;
-// const pinId = 3;
+// const user = 11;
+// const pinId = 4;
 // dbHelpers.addFavorite(user, pinId).then((result) => {
 //   console.log('addFavorite', result);
 // });
