@@ -394,6 +394,7 @@ module.exports = (db) => {
       return res.json({
         auth: false,
         message: "not logged in",
+        formError: null,
       });
     }
 
@@ -406,7 +407,11 @@ module.exports = (db) => {
     };
 
     if (!(pin.title && pin.description && pin.content && pin.tag)) {
-      return res.json({ auth: true, message: "incomplete form" });
+      return res.json({
+        auth: true,
+        message: "incomplete form",
+        formError: true,
+      });
     }
 
     console.log(pin);
@@ -418,12 +423,14 @@ module.exports = (db) => {
             auth: true,
             message: "not successful in adding a new pin",
             pin: result,
+            formError: true,
           });
         }
         res.json({
           auth: true,
           message: "success in adding a new pin",
           pin: result,
+          formError: false,
         });
       })
       .catch((err) => {
@@ -432,6 +439,7 @@ module.exports = (db) => {
           auth: true,
           message: "unsuccessful in adding new pin",
           pin: null,
+          formError: null,
         });
       });
   });
