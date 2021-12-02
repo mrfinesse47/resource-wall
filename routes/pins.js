@@ -272,7 +272,42 @@ module.exports = (db) => {
   });
 
   //-----------------------------------------------------------------
-  // /api/pins/:id
+  // GET /api/pins/:id/rating --gets user rating for a pin
+  //-----------------------------------------------------------------
+
+  // getRatingsExpandedView
+
+  router.get("/:pinID/rating", (req, res) => {
+    const { isLoggedIn, userID } = req; //gets this from middleware
+
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+
+    const { pinID } = req.params;
+
+    db.getRatingsExpandedView(userID, pinID)
+      .then((rating) => {
+        console.log(rating);
+        res.json({
+          auth: true,
+          message: "successfully got rating for pin",
+          rating,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          auth: true,
+          message: "internal server error",
+        });
+      });
+  });
+
+  //-----------------------------------------------------------------
+  // GET /api/pins/:id
   //-----------------------------------------------------------------
 
   //get pin by pin ID
@@ -365,7 +400,7 @@ module.exports = (db) => {
     const pin = {
       title: req.body.title,
       description: req.body.description,
-      url: req.body.thumbnail_url,
+      //url: req.body.thumbnail_url,
       content: req.body.content,
       tag: req.body.tag,
     };
@@ -373,6 +408,8 @@ module.exports = (db) => {
     if (!(pin.title && pin.description && pin.content && pin.tag)) {
       return res.json({ auth: true, message: "incomplete form" });
     }
+
+    console.log(pin);
 
     db.addPin(userID, pin)
       .then((result) => {
