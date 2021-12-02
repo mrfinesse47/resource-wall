@@ -73,4 +73,30 @@ const expandedPins = (obj) => {
         // render("pins") // should re-render login once back end is hooked up
       });
   });
+
+
+  $(".rating input:radio").attr("checked", false);
+  $('.rating input').click(function () {
+    $(".rating span").removeClass('checked');
+    $(this).parent().addClass('checked');
+  });
+
+  $('input:radio').change(
+    function () {
+      const userRating = this.value;
+      $.ajax({
+          method: "POST",
+          data: userRating,
+          url: `api/pins/${obj.pin.id}/rating`,
+        })
+        .done(function (obj) {
+          if (!obj.auth) {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          // render("pins") // should re-render login once back end is hooked up
+        });;
+    });
+
 };
