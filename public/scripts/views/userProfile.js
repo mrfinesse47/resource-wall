@@ -7,6 +7,10 @@ const userProfile = (obj) => {
   const $profile = createUserProfileElement(obj);
   $("#profile-article").append($profile);
 
+  //Appends error message component, then hides it by default on page load
+
+  $("#error-msg").hide();
+
 
   $("#edit-user-info").submit(function (event) {
 
@@ -18,19 +22,22 @@ const userProfile = (obj) => {
         url: "api/users/edit",
       })
       .done(function (obj) {
-        // console.log(obj, "123123123");
-        if (obj.auth) {
+        console.log(obj, "999090909")
+        if (obj.auth && !obj.formError) {
+          $("#edit-here").append(createErrorElement(obj.message));
+          errorHandler(obj.message);
+          console.log("if form error", obj);
+        } else {
           $.ajax({
               method: "GET",
               url: "api/users/info",
             })
             .done(function (obj) {
-              console.log(obj, "123");
-              if (obj.auth && !obj.formError) {
+
+              if (obj.auth) {
                 render("userProfile", obj)
-              } else {
-                errorHandler(obj.message);
               }
+
             })
             .fail(function () {
               // render("pins") // should re-render login once back end is hooked up

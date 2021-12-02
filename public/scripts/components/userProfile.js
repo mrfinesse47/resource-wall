@@ -11,7 +11,7 @@ const createUserProfileElement = (obj) => {
 
 <div>
   <form method="POST" action="api/users/edit" id="edit-user-info" class="edit-info">
-    <h5 class="edit-info">Edit Your Info</h5>
+    <h5 id="edit-here" class="edit-info">Edit Your Info</h5>
 
     <div class="edit-info">
       <label for="edit-first-name" class="edit-info">First Name</label>
