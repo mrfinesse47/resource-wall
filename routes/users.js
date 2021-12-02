@@ -202,9 +202,9 @@ module.exports = (db) => {
       password: req.body.password,
     };
 
-    //makes sure the edit form is complete
+    //makes sure the edit form is completenpm star
 
-    if (!(user.first_name && user.last_name && user.email && user.password)) {
+    if (!(user.first_name || user.last_name || user.email || user.password)) {
       return res.json({ auth: false, message: "incomplete form" });
     }
 

@@ -277,7 +277,7 @@ module.exports = (db) => {
     }
 
     if (newInfo.password) {
-      queryString += `${queryParams.length ? ', password = ' : 'password = '}`;
+      queryString += `${queryParams.length ? ', password = ' : ' password = '}`;
       queryParams.push(`${newInfo.password}`);
       queryString += `$${queryParams.length}`;
     }
