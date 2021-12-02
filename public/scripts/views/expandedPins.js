@@ -51,10 +51,10 @@ const expandedPins = (obj) => {
       const userRating = $(this).serialize();
       console.log(userRating, "userRating");
       $.ajax({
-        method: "POST",
-        data: userRating,
-        url: `api/pins/${obj.pin.id}/rating`,
-      })
+          method: "POST",
+          data: userRating,
+          url: `api/pins/${obj.pin.id}/rating`,
+        })
         .done(function (obj) {
           if (!obj.auth) {
             render("login", obj);
@@ -73,10 +73,10 @@ const expandedPins = (obj) => {
     $("#comment").submit(function (event) {
       event.preventDefault();
       $.ajax({
-        method: "POST",
-        data: $(this).serialize(),
-        url: `api/pins/${obj.pin.id}/comments`,
-      })
+          method: "POST",
+          data: $(this).serialize(),
+          url: `api/pins/${obj.pin.id}/comments`,
+        })
         .done(function (obj) {
           if (obj.auth) {
             $appendComment(obj);
@@ -93,9 +93,9 @@ const expandedPins = (obj) => {
 
 function userRatings(expandedPin) {
   $.ajax({
-    method: "GET",
-    url: `api/pins/${expandedPin.pin.id}/rating`,
-  })
+      method: "GET",
+      url: `api/pins/${expandedPin.pin.id}/rating`,
+    })
     .done(function (obj) {
       if (obj.auth) {
         console.log(obj);
@@ -126,19 +126,21 @@ function userRatings(expandedPin) {
             );
             $(`.fa-star.${i}`).click(() => {
               //if not already rated send rating
-              alert(`clicked ${i}`);
+              // alert(`clicked ${i}`);
 
               const rating = i;
 
               $.ajax({
-                method: "POST",
-                data: { rating },
-                url: `api/pins/${expandedPin.pin.id}/rating`,
-              })
+                  method: "POST",
+                  data: {
+                    rating
+                  },
+                  url: `api/pins/${expandedPin.pin.id}/rating`,
+                })
                 .done(function (obj) {
                   if (obj.auth) {
                     // $appendComment(obj);
-                    $(".form-label").text("Your rating");
+                    $(".form-label").text("Your rating is:");
                     //remove event listeners
                     console.log(obj.result.rating);
                     for (let i = 1; i <= 5; i++) {
