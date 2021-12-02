@@ -87,11 +87,11 @@ const createExpandedPinElement = (obj) => {
   </div>
 
   <div class="rating">
-  <span class="fa fa-star 1"></span>
-  <span class="fa fa-star 2"></span>
-  <span class="fa fa-star 3"></span>
-  <span class="fa fa-star 4"></span>
   <span class="fa fa-star 5"></span>
+  <span class="fa fa-star 4"></span>
+  <span class="fa fa-star 3"></span>
+  <span class="fa fa-star 2"></span>
+  <span class="fa fa-star 1"></span>
   </div>
 
 </div>
