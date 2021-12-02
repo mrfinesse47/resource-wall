@@ -134,10 +134,6 @@
         justify-content: center;
       }
 
-      .info {
-        padding-bottom: 1em;
-      }
-
       .description {
         text-align: justify;
       }
@@ -175,10 +171,13 @@
           display: flex;
           align-items: center;
 
-          .fa-star {
-            display: block;
-            font-size: 0.75em;
-            color: darkorange;
+          #average-rating {
+            display: flex;
+            align-items: center;
+
+            .checked {
+              color: orange;
+            }
           }
         }
       }
