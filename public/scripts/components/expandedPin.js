@@ -88,13 +88,15 @@ const createExpandedPinElement = (obj) => {
   <div>
   Rate this pin!
   </div>
+
   <div class="rating">
-    <span><input type="radio" name="rating" id="str5" value="5"><label for="str5">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="str4" value="4"><label for="str4">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="str3" value="3"><label for="str3">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="str2" value="2"><label for="str2">&#10038;</label></span>
-    <span><input type="radio" name="rating" id="str1" value="1"><label for="str1">&#10038;</label></span>
+    <span><input type="radio" name="rating" id="star5" value="5"><label for="star5">&#10038;</label></span>
+    <span><input type="radio" name="rating" id="star4" value="4"><label for="star4">&#10038;</label></span>
+    <span><input type="radio" name="rating" id="star3" value="3"><label for="star3">&#10038;</label></span>
+    <span><input type="radio" name="rating" id="star2" value="2"><label for="star2">&#10038;</label></span>
+    <span><input type="radio" name="rating" id="star1" value="1"><label for="star1">&#10038;</label></span>
   </div>
+
 </div>
   </article>
 
