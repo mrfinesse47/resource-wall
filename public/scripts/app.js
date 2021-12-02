@@ -5,11 +5,11 @@ $(document).ready(function () {
   //render("signUp", false);
 
   $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-      dataType: "json",
-      cache: false,
-    })
+    method: "GET",
+    url: "api/users/auth",
+    dataType: "json",
+    cache: false,
+  })
     .done(function (obj) {
       // console.log(obj);
       if (obj.auth) {

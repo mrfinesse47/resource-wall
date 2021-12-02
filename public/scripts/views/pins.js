@@ -15,6 +15,7 @@ const pins = (obj) => {
       } else {
         $(`#${$pin.id} .favorite`).removeClass("fa-heart");
         $(`#${$pin.id} .favorite`).addClass("fa-heart-o");
+        $(`#${$pin.id} .favorite`).addClass("fa-heart-o");
       }
 
       likeToggler($pin.id, likes);

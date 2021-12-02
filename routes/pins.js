@@ -239,6 +239,27 @@ module.exports = (db) => {
   });
 
   //-----------------------------------------------------------------
+  // /api/pins/:id/rating-- sends a rating to a pin
+  //-----------------------------------------------------------------
+
+  router.post("/:pinID/rating", (req, res) => {
+    const { isLoggedIn, userID } = req; //gets this from middleware
+
+    if (!isLoggedIn) {
+      return res.json({
+        auth: false,
+        message: "not logged in",
+      });
+    }
+
+    console.log(req.body.userRating);
+    return res.json({
+      auth: true,
+      message: "sent rating to pin",
+    });
+  });
+
+  //-----------------------------------------------------------------
   // /api/pins/:id
   //-----------------------------------------------------------------
 
