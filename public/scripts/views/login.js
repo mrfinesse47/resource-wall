@@ -12,12 +12,12 @@ const login = () => {
   $("#login-form").submit(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "POST",
-      data: $(this).serialize(),
-      url: "api/users/login",
-    })
+        method: "POST",
+        data: $(this).serialize(),
+        url: "api/users/login",
+      })
       .done(function (obj) {
-        console.log(obj);
+        // console.log(obj);
         if (obj.auth) {
           loadPins("api/pins", (obj) => render("pins", obj));
         }
@@ -30,9 +30,9 @@ const login = () => {
   $("#register").click(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-    })
+        method: "GET",
+        url: "api/users/auth",
+      })
       .done(function (obj) {
         if (!obj.auth) {
           render("signUp", obj);

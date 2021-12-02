@@ -10,7 +10,7 @@ const createUserProfileElement = () => {
 </section>
 
 <div>
-  <form method="POST" action="api/users/user_id/edit" id="edit-user-info" class="edit-info">
+  <form method="POST" action="api/users/edit" id="edit-user-info" class="edit-info">
     <h5 class="edit-info">Edit Your Info</h5>
 
     <div class="edit-info">

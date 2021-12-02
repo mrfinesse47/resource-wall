@@ -3,7 +3,8 @@
 #navigation {
   background-color: $background-color;
   height: 5.5rem;
-
+  width: 100vw;
+  overflow-x: hidden;
 
   .container {
     display: flex;
@@ -80,6 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
 
     font-family: 'Lato' !important;
   }
