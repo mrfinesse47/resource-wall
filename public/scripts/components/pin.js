@@ -91,9 +91,9 @@ const createPinElement = (obj) => {
   <img class="card-img-top" src="${obj.thumbnail_url}" alt="Card image cap">
   
   <div class="card-body">
-  <h5 class="card-title">${obj.title}</h5>
-    <p class="card-text">${des}</p>
-    <pclass="card-text">${cont}</p>
+  <h3 class="card-title">${obj.title}</h3>
+    <h5 class="card-text">${des}</h5>
+    <p class="card-text">${cont}</p>
   </div>
   <div class="card-footer text-muted">
  
