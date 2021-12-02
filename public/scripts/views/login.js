@@ -4,15 +4,21 @@ const login = (obj) => {
   </article>`;
   $($createArticle).appendTo("#main-container");
 
-  $("#error-msg").hide();
+
 
   // creates login-form and connects it to the login-box(article)
   const $login = loginElement();
   $("#login-article").append($login);
 
+  $("#login-title").append(createErrorElement());
+  $("#error-msg").hide();
+
+  console.log(obj, "123123")
+
   // ajax call for submission of login form
   $("#login-form").submit(function (event) {
     event.preventDefault();
+    console.log(event);
     $.ajax({
         method: "POST",
         data: $(this).serialize(),

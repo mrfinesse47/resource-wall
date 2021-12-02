@@ -1,9 +1,10 @@
-const createErrorElement = (message) => {
+function createErrorElement() {
   return `
   <div id="error-msg">
   <div class="container">
-    <p>${message}</p>
+    <p></p>
   </div>
   </div>
   `
 }
+//Hoisting function to give priority
