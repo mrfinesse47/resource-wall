@@ -11,19 +11,11 @@ const isUserLoggedIn = require("./helpers/isUserLoggedIn");
 //const fakeUser = require("../fake-data/user.json");
 
 module.exports = (db) => {
-  // router.get("/", (req, res) => {
-  //   // res.json({
-  //   //   users: "hello",
-  //   // });
-  // });
-
   //-----------------------------------------------------------------
   // /api/users/auth
   //-----------------------------------------------------------------
 
   router.get("/auth", (req, res) => {
-    console.log("user ID", req.session.user_id);
-
     const { isLoggedIn } = req; //gets this from middleware
 
     if (!isLoggedIn) {
@@ -44,8 +36,6 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/info", (req, res) => {
-    console.log("user ID", req.session.user_id);
-
     const { isLoggedIn, userID } = req; //gets this from middleware
 
     if (!isLoggedIn) {
@@ -82,15 +72,8 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/login", (req, res) => {
-    // if (!(req.session.user_id && req.session.email)) {
-    //   return res.json({
-    //     auth: false,
-    //     message: "empty fields",
-    //   });
-    // }
     const { isLoggedIn } = req; //gets this from middleware
     if (isLoggedIn) {
-      console.log("already logged in ");
       return res.json({
         auth: true,
         message: "already logged in",
@@ -112,7 +95,6 @@ module.exports = (db) => {
         if (req.body.password !== user.password) {
           //check the user password vs the form password
 
-          console.log("not authenticated");
           return res.json({
             auth: false,
             message: "bad password",
@@ -162,6 +144,8 @@ module.exports = (db) => {
       password: req.body.password,
     };
 
+    //makes sure the sign up form is complete
+
     if (!(user.first_name && user.last_name && user.email && user.password)) {
       return res.json({
         auth: false,
@@ -169,7 +153,7 @@ module.exports = (db) => {
       });
     }
 
-    //first thing is to check if the user is already logged in
+    //second thing is to check if the user is already logged in
 
     const { isLoggedIn } = req; //gets this from middleware
 
@@ -182,12 +166,9 @@ module.exports = (db) => {
 
     //if they arent logged in we can then go about creating a user
 
-    console.log(user);
-
     db.addUser(user)
       .then((result) => {
         if (!result) {
-          //console.log("not successful in adding new user");
           return res.json({
             auth: false,
             message: "not succesful in registering user",
@@ -221,6 +202,8 @@ module.exports = (db) => {
       password: req.body.password,
     };
 
+    //makes sure the edit form is complete
+
     if (!(user.first_name && user.last_name && user.email && user.password)) {
       return res.json({ auth: false, message: "incomplete form" });
     }
@@ -233,7 +216,8 @@ module.exports = (db) => {
         message: "not logged in to edit",
       });
     }
-    console.log(user);
+
+    //if the user is logged in add to the database
 
     db.updateUserInfo(userID, user)
       .then((result) => {
@@ -256,8 +240,6 @@ module.exports = (db) => {
         });
       });
   });
-
-  // const updateUserInfo = function (email, newInfo) {}
 
   return router;
 };

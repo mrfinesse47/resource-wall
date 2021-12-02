@@ -38,6 +38,9 @@ module.exports = (db) => {
   // GET /api/pins/:id/comments
   //-----------------------------------------------------------------
 
+  //no need to get a specific comment at the moment, the are provided
+  //the expanded pins view
+
   //-----------------------------------------------------------------
   // POST /api/pins/:id/comments
   //-----------------------------------------------------------------
@@ -131,8 +134,6 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
   // POST /api/pins/favorites/:pinID/delete --removes a favorite pin
   //-----------------------------------------------------------------
-
-  // removeFavorite
 
   router.post("/favorites/:pinID/delete", (req, res) => {
     const { isLoggedIn, userID } = req; //gets this from middleware
@@ -253,6 +254,8 @@ module.exports = (db) => {
     }
     const { pinID } = req.params;
 
+    //using promise all because both db queries dont depend on each other
+
     Promise.all([db.getPinById(pinID), db.getPinCommentsById(pinID)])
       .then((values) => {
         console.log(values);
@@ -327,17 +330,13 @@ module.exports = (db) => {
     }
 
     const pin = {
-      // owner_id: userID, //from the user cookie once authenticated
       title: req.body.title,
       description: req.body.description,
-      // content_type: req.body.content_type,
       url: req.body.thumbnail_url,
       content: req.body.content,
       tag: req.body.tag,
     };
 
-    // id, object.title, object.description, object.content, object.tag
-    // console.log(pin);
     if (!(pin.title && pin.description && pin.content && pin.tag)) {
       return res.json({ auth: true, message: "incomplete form" });
     }
@@ -351,7 +350,6 @@ module.exports = (db) => {
             pin: result,
           });
         }
-        console.log(result);
         res.json({
           auth: true,
           message: "success in adding a new pin",
@@ -373,6 +371,8 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
   // /api/pins/:id/edit -- edits an existing pin
   //-----------------------------------------------------------------
+
+  //for future implementation
 
   //-----------------------------------------------------------------
   // /api/pins/:edit
