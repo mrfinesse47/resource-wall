@@ -204,16 +204,21 @@ module.exports = (db) => {
 
     //makes sure the edit form is completenpm star
 
-    if (!(user.first_name || user.last_name || user.email || user.password)) {
-      return res.json({ auth: false, message: "incomplete form" });
-    }
-
     const { isLoggedIn, userID } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
         auth: false,
         message: "not logged in to edit",
+        formError: null,
+      });
+    }
+
+    if (!(user.first_name || user.last_name || user.email || user.password)) {
+      return res.json({
+        auth: true,
+        message: "incomplete form",
+        formError: true,
       });
     }
 
@@ -225,18 +230,21 @@ module.exports = (db) => {
           return res.json({
             auth: true,
             message: "not successful in changing user details",
+            formError: false,
           });
         }
         res.json({
           auth: true,
           message: "successful in changing user details",
+          formError: false,
         });
       })
       .catch((err) => {
         console.log(err);
         res.status(500).json({
-          auth: false,
+          auth: true,
           message: "internal server error",
+          formError: null,
         });
       });
   });
