@@ -58,7 +58,25 @@
   }
 
   #log-in-redirect {
-    // margin-top: 0.3em;
+    #loginredirect {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.2em;
+      border: none;
+      color: whitesmoke;
+      background-color: #5f5449;
+      width: 7.8em;
+      height: 2em;
+      border-radius: 3rem;
+      letter-spacing: 0.07em;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    #loginredirect:hover {
+      box-shadow: 3px 4px 5px grey;
+    }
   }
 
   a {
