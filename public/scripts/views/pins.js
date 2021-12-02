@@ -30,9 +30,29 @@ const pins = (obj) => {
         if (likes.includes($pin.id)) {
           $(this).addClass("fa-heart-o ");
           $(this).removeClass("fa-heart");
+
+          likes = likes.filter((like) => like !== $pin.id);
+
+          $.ajax({
+            method: "POST",
+            url: `api/pins/favorites/${$pin.id}/delete`,
+          })
+            .done(function (obj) {
+              // console.log(obj);
+              if (obj.auth) {
+                // render("expandedPins", obj);
+              } else {
+                render("login", obj);
+              }
+            })
+            .fail(function () {
+              //should either render pins or give a notification that logout failed
+            });
         } else {
           $(this).addClass("fa-heart ");
           $(this).removeClass("fa-heart-o");
+
+          likes.push($pin.id);
 
           // console.log($pin.id);
           // ${$pin.id}
