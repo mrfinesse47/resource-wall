@@ -1,12 +1,12 @@
-const createUserProfileElement = () => {
-
+const createUserProfileElement = (obj) => {
+  console.log(obj.userInfo)
   return `
 <header id="profile-header">
-  <h3>Firstname Lastname</h3>
+  <h3>${obj.userInfo.first_name} ${obj.userInfo.last_name}</h3>
 </header>
 
 <section class="user-info">
-  <p id="user-email">email goes here</p>
+  <p id="user-email">Email: ${obj.userInfo.email}</p>
 </section>
 
 <div>

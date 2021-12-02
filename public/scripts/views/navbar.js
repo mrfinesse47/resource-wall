@@ -81,10 +81,10 @@ const navBarView = (obj) => {
       event.preventDefault();
       $.ajax({
           method: "GET",
-          url: "api/users/auth",
+          url: "api/users/info",
         })
         .done(function (obj) {
-          console.log(obj);
+          console.log(obj, "123");
           if (obj.auth) {
             render("userProfile", obj)
           } else {

@@ -4,7 +4,7 @@ const userProfile = (obj) => {
   </article>`;
   $($createArticle).appendTo("#main-container");
 
-  const $profile = createUserProfileElement();
+  const $profile = createUserProfileElement(obj);
   $("#profile-article").append($profile);
 
 
@@ -18,9 +18,24 @@ const userProfile = (obj) => {
         url: "api/users/edit",
       })
       .done(function (obj) {
-        console.log(obj);
+        // console.log(obj, "123123123");
         if (obj.auth) {
-          render("userProfile", obj)
+          $.ajax({
+              method: "GET",
+              url: "api/users/info",
+            })
+            .done(function (obj) {
+              console.log(obj, "123");
+              if (obj.auth) {
+                render("userProfile", obj)
+              } else {
+                render("login", obj);
+              }
+            })
+            .fail(function () {
+              // render("pins") // should re-render login once back end is hooked up
+            });
+
         }
         if (!obj.auth) {
           render("login", obj);
