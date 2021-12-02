@@ -252,7 +252,7 @@ module.exports = (db) => {
       });
     }
 
-    // console.log(req.body.rating);
+    console.log("#########", req.body.rating);
 
     db.addRating(userID, req.params.pinID, req.body.rating)
       .then((result) => {

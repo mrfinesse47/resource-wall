@@ -10,54 +10,53 @@ const createExpandedPinElement = (obj) => {
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
-      <span class="fa fa-star checked f a-lg"></span>`
+      <span class="fa fa-star checked f a-lg"></span>`;
     } else if (rating > 4) {
       return `
       <span class="fa fa-star checked a-lg"></span>
       <span class="fa fa-star checked a-lg"></span>
       <span class="fa fa-star checked a-lg"></span>
       <span class="fa fa-star checked a-lg"></span>
-      <span class="fa fa-star a-lg"></span>`
+      <span class="fa fa-star a-lg"></span>`;
     } else if (rating > 3) {
       return `
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
-      <span class="fa fa-star fa-lg" ></span>`
+      <span class="fa fa-star fa-lg" ></span>`;
     } else if (rating > 2) {
       return `
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star fa-lg "></span>
       <span class="fa fa-star fa-lg"></span>
-      <span class="fa fa-star fa-lg"></span>`
+      <span class="fa fa-star fa-lg"></span>`;
     } else if (rating > 1) {
       return `
       <span class="fa fa-star  fa-lgchecked fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
-      <span class="fa fa-star fa-lg"></span>`
+      <span class="fa fa-star fa-lg"></span>`;
     } else if (rating >= 0) {
       return `
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
-      <span class="fa fa-star fa-lg"></span>`
+      <span class="fa fa-star fa-lg"></span>`;
     }
-
-  }
-
+  };
 
   return `
-  <article id="expanded-pin">
+  <div class="expanded-pin-wrapper" id=${obj.pin.id}>
+  <article id="expanded-pin" >
   <header class="image-container" id="expanded-pin-header">
   <h3 class="title">
   ${obj.pin.title}
   </h3>
-  <div class="title-like" id=${obj.pin.id}>
+  <div class="title-like" >
   <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
   </div>
     <img
@@ -113,6 +112,7 @@ const createExpandedPinElement = (obj) => {
   </form>
   </section>
   <div id="comment-prepend">
+  </div>
   </div>
   </div>
   `;

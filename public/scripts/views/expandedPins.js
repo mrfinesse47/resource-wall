@@ -65,19 +65,10 @@ const expandedPins = (obj) => {
         });
     });
 
-    for (let i = 1; i <= 5; i++) {
-      $(`.fa-star.${i}`).hover(
-        function () {
-          $(this).addClass("checked");
-        },
-        function () {
-          $(this).removeClass("checked");
-        }
-      );
-      $(`.fa-star.${i}`).click(() => {
-        alert(`clicked ${i}`);
-      });
-    }
+    //need to check with network to see if user already has input a rating
+    //if they do we just set this to a fixed rating
+
+    userRatings(obj);
 
     $("#comment").submit(function (event) {
       event.preventDefault();
@@ -99,3 +90,73 @@ const expandedPins = (obj) => {
     });
   }, obj);
 };
+
+function userRatings(obj) {
+  $.ajax({
+    method: "GET",
+    url: `api/pins/${obj.pin.id}/rating`,
+  })
+    .done(function (obj) {
+      if (obj.auth) {
+        console.log(obj);
+        if (obj.rating) {
+          //if it already has a rating by the user
+          console.log(obj.rating.rating);
+          for (let i = 1; i <= obj.rating.rating; i++) {
+            $(`.fa-star.${i}`).addClass("checked");
+          }
+        } else {
+          //if it does not have a reting by the user
+          for (let i = 1; i <= 5; i++) {
+            $(`.fa-star.${i}`).hover(
+              function () {
+                $(this).addClass("checked");
+                for (let j = 1; j < i; j++) {
+                  $(`.fa-star.${j}`).addClass("checked");
+                }
+              },
+              function () {
+                $(this).removeClass("checked");
+                for (let j = 1; j < i; j++) {
+                  $(`.fa-star.${j}`).removeClass("checked");
+                }
+              }
+            );
+            $(`.fa-star.${i}`).click((obj) => {
+              //if not already rated send rating
+              alert(`clicked ${i}`);
+
+              const rating = i;
+
+              console.log("999999999", obj);
+
+              $.ajax({
+                method: "POST",
+                data: rating,
+                url: `api/pins/${obj.pin.id}/rating`,
+              })
+                .done(function (obj) {
+                  if (obj.auth) {
+                    // $appendComment(obj);
+                  } else {
+                    render("login", obj);
+                  }
+                })
+                .fail(function () {
+                  // render("pins") // should re-render login once back end is hooked up
+                });
+
+              //will have  to remove click handlers
+
+              // $('.pippo').off('click')
+            });
+          }
+        }
+      } else {
+        render("login", obj);
+      }
+    })
+    .fail(function () {
+      // render("pins") // should re-render login once back end is hooked up
+    });
+}
