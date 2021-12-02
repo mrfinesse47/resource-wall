@@ -7,9 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <title>Home Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.7/jquery.timeago.min.js"
+    integrity="sha512-RlGrSmkje9EE/FXpJKWf0fvOlg4UULy/blvNsviBX9LFwMj/uewXVoanRbxTIRDXy/0A3fBQppTmJ/qOboJzmA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-
   <script type="text/javascript" src="/scripts/helpers/likedToggler.js"></script>
 
   <script type="text/javascript" src="/scripts/network/loadPins.js"></script>
@@ -58,49 +60,7 @@
 <body>
   <div id="nav-placeholder"></div>
   <!-- example card -->
-  <main id="main-container">
-    <nav id="navigation">
-      <div class="container">
-        <div class="nav-bar-items">
-          <button type="button" class="nav-buttons" id="home"><i class="fa fa-thumb-tack" aria-hidden="true"></i></i>
-          </button>
-
-          <button type="button" class="nav-buttons" id="my-pins">My Pins
-          </button>
-
-          <button type="button" class="nav-buttons" id="my-favorites">Favorited
-          </button>
-
-          <button type="button" class="nav-buttons" id="pin-creation">Create Pin
-          </button>
-
-
-          <button type="button" class="nav-buttons" id="user-info">User Info
-          </button>
-
-        </div>
-        <div class="nav-links">
-          <div id="body">
-
-            <div class="search-box">
-
-            </div>
-
-
-            <button class="btn-search">
-              <i class="fas fa-search"></i>
-            </button>
-
-            <input type="search" name="search" class="input-search" id="nav-search" placeholder="Type to Search...">
-
-          </div>
-
-        </div>
-        <button type="button" id="logout-btn">Log Out</button>
-      </div>
-
-    </nav>
-  </main>
+  <main id="main-container"></main>
 </body>
 
 </html>

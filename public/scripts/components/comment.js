@@ -1,4 +1,6 @@
 const createCommentElement = (obj) => {
+
+  console.log(timeago.format(obj.created_at));
   return `
   <article class="comment" id="comment-list">
   <header class="comment-header">
@@ -13,7 +15,7 @@ const createCommentElement = (obj) => {
   <hr class="comment-line"/>
   <footer class="comment-footer">
     <p class="comment-time">
-      ${obj.created_at}
+      ${$.timeago(obj.created_at)}
     </p>
   </footer>
   </article>`;
