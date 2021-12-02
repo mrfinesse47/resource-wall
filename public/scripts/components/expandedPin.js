@@ -7,7 +7,7 @@ const createExpandedPinElement = (obj) => {
   <h3 class="title">
   ${obj.pin.title}
   </h3>
-  <div class="title-like">
+  <div class="title-like" id=${obj.pin.id}>
   <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
   </div>
     <img

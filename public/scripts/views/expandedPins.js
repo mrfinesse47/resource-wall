@@ -8,40 +8,6 @@ const expandedPins = (obj) => {
 
   console.log(obj, "expanedpins");
 
-  if (obj.isFavorite) {
-    $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
-    $(`#${$pin.id} .favorite`).addClass("fa-heart");
-  }
-
-  $(`#${$pin.id} .favorite`).click(function () {
-    //here we can set a click handler for the heart
-    //in order to set favorites
-    //alert("clicked heart");
-    $(this).addClass("fa-heart ");
-    $(this).removeClass("fa-heart-o");
-    // ${$pin.id}
-    $.ajax({
-      method: "POST",
-      url: `api/pins/favorites/${$pin.id}`,
-    })
-      .done(function (obj) {
-        console.log(obj);
-        if (obj.auth) {
-          // render("expandedPins", obj);
-        } else {
-          render("login", obj);
-        }
-      })
-      .fail(function () {
-        //should either render pins or give a notification that logout failed
-      });
-  });
-
-  // const $createDiv = `<div id="favorite-container"></div>`;
-  // $($createDiv).appendTo("#expanded-pin-header");
-  // const $favoriteBtn = createFavoriteElement();
-  // $("#favorite-container").append($favoriteBtn);
-
   const $appendComment = (obj) => {
     $("#comment-prepend").prepend(createCommentElement(obj.comment));
   };
@@ -53,24 +19,73 @@ const expandedPins = (obj) => {
     });
   };
 
-  renderComments(obj);
+  // if (obj.isFavorite) {
+  //   $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
+  //   $(`#${$pin.id} .favorite`).addClass("fa-heart");
+  // }
 
-  $("#comment").submit(function (event) {
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: $(this).serialize(),
-      url: `api/pins/${obj.pin.id}/comments`,
-    })
-      .done(function (obj) {
-        if (obj.auth) {
-          $appendComment(obj);
-        } else {
-          render("login", obj);
-        }
+  determineLikes((likes) => {
+    console.log(obj.pin.id);
+    console.log(likes);
+
+    if (likes.includes(obj.pin.id)) {
+      //console.log("pin id", $pin.id, $pin.isFavorite);
+      $(`#${obj.pin.id} .favorite`).removeClass("fa-heart-o");
+      $(`#${obj.pin.id} .favorite`).addClass("fa-heart");
+    } else {
+      $(`#${obj.pin.id} .favorite`).removeClass("fa-heart");
+      $(`#${obj.pin.id} .favorite`).addClass("fa-heart-o");
+    }
+
+    likeToggler(obj.pin.id, likes);
+    // $(`#${$pin.id} .favorite`).click(function () {
+    //   //here we can set a click handler for the heart
+    //   //in order to set favorites
+    //   //alert("clicked heart");
+    //   $(this).addClass("fa-heart ");
+    //   $(this).removeClass("fa-heart-o");
+    //   // ${$pin.id}
+    //   $.ajax({
+    //     method: "POST",
+    //     url: `api/pins/favorites/${$pin.id}`,
+    //   })
+    //     .done(function (obj) {
+    //       console.log(obj);
+    //       if (obj.auth) {
+    //         // render("expandedPins", obj);
+    //       } else {
+    //         render("login", obj);
+    //       }
+    //     })
+    //     .fail(function () {
+    //       //should either render pins or give a notification that logout failed
+    //     });
+    // });
+
+    // const $createDiv = `<div id="favorite-container"></div>`;
+    // $($createDiv).appendTo("#expanded-pin-header");
+    // const $favoriteBtn = createFavoriteElement();
+    // $("#favorite-container").append($favoriteBtn);
+
+    renderComments(obj);
+
+    $("#comment").submit(function (event) {
+      event.preventDefault();
+      $.ajax({
+        method: "POST",
+        data: $(this).serialize(),
+        url: `api/pins/${obj.pin.id}/comments`,
       })
-      .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
-      });
-  });
+        .done(function (obj) {
+          if (obj.auth) {
+            $appendComment(obj);
+          } else {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          // render("pins") // should re-render login once back end is hooked up
+        });
+    });
+  }, obj);
 };
