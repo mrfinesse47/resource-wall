@@ -4,12 +4,12 @@
   max-width: 1400px;
   width: 95%;
   // background-color: white;
-  margin: 10px auto;
+  margin: 24px auto;
   display: flex;
 
   flex-direction: row;
   justify-content: center;
-  gap: 10px 20px;
+  gap: 12px 18px;
 
   flex-wrap: wrap;
 
@@ -26,6 +26,10 @@
 
     .title {
       text-align: center;
+    }
+
+    .p {
+      font-size: 14px;
     }
 
     .checked {
