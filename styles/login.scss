@@ -12,10 +12,11 @@
   #login-title {
     display: flex;
     justify-content: center;
-    // font-family: Test Söhne Breit;
+    align-items: center;
     font-size: 1.5em;
     font-weight: 600;
     letter-spacing: 0.07em;
+    flex-direction: column;
   }
 
   .login-form {
@@ -63,6 +64,7 @@
       text-decoration: none;
       font-weight: 800;
     }
+
     color: #cedfd9;
   }
 

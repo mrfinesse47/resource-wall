@@ -6,6 +6,10 @@ const signUp = () => {
   const $signUp = signUpElement();
   $("#signup-article").append($signUp);
 
+  $("#signup-title").append(createErrorElement());
+  $("#error-msg").hide();
+
+
   // ajax call for form submission
   $("#sign-up-user").submit(function (event) {
     console.log(event);
@@ -17,12 +21,14 @@ const signUp = () => {
         url: "api/users/signup",
       })
       .done(function (obj) {
-        console.log(obj);
+        console.log(obj,
+          "91919191919");
+
         if (obj.auth) {
           loadPins("api/pins", (obj) => render("pins", obj));
         }
         if (!obj.auth) {
-          render("login", obj);
+          errorHandler(obj.message);
         }
       })
       .fail(function () {

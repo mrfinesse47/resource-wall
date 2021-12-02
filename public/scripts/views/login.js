@@ -13,7 +13,6 @@ const login = (obj) => {
   $("#login-title").append(createErrorElement());
   $("#error-msg").hide();
 
-  console.log(obj, "123123")
 
   // ajax call for submission of login form
   $("#login-form").submit(function (event) {
