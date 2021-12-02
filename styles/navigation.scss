@@ -12,6 +12,16 @@
     align-items: center;
     margin: 0 auto;
     height: inherit;
+    font-size: 1.25rem;
+    .nav-bar-items{
+      #home {
+        font-size: 2rem;
+        padding: 1rem 1.5rem;
+      }
+      .nav-buttons {
+        padding: 1.5rem 1.5rem;
+      }
+    }
   }
 
   div {
@@ -102,11 +112,11 @@
     transition: all 0.5s ease-in-out;
     background-color: #22a6b3;
     padding-right: 40px;
-    color: #5f5449;
+    color: #000000;
   }
 
   .input-search::placeholder {
-    color: #5f5449;
+    color: #000000;
     font-size: 1em;
     letter-spacing: 2px;
     font-weight: 500;
