@@ -142,6 +142,27 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
+  const getRatingsGeneralView = function(user_id) {
+    return db.query(`
+    SELECT *
+    FROM pin_ratings
+    WHERE user_id = $1
+    `, [user_id])
+      .then((result) => result.rows)
+      .catch((err) => console.log(err))
+  }
+
+  const getRatingsExpandedView = function(user_id, pin_id) {
+    return db.query(`
+    SELECT *
+    FROM pin_ratings
+    WHERE user_id = $1
+    AND pin_id = $2
+    `, [user_id, pin_id])
+      .then((result) => result.rows[0])
+      .catch((err) => console.log(err))
+  }
+
   // ADD
 
   const addUser = function(user) {
@@ -279,5 +300,5 @@ module.exports = (db) => {
 
 
 
-  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById, removeFavorite, getUserFavorites };
+  return { getUserByEmail, updateUserInfo, addUser, getUserById, addPin, addRating, addComment, addFavorite, getOwnedPins, getFavPins, getAllPins, searchPins, getPinById, getPinCommentsById, getCommentById, removeFavorite, getUserFavorites, getRatingsExpandedView, getRatingsGeneralView };
 };
