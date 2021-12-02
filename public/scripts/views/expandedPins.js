@@ -101,7 +101,8 @@ function userRatings(expandedPin) {
         console.log(obj);
         if (obj.rating) {
           //if it already has a rating by the user
-          console.log(obj.rating.rating);
+          $(".form-label").text("Your Rating");
+          // console.log(obj.rating.rating);
           for (let i = 1; i <= obj.rating.rating; i++) {
             $(`.fa-star.${i}`).addClass("checked");
           }
@@ -110,6 +111,7 @@ function userRatings(expandedPin) {
           for (let i = 1; i <= 5; i++) {
             $(`.fa-star.${i}`).hover(
               function () {
+                $(this).css("cursor", "pointer");
                 $(this).addClass("checked");
                 for (let j = 1; j < i; j++) {
                   $(`.fa-star.${j}`).addClass("checked");
@@ -136,6 +138,19 @@ function userRatings(expandedPin) {
                 .done(function (obj) {
                   if (obj.auth) {
                     // $appendComment(obj);
+                    $(".form-label").text("Your rating");
+                    //remove event listeners
+                    console.log(obj.result.rating);
+                    for (let i = 1; i <= 5; i++) {
+                      $(`.fa-star.${i}`).off("mouseenter mouseleave");
+                      $(`.fa-star.${i}`).off("click");
+                      $(`.fa-star.${i}`).css("cursor", "auto");
+                    }
+                    for (let i = 1; i <= obj.result.rating; i++) {
+                      $(this).addClass("checked");
+
+                      $(`.fa-star.${i}`).addClass("checked");
+                    }
                   } else {
                     render("login", obj);
                   }
