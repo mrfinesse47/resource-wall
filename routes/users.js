@@ -204,7 +204,7 @@ module.exports = (db) => {
 
     //makes sure the edit form is complete
 
-    if (!(user.first_name && user.last_name && user.email && user.password)) {
+    if (!(user.first_name || user.last_name || user.email || user.password)) {
       return res.json({ auth: false, message: "incomplete form" });
     }
 
