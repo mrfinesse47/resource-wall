@@ -189,12 +189,12 @@ module.exports = (db) => {
       .catch((err) => console.log(err))
   };
 
-  const addRating = function(object) {
+  const addRating = function(user_id, pin_id, rating) {
     return db.query(`
     INSERT INTO pin_ratings (user_id, pin_id, rating)
     VALUES ($1, $2, $3)
     RETURNING *;
-    `, [object.user_id, object.pin_id, object.rating])
+    `, [user_id, pin_id, rating])
       .then((result) => result.rows[0])
       .catch((err) => console.log(err))
   };

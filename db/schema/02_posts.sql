@@ -8,6 +8,5 @@ CREATE TABLE pins (
   description VARCHAR(255) NOT NULL,
   content TEXT NOT NULL,
   tag_id INTEGER REFERENCES tags(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  url TEXT
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
