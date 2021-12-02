@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+#nothing-here {
+  margin-top: 17em;
+
+
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+}

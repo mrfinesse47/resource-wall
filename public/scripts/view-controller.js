@@ -7,7 +7,7 @@ const render = (view, obj) => {
   $("#signup-article").remove();
   $("#modal-holder").remove();
   $("#profile-article").remove();
-
+  $("#nothing-here").remove();
   navBarView(obj);
 
   // then checks to see which page to render

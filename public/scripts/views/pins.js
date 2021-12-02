@@ -3,6 +3,13 @@ const pins = (obj) => {
   </div>`;
   $($createPinContainer).appendTo("#main-container");
 
+  console.log(obj, "inside pins fn")
+
+  if (obj.pins.length < 1) {
+    $("#pins-container").append(createNotFoundElement());
+    return;
+  }
+
   determineLikes((likes) => {
     //brings back an array of pin ids
     obj.pins.forEach(($pin) => {
@@ -22,9 +29,9 @@ const pins = (obj) => {
 
       $(`#${$pin.id} img`).click(function (event) {
         $.ajax({
-          method: "GET",
-          url: `api/pins/${$pin.id}`,
-        })
+            method: "GET",
+            url: `api/pins/${$pin.id}`,
+          })
           .done(function (obj) {
             console.log(obj);
             if (obj.auth) {
