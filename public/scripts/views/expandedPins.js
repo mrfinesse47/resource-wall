@@ -91,17 +91,18 @@ const expandedPins = (obj) => {
   }, obj);
 };
 
-function userRatings(obj) {
+function userRatings(expandedPin) {
   $.ajax({
     method: "GET",
-    url: `api/pins/${obj.pin.id}/rating`,
+    url: `api/pins/${expandedPin.pin.id}/rating`,
   })
     .done(function (obj) {
       if (obj.auth) {
         console.log(obj);
         if (obj.rating) {
           //if it already has a rating by the user
-          console.log(obj.rating.rating);
+          $(".form-label").text("Your Rating");
+          // console.log(obj.rating.rating);
           for (let i = 1; i <= obj.rating.rating; i++) {
             $(`.fa-star.${i}`).addClass("checked");
           }
@@ -110,6 +111,7 @@ function userRatings(obj) {
           for (let i = 1; i <= 5; i++) {
             $(`.fa-star.${i}`).hover(
               function () {
+                $(this).css("cursor", "pointer");
                 $(this).addClass("checked");
                 for (let j = 1; j < i; j++) {
                   $(`.fa-star.${j}`).addClass("checked");
@@ -122,22 +124,33 @@ function userRatings(obj) {
                 }
               }
             );
-            $(`.fa-star.${i}`).click((obj) => {
+            $(`.fa-star.${i}`).click(() => {
               //if not already rated send rating
               alert(`clicked ${i}`);
 
               const rating = i;
 
-              console.log("999999999", obj);
-
               $.ajax({
                 method: "POST",
-                data: rating,
-                url: `api/pins/${obj.pin.id}/rating`,
+                data: { rating },
+                url: `api/pins/${expandedPin.pin.id}/rating`,
               })
                 .done(function (obj) {
                   if (obj.auth) {
                     // $appendComment(obj);
+                    $(".form-label").text("Your rating");
+                    //remove event listeners
+                    console.log(obj.result.rating);
+                    for (let i = 1; i <= 5; i++) {
+                      $(`.fa-star.${i}`).off("mouseenter mouseleave");
+                      $(`.fa-star.${i}`).off("click");
+                      $(`.fa-star.${i}`).css("cursor", "auto");
+                    }
+                    for (let i = 1; i <= obj.result.rating; i++) {
+                      $(this).addClass("checked");
+
+                      $(`.fa-star.${i}`).addClass("checked");
+                    }
                   } else {
                     render("login", obj);
                   }
