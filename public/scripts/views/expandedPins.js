@@ -91,10 +91,10 @@ const expandedPins = (obj) => {
   }, obj);
 };
 
-function userRatings(obj) {
+function userRatings(expandedPin) {
   $.ajax({
     method: "GET",
-    url: `api/pins/${obj.pin.id}/rating`,
+    url: `api/pins/${expandedPin.pin.id}/rating`,
   })
     .done(function (obj) {
       if (obj.auth) {
@@ -122,18 +122,16 @@ function userRatings(obj) {
                 }
               }
             );
-            $(`.fa-star.${i}`).click((obj) => {
+            $(`.fa-star.${i}`).click(() => {
               //if not already rated send rating
               alert(`clicked ${i}`);
 
               const rating = i;
 
-              console.log("999999999", obj);
-
               $.ajax({
                 method: "POST",
-                data: rating,
-                url: `api/pins/${obj.pin.id}/rating`,
+                data: { rating },
+                url: `api/pins/${expandedPin.pin.id}/rating`,
               })
                 .done(function (obj) {
                   if (obj.auth) {
