@@ -6,9 +6,10 @@
   #pin-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 0em 4em;
     height: 63em;
-
+    width: 90%;
 
     #comment-section {
       display: flex;
@@ -26,7 +27,7 @@
       #commentBtn {
         margin-top: 1em;
         margin-right: 1.5em;
-        padding: .4em 1em;
+        padding: 0.4em 1em;
         border: none;
         background: $background-color;
         font-family: Inter;
@@ -70,10 +71,9 @@
 
       #comment-box::-webkit-scrollbar {
         width: 10px;
-        border-radius: .5em;
+        border-radius: 0.5em;
         background: transparent;
       }
-
 
       #comment-box {
         display: flex;
@@ -96,7 +96,6 @@
         }
       }
     }
-
 
     #expanded-pin {
       display: flex;
@@ -122,7 +121,6 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-
       }
 
       .rating {
@@ -147,7 +145,7 @@
         width: 30px;
         height: 30px;
         text-align: center;
-        color: #FFF;
+        color: #fff;
         background: #ccc;
         font-size: 30px;
         margin-right: 2px;
@@ -156,14 +154,13 @@
         -webkit-border-radius: 50%;
       }
 
-      .rating span:hover~span label,
+      .rating span:hover ~ span label,
       .rating span:hover label,
       .rating span.checked label,
-      .rating span.checked~span label {
-        background: #F90;
-        color: #FFF;
+      .rating span.checked ~ span label {
+        background: #f90;
+        color: #fff;
       }
-
 
       #content-body {
         display: flex;
@@ -173,15 +170,13 @@
         padding: 1em 2em;
       }
 
-
       .title-like {
         display: flex;
         justify-content: flex-end;
-        padding: .7em 1em;
+        padding: 0.7em 1em;
       }
 
       .title {
-
         display: flex;
         justify-content: center;
       }
@@ -196,7 +191,6 @@
         justify-content: center;
         align-items: center;
 
-
         img {
           display: flex;
           max-width: 100%;
@@ -209,8 +203,6 @@
       footer {
         padding: 0 7%;
         padding-top: 10%;
-
-
 
         .title {
           text-align: center;

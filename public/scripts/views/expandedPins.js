@@ -41,6 +41,44 @@ const expandedPins = (obj) => {
 
     renderComments(obj);
 
+    $(".rating input:radio").attr("checked", false);
+    $(".rating input").click(function () {
+      $(".rating span").removeClass("checked");
+      $(this).parent().addClass("checked");
+    });
+
+    $("input:radio").change(function () {
+      const userRating = $(this).serialize();
+      console.log(userRating, "userRating");
+      $.ajax({
+        method: "POST",
+        data: userRating,
+        url: `api/pins/${obj.pin.id}/rating`,
+      })
+        .done(function (obj) {
+          if (!obj.auth) {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          // render("pins") // should re-render login once back end is hooked up
+        });
+    });
+
+    for (let i = 1; i <= 5; i++) {
+      $(`.fa-star.${i}`).hover(
+        function () {
+          $(this).addClass("checked");
+        },
+        function () {
+          $(this).removeClass("checked");
+        }
+      );
+      $(`.fa-star.${i}`).click(() => {
+        alert(`clicked ${i}`);
+      });
+    }
+
     $("#comment").submit(function (event) {
       event.preventDefault();
       $.ajax({
@@ -60,28 +98,4 @@ const expandedPins = (obj) => {
         });
     });
   }, obj);
-
-  $(".rating input:radio").attr("checked", false);
-  $(".rating input").click(function () {
-    $(".rating span").removeClass("checked");
-    $(this).parent().addClass("checked");
-  });
-
-  $("input:radio").change(function () {
-    const userRating = $(this).serialize();
-    console.log(userRating, "userRating");
-    $.ajax({
-      method: "POST",
-      data: userRating,
-      url: `api/pins/${obj.pin.id}/rating`,
-    })
-      .done(function (obj) {
-        if (!obj.auth) {
-          render("login", obj);
-        }
-      })
-      .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
-      });
-  });
 };
