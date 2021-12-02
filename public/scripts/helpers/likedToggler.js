@@ -1,46 +1,46 @@
-const likeToggler = function (id, likes, el) {
-  if (likes.includes(id)) {
-    $(el).addClass("fa-heart-o ");
-    $(el).removeClass("fa-heart");
+const likeToggler = function (id, likes) {
+  $(`#${id} .favorite`).click(function () {
+    //here we can set a click handler for the heart
 
-    likes = likes.filter((like) => like !== id);
+    if (likes.includes(id)) {
+      $(this).addClass("fa-heart-o ");
+      $(this).removeClass("fa-heart");
 
-    $.ajax({
-      method: "POST",
-      url: `api/pins/favorites/${id}/delete`,
-    })
-      .done(function (obj) {
-        // console.log(obj);
-        if (!obj.auth) {
-          render("login", obj);
-        }
+      likes = likes.filter((like) => like !== id);
+
+      $.ajax({
+        method: "POST",
+        url: `api/pins/favorites/${id}/delete`,
       })
-      .fail(function () {
-        //should either render pins or give a notification that logout failed
-      });
-  } else {
-    $(el).addClass("fa-heart ");
-    $(el).removeClass("fa-heart-o");
+        .done(function (obj) {
+          // console.log(obj);
+          if (!obj.auth) {
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          //should either render pins or give a notification that logout failed
+        });
+    } else {
+      $(this).addClass("fa-heart ");
+      $(this).removeClass("fa-heart-o");
 
-    likes.push(id);
+      likes.push(id);
 
-    // console.log($pin.id);
-    // ${$pin.id}
-    $.ajax({
-      method: "POST",
-      url: `api/pins/favorites/${id}`,
-    })
-      .done(function (obj) {
-        // console.log(obj);
-        if (!obj.auth) {
-          // render("expandedPins", obj);
-          render("login", obj);
-        }
+      $.ajax({
+        method: "POST",
+        url: `api/pins/favorites/${id}`,
       })
-      .fail(function () {
-        //should either render pins or give a notification that logout failed
-      });
-  }
+        .done(function (obj) {
+          // console.log(obj);
+          if (!obj.auth) {
+            // render("expandedPins", obj);
+            render("login", obj);
+          }
+        })
+        .fail(function () {
+          //should either render pins or give a notification that logout failed
+        });
+    }
+  });
 };
-
-//going to do a server request here and then toggle its state
