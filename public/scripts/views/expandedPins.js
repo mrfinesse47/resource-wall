@@ -21,9 +21,9 @@ const expandedPins = (obj) => {
     $(this).removeClass("fa-heart-o");
     // ${$pin.id}
     $.ajax({
-        method: "POST",
-        url: `api/pins/favorites/${$pin.id}`,
-      })
+      method: "POST",
+      url: `api/pins/favorites/${$pin.id}`,
+    })
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
@@ -58,10 +58,10 @@ const expandedPins = (obj) => {
   $("#comment").submit(function (event) {
     event.preventDefault();
     $.ajax({
-        method: "POST",
-        data: $(this).serialize(),
-        url: `api/pins/${obj.pin.id}/comments`,
-      })
+      method: "POST",
+      data: $(this).serialize(),
+      url: `api/pins/${obj.pin.id}/comments`,
+    })
       .done(function (obj) {
         if (obj.auth) {
           $appendComment(obj);
