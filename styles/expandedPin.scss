@@ -13,6 +13,11 @@
     height: 63em;
     width: 90%;
 
+    .expanded-pin-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
     #comment-section {
       display: flex;
       flex-direction: column;
