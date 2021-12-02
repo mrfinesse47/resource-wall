@@ -14,8 +14,11 @@ const newPin = () => {
       data: $("#create-pin").serialize(),
       url: "api/pins",
     }).done(function (obj) {
-      if (obj.auth) {
+      console.log(obj, "3232131231");
+      if (obj.auth && !obj.formError) {
         loadPins("api/pins", (obj) => render("pins", obj));
+      } else {
+        errorHandler(obj.message);
       }
     });
   });
@@ -27,6 +30,7 @@ const newPin = () => {
         url: "api/users/auth",
       })
       .done(function (obj) {
+
         if (!obj.auth) {
           render("login", obj);
         } else {

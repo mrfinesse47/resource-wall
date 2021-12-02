@@ -26,10 +26,10 @@ const userProfile = (obj) => {
             })
             .done(function (obj) {
               console.log(obj, "123");
-              if (obj.auth) {
+              if (obj.auth && !obj.formError) {
                 render("userProfile", obj)
               } else {
-                render("login", obj);
+                errorHandler(obj.message);
               }
             })
             .fail(function () {

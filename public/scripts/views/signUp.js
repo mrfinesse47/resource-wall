@@ -12,10 +12,10 @@ const signUp = () => {
     event.preventDefault();
 
     $.ajax({
-      method: "POST",
-      data: $(this).serialize(),
-      url: "api/users/signup",
-    })
+        method: "POST",
+        data: $(this).serialize(),
+        url: "api/users/signup",
+      })
       .done(function (obj) {
         console.log(obj);
         if (obj.auth) {
@@ -33,9 +33,9 @@ const signUp = () => {
   $("#loginredirect").click(function (event) {
     event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: "api/users/auth",
-    })
+        method: "GET",
+        url: "api/users/auth",
+      })
       .done(function (obj) {
         if (!obj.auth) {
           render("login", obj);

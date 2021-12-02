@@ -4,6 +4,8 @@ const login = (obj) => {
   </article>`;
   $($createArticle).appendTo("#main-container");
 
+  $("#error-msg").hide();
+
   // creates login-form and connects it to the login-box(article)
   const $login = loginElement();
   $("#login-article").append($login);
@@ -20,6 +22,9 @@ const login = (obj) => {
         console.log(obj);
         if (obj.auth) {
           loadPins("api/pins", (obj) => render("pins", obj));
+        } else {
+          errorHandler(obj.message);
+          console.log(obj.message)
         }
       })
       .fail(function () {
