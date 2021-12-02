@@ -9,6 +9,10 @@
   border-radius: 3em;
   width: 35em;
 
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
   .newpin-form {
     display: flex;
     justify-content: center;
@@ -33,9 +37,12 @@
     #create-content {
       text-align: start;
       height: 20em;
+      resize: none;
     }
 
   }
+
+
 
   #createPinBtn {
     margin-top: 0.2em;
