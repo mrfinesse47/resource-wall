@@ -12,3 +12,12 @@ main {
 
   justify-content: center;
 }
+
+.favorite {
+  color: red;
+  font-size: 20px;
+}
+
+.favorite:hover {
+  cursor: pointer;
+}
