@@ -3,9 +3,8 @@ const pins = (obj) => {
   </div>`;
   $($createPinContainer).appendTo("#main-container");
 
-  console.log(obj.pins);
-
   determineLikes((likes) => {
+    //brings back an array of pin ids
     obj.pins.forEach(($pin) => {
       $("#pins-container").append(createPinElement($pin));
 
@@ -22,11 +21,9 @@ const pins = (obj) => {
       $(`#${$pin.id} .favorite`).click(function () {
         //here we can set a click handler for the heart
         //in order to set favorites
-        //alert("clicked heart");
 
         //need to determine if it is liked
 
-        console.log(likes.includes($pin.id));
         if (likes.includes($pin.id)) {
           $(this).addClass("fa-heart-o ");
           $(this).removeClass("fa-heart");
@@ -39,9 +36,7 @@ const pins = (obj) => {
           })
             .done(function (obj) {
               // console.log(obj);
-              if (obj.auth) {
-                // render("expandedPins", obj);
-              } else {
+              if (!obj.auth) {
                 render("login", obj);
               }
             })
@@ -62,9 +57,8 @@ const pins = (obj) => {
           })
             .done(function (obj) {
               // console.log(obj);
-              if (obj.auth) {
+              if (!obj.auth) {
                 // render("expandedPins", obj);
-              } else {
                 render("login", obj);
               }
             })
