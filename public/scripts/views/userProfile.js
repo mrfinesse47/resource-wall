@@ -15,7 +15,7 @@ const userProfile = (obj) => {
     $.ajax({
         method: "POST",
         data: $(this).serialize(),
-        url: "api/users/signup",
+        url: "api/users/edit",
       })
       .done(function (obj) {
         console.log(obj);

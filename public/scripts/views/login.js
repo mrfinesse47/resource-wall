@@ -1,4 +1,4 @@
-const login = () => {
+const login = (obj) => {
   // creates login-box and appends it to main-container
   const $createArticle = `<article id="login-article">
   </article>`;
@@ -17,13 +17,13 @@ const login = () => {
         url: "api/users/login",
       })
       .done(function (obj) {
-        // console.log(obj);
+        console.log(obj);
         if (obj.auth) {
           loadPins("api/pins", (obj) => render("pins", obj));
         }
       })
       .fail(function () {
-        // render("pins") // should re-render login once back end is hooked up
+        console.log("something went wrong in login") // should re-render login once back end is hooked up
       });
   });
 
