@@ -186,7 +186,7 @@ app.listen(PORT, () => {
 
 // GET OWNED PINS //
 // tested id as int and as string both work
-// const testID = 13
+// const testID = 1
 // dbHelpers.getOwnedPins(testID).then((result) => {
 //   console.log('OwnedPins', result);
 // });
@@ -239,4 +239,13 @@ app.listen(PORT, () => {
 // GET USER FAVORITES FOR MAIN PAGE//
 // dbHelpers.getUserFavorites(user_id).then((result) => {
 //   console.log('userFavoites', result)
+// })
+
+// GET RATINGS //
+// dbHelpers.getRatingsExpandedView(1, 2).then((result) => {
+//     console.log('ratingsExpanded', result)
+// })
+
+// dbHelpers.getRatingsGeneralView(1).then((result) => {
+//   console.log('ratingsGeneral', result)
 // })
