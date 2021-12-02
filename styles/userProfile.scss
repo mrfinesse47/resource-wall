@@ -6,6 +6,7 @@
   border-radius: 2rem;
   text-align: center;
 
+
   #edit-profile-btn {
     margin-top: 1rem;
     padding: 10px 1.5rem;
@@ -17,6 +18,15 @@
 
   .edit-info {
     padding: .3em 0;
+    letter-spacing: .05em;
+  }
+
+  #profile-header {
+    letter-spacing: .05em;
+  }
+
+  h3 {
+    letter-spacing: .1em;
   }
 
   input,
