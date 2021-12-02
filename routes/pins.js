@@ -252,11 +252,23 @@ module.exports = (db) => {
       });
     }
 
-    console.log(req.body.userRating);
-    return res.json({
-      auth: true,
-      message: "sent rating to pin",
-    });
+    // console.log(req.body.rating);
+
+    db.addRating(userID, req.params.pinID, req.body.rating)
+      .then((result) => {
+        res.json({
+          auth: true,
+          message: "sent rating to pin",
+          result,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          auth: true,
+          message: "internal server error",
+        });
+      });
   });
 
   //-----------------------------------------------------------------
