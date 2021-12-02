@@ -3,6 +3,8 @@
 #main-container {
   display: flex;
 
+
+
   #pin-container {
     display: flex;
     justify-content: center;
@@ -119,13 +121,21 @@
 
       #user-rating {
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0.1rem 0.5rem
+      }
+
+      .form-label {
+        margin-bottom: .3em;
+        padding-right: .5em;
       }
 
       .rating {
         float: left;
-        width: 300px;
+        width: 80px;
+        display: flex;
+        align-items: center;
       }
 
       .rating span {
@@ -154,10 +164,10 @@
         -webkit-border-radius: 50%;
       }
 
-      .rating span:hover ~ span label,
+      .rating span:hover~span label,
       .rating span:hover label,
       .rating span.checked label,
-      .rating span.checked ~ span label {
+      .rating span.checked~span label {
         background: #f90;
         color: #fff;
       }
@@ -203,6 +213,9 @@
       footer {
         padding: 0 7%;
         padding-top: 10%;
+        display: flex;
+        justify-content: space-between;
+
 
         .title {
           text-align: center;
@@ -210,7 +223,7 @@
 
         .info {
           display: flex;
-          justify-content: space-between;
+          flex-direction: column;
         }
 
         .rating {

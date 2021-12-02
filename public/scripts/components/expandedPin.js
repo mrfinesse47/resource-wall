@@ -3,50 +3,53 @@ const createExpandedPinElement = (obj) => {
   const rating = Math.round(obj.pin.average_rating * 10) / 10;
 
   let starRating = (rating) => {
+    console.log(rating);
     if (rating === 5) {
       return `
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>`;
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked f a-lg"></span>`
     } else if (rating > 4) {
       return `
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>`;
+      <span class="fa fa-star checked a-lg"></span>
+      <span class="fa fa-star checked a-lg"></span>
+      <span class="fa fa-star checked a-lg"></span>
+      <span class="fa fa-star checked a-lg"></span>
+      <span class="fa fa-star a-lg"></span>`
     } else if (rating > 3) {
       return `
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`;
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg" ></span>`
     } else if (rating > 2) {
       return `
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`;
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star checked fa-lg"></span>
+      <span class="fa fa-star fa-lg "></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>`
     } else if (rating > 1) {
       return `
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`;
+      <span class="fa fa-star  fa-lgchecked fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>`
     } else if (rating >= 0) {
       return `
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>`;
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>
+      <span class="fa fa-star fa-lg"></span>`
     }
-  };
+
+  }
+
 
   return `
   <article id="expanded-pin">
@@ -80,21 +83,22 @@ const createExpandedPinElement = (obj) => {
        </p>
       </div>
     </div>
+    <div id="user-rating">
+    <label for="rating" class="form-label">
+    Rate this pin!
+    </label>
+
+
+      <div class="rating">
+      <span class="fa fa-star 5 fa-lg"></span>
+      <span class="fa fa-star 4 fa-lg"></span>
+      <span class="fa fa-star 3 fa-lg"></span>
+      <span class="fa fa-star 2 fa-lg"></span>
+      <span class="fa fa-star 1 fa-lg"></span>
+      </div>
+
+    </div>
   </footer>
-<div id="user-rating">
-  <div>
-  Rate this pin!
-  </div>
-
-  <div class="rating">
-  <span class="fa fa-star 5"></span>
-  <span class="fa fa-star 4"></span>
-  <span class="fa fa-star 3"></span>
-  <span class="fa fa-star 2"></span>
-  <span class="fa fa-star 1"></span>
-  </div>
-
-</div>
   </article>
 
   <div id="comment-section">
