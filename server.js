@@ -106,10 +106,7 @@ app.listen(PORT, () => {
 // });
 // const testId = 1;
 // const testNewInfo = {
-//   first_name: 'evan',
-//   last_name: 'fish',
-//   email: 'exale@exale.com',
-//   password: 'test'
+//   password: 'test2'
 // };
 
 // // UPDATE USER INFO //
