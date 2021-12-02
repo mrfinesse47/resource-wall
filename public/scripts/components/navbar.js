@@ -1,41 +1,45 @@
 const navBar = (obj) => {
   if (obj.auth) {
-    return `<nav id="navigation">
-  <div class="container">
-  <div class="nav-bar-items">
-  <button type="button" class="nav-buttons" id="home"><i class="fa fa-thumb-tack" aria-hidden="true"></i></i>
-  </button>
+    return `  <nav id="navigation">
+    <div class="container">
+      <div class="nav-bar-items">
+        <button type="button" class="nav-buttons" id="home"><i class="fa fa-thumb-tack" aria-hidden="true"></i></i>
+        </button>
 
-  <button type="button" class="nav-buttons" id="my-pins">My Pins
-  </button>
+        <button type="button" class="nav-buttons" id="my-pins">My Pins
+        </button>
 
-  <button type="button" class="nav-buttons" id="my-favorites">Favorited
-  </button>
+        <button type="button" class="nav-buttons" id="my-favorites">Favorited
+        </button>
 
-  <button type="button" class="nav-buttons" id="pin-creation">Create Pin
-  </button>
+        <button type="button" class="nav-buttons" id="pin-creation">Create Pin
+        </button>
 
 
-  <button type="button" class="nav-buttons" id="user-info">User Info
-  </button>
+        <button type="button" class="nav-buttons" id="user-info">User Info
+        </button>
 
-  </div>
-  <div class="nav-links"><div id="body">
+      </div>
+      <div class="nav-links">
+        <div id="body">
 
-  <form id="search-id">
+          <div class="search-box">
+            <button class="btn-search">
+              <i class="fas fa-search"></i>
+            </button>
 
-  <button class="btn-search">
-  <i class="fas fa-search"></i>
-  </button>
+            <input type="search" name="search" class="input-search" id="nav-search" placeholder="Type to Search...">
 
-  <input type="search" name="search" class="input-search" id="nav-search" placeholder="Type to Search...">
+          </div>
 
-  </div>
 
-</div>
-  <button type="button" id="logout-btn">Log Out</button>
-  </div>
-  </div>
+
+        </div>
+
+      </div>
+      <button type="button" id="logout-btn">Log Out</button>
+    </div>
+
   </nav>`;
   } else {
     return `<nav id="navigation">

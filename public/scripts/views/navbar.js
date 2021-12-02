@@ -97,15 +97,36 @@ const navBarView = (obj) => {
     });
 
 
-    $("#search-id").submit(function (event) {
-      event.preventDefault();
-      console.log($(this).serialize(), "its in here");
+    // $("#search-id").submit(function (event) {
+    //   event.preventDefault();
+    //   console.log($(this).serialize(), "its in here");
+    //   $.ajax({
+    //       method: "POST",
+    //       data: $(this).serialize(),
+    //       url: "api/pins/search",
+    //     })
+    //     .done(function (obj) {
+    //       if (obj.auth) {
+    //         render("pins", obj);
+    //       } else {
+    //         render("login", obj);
+    //       }
+    //     })
+    //     .fail(function () {
+    //       // render("pins") // should re-render login once back end is hooked up
+    //     });
+    // });
+
+    const input = document.querySelector('input[type="search"]');
+    input.onsearch = () => {
+      console.log($(input).serialize(), "inside search");
       $.ajax({
           method: "POST",
-          data: $(this).serialize(),
+          data: $(input).serialize(),
           url: "api/pins/search",
         })
         .done(function (obj) {
+          console.log(obj);
           if (obj.auth) {
             render("pins", obj);
           } else {
@@ -113,30 +134,9 @@ const navBarView = (obj) => {
           }
         })
         .fail(function () {
-          // render("pins") // should re-render login once back end is hooked up
+          console.log("search failed");
         });
-    });
-
-    // const input = document.querySelector('input[type="search"]');
-    // input.onsearch = () => {
-    //   console.log($(input.value).serialize(), "inside search");
-    //   $.ajax({
-    //       method: "POST",
-    //       data: $(input.value).serialize(),
-    //       url: "api/pins/search",
-    //     })
-    //     .done(function (obj) {
-    //       console.log(obj);
-    //       if (obj.auth) {
-    //         render("searchPins", obj);
-    //       } else {
-    //         render("login", obj);
-    //       }
-    //     })
-    //     .fail(function () {
-    //       console.log("search failed");
-    //     });
-    // };
+    };
 
     $("#logout-btn").click(function (event) {
       event.preventDefault();
