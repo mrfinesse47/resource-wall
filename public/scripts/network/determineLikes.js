@@ -10,6 +10,10 @@ const determineLikes = function (callback, obj) {
 
       //   console.log("likes:", obj);
 
+      if (!likesObj.auth) {
+        return render("login", obj);
+      }
+
       const likes = [];
 
       likesObj.pins.forEach((like) => {
