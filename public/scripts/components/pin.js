@@ -89,21 +89,21 @@ const createPinElement = (obj) => {
   // </article>`
   return `<div class="card pin" id="${obj.id}" style="width: 18rem;">
   <img class="card-img-top" src="${obj.thumbnail_url}" alt="Card image cap">
-  
+
   <div class="card-body">
   <h5 class="card-title">${obj.title}</h5>
     <p class="card-text">${des}</p>
     <pclass="card-text">${cont}</p>
   </div>
   <div class="card-footer text-muted">
- 
-  
-    ${obj.name}:
+
+
+    <p id="tag-name">${obj.name}:</p>
     ${starRating(rating)}
-  
-  
+
+
   <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
-  
+
   </div>
 </div>`;
 };
