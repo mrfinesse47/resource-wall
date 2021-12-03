@@ -3,7 +3,7 @@ PinQuest: Pinterest for learning resources!
 
 ## Features
 
-* users are able to save a pin with a title, description and body
+* users are able to create a pin with a title, description and body
 * users are able to search for already-saved resources created by any user
 * users are able to categorize any resource under a tag
 * users are able to comment on any resource
