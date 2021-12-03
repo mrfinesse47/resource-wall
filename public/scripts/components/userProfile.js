@@ -1,5 +1,4 @@
 const createUserProfileElement = (obj) => {
-  console.log(obj.userInfo)
   return `
 <header id="profile-header">
   <h3>${obj.userInfo.first_name} ${obj.userInfo.last_name}</h3>

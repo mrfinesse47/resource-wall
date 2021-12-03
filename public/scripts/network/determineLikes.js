@@ -1,14 +1,11 @@
 const determineLikes = function (callback, obj) {
   $.ajax({
-    method: "GET",
-    url: "api/pins/favorites",
-    cache: false,
-    dataType: "json",
-  })
+      method: "GET",
+      url: "api/pins/favorites",
+      cache: false,
+      dataType: "json",
+    })
     .done(function (likesObj) {
-      // console.log(obj);
-
-      //   console.log("likes:", obj);
 
       if (!likesObj.auth) {
         return render("login", obj);

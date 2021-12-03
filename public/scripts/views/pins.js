@@ -3,7 +3,7 @@ const pins = (obj) => {
   </div>`;
   $($createPinContainer).appendTo("#main-container");
 
-  console.log(obj, "inside pins fn")
+
 
   if (obj.pins.length < 1) {
     $("#pins-container").append(createNotFoundElement());
@@ -16,7 +16,6 @@ const pins = (obj) => {
       $("#pins-container").append(createPinElement($pin));
       //renders the inital likes to the pins
       if (likes.includes($pin.id)) {
-        //console.log("pin id", $pin.id, $pin.isFavorite);
         $(`#${$pin.id} .favorite`).removeClass("fa-heart-o");
         $(`#${$pin.id} .favorite`).addClass("fa-heart");
       } else {
@@ -33,7 +32,6 @@ const pins = (obj) => {
             url: `api/pins/${$pin.id}`,
           })
           .done(function (obj) {
-            console.log(obj);
             if (obj.auth) {
               render("expandedPins", obj);
             } else {

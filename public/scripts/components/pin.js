@@ -11,7 +11,7 @@ const createPinElement = (obj) => {
   }
 
   let starRating = (rating) => {
-    console.log(rating);
+
     if (rating === 5) {
       return `
       <span class="fa fa-star checked"></span>

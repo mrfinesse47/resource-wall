@@ -9,11 +9,11 @@ const likeToggler = function (id, likes) {
       likes = likes.filter((like) => like !== id);
 
       $.ajax({
-        method: "POST",
-        url: `api/pins/favorites/${id}/delete`,
-      })
+          method: "POST",
+          url: `api/pins/favorites/${id}/delete`,
+        })
         .done(function (obj) {
-          // console.log(obj);
+
           if (!obj.auth) {
             render("login", obj);
           }
@@ -28,9 +28,9 @@ const likeToggler = function (id, likes) {
       likes.push(id);
 
       $.ajax({
-        method: "POST",
-        url: `api/pins/favorites/${id}`,
-      })
+          method: "POST",
+          url: `api/pins/favorites/${id}`,
+        })
         .done(function (obj) {
           // console.log(obj);
           if (!obj.auth) {

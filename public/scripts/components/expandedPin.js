@@ -1,9 +1,9 @@
 const createExpandedPinElement = (obj) => {
-  //console.log("the obj id is:", obj.pin.id);
+
   const rating = Math.round(obj.pin.average_rating * 10) / 10;
 
   let starRating = (rating) => {
-    console.log(rating);
+
     if (rating === 5) {
       return `
       <span class="fa fa-star checked fa-lg"></span>
@@ -118,4 +118,4 @@ const createExpandedPinElement = (obj) => {
   `;
 };
 
-// needs to be dynamic
+// rendered dynamically

@@ -66,7 +66,7 @@ const navBarView = (obj) => {
           url: "api/users/auth",
         })
         .done(function (obj) {
-          console.log(obj);
+
           if (obj.auth) {
             loadPins("api/pins", (obj) => render("pins", obj));
           } else {
@@ -85,7 +85,7 @@ const navBarView = (obj) => {
           url: "api/users/info",
         })
         .done(function (obj) {
-          console.log(obj, "123");
+
           if (obj.auth) {
             render("userProfile", obj)
           } else {
@@ -120,14 +120,14 @@ const navBarView = (obj) => {
 
     const input = document.querySelector('input[type="search"]');
     input.onsearch = () => {
-      console.log($(input).serialize(), "inside search");
+
       $.ajax({
           method: "POST",
           data: $(input).serialize(),
           url: "api/pins/search",
         })
         .done(function (obj) {
-          console.log(obj);
+
           if (obj.auth) {
             render("pins", obj);
           } else {

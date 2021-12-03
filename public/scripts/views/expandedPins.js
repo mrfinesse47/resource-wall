@@ -6,14 +6,14 @@ const expandedPins = (obj) => {
   const $pin = createExpandedPinElement(obj);
   $("#pin-container").append($pin);
 
-  console.log(obj, "expanedpins");
+
 
   const $appendComment = (obj) => {
     $("#comment-prepend").prepend(createCommentElement(obj.comment));
   };
 
   const renderComments = (obj) => {
-    console.log(obj);
+
     obj.comments.forEach(($comment) => {
       $("#comment-prepend").prepend(createCommentElement($comment));
     });
@@ -25,11 +25,10 @@ const expandedPins = (obj) => {
   // }
 
   determineLikes((likes) => {
-    console.log(obj.pin.id);
-    console.log(likes);
+
 
     if (likes.includes(obj.pin.id)) {
-      //console.log("pin id", $pin.id, $pin.isFavorite);
+
       $(`#${obj.pin.id} .favorite`).removeClass("fa-heart-o");
       $(`#${obj.pin.id} .favorite`).addClass("fa-heart");
     } else {
@@ -49,7 +48,7 @@ const expandedPins = (obj) => {
 
     $("input:radio").change(function () {
       const userRating = $(this).serialize();
-      console.log(userRating, "userRating");
+
       $.ajax({
           method: "POST",
           data: userRating,
@@ -98,11 +97,9 @@ function userRatings(expandedPin) {
     })
     .done(function (obj) {
       if (obj.auth) {
-        console.log(obj);
         if (obj.rating) {
           //if it already has a rating by the user
           $(".form-label").text("Your Rating");
-          // console.log(obj.rating.rating);
           for (let i = 1; i <= obj.rating.rating; i++) {
             $(`.fa-star.${i}`).addClass("checked");
           }
@@ -142,7 +139,7 @@ function userRatings(expandedPin) {
                     // $appendComment(obj);
                     $(".form-label").text("Your rating is:");
                     //remove event listeners
-                    console.log(obj.result.rating);
+
                     for (let i = 1; i <= 5; i++) {
                       $(`.fa-star.${i}`).off("mouseenter mouseleave");
                       $(`.fa-star.${i}`).off("click");

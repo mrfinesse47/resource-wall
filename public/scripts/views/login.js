@@ -17,7 +17,6 @@ const login = (obj) => {
   // ajax call for submission of login form
   $("#login-form").submit(function (event) {
     event.preventDefault();
-    console.log(event);
     $.ajax({
         method: "POST",
         data: $(this).serialize(),
@@ -29,7 +28,7 @@ const login = (obj) => {
           loadPins("api/pins", (obj) => render("pins", obj));
         } else {
           errorHandler(obj.message);
-          console.log(obj.message)
+
         }
       })
       .fail(function () {

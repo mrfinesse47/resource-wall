@@ -12,7 +12,7 @@ const signUp = () => {
 
   // ajax call for form submission
   $("#sign-up-user").submit(function (event) {
-    console.log(event);
+
     event.preventDefault();
 
     $.ajax({
