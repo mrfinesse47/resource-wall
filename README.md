@@ -30,12 +30,12 @@ PinQuest: Pinterest for learning resources!
 8. Visit `http://localhost:8080/`
 
 
-!["Screenshot of Home"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/All%20pins.png)
 !["Screenshot of log-in"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/login.png)
 !["Screenshot of sign-up"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/sign%20up.png)
 !["Screenshot of user-profile"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/user%20Profile.png)
-!["Screenshot of favorited pins"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/favorited.png)
 !["Screenshot of pin creation"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/create%20pin.png)
+!["Screenshot of Home"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/All%20pins.png)
+!["Screenshot of favorited pins"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/favorited.png)
 !["Screenshot of my pins"](https://github.com/mrfinesse47/resource-wall/blob/master/public/images/m%20pins.png)
 
 
