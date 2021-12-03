@@ -6,6 +6,11 @@ const newPin = () => {
   const $newPin = createNewPinElement();
   $("#modal-holder").append($newPin);
 
+
+  $("#create-pin-title").append(createErrorElement());
+  $("#error-msg").hide();
+
+
   $("#create-pin").submit(function (event) {
     console.log($("#create-pin").serialize(), "23123");
     event.preventDefault();
@@ -14,11 +19,10 @@ const newPin = () => {
       data: $("#create-pin").serialize(),
       url: "api/pins",
     }).done(function (obj) {
-      console.log(obj, "3232131231");
-      if (obj.auth && !obj.formError) {
-        loadPins("api/pins", (obj) => render("pins", obj));
-      } else {
+      if (obj.auth && obj.formError) {
         errorHandler(obj.message);
+      } else {
+        loadPins("api/pins", (obj) => render("pins", obj));
       }
     });
   });

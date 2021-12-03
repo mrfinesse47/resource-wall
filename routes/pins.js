@@ -7,7 +7,9 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/search", (req, res) => {
-    const { isLoggedIn } = req; //gets this from middleware
+    const {
+      isLoggedIn
+    } = req; //gets this from middleware
 
     console.log("search param", req.body.search);
 
@@ -47,7 +49,10 @@ module.exports = (db) => {
 
   router.post("/:pinID/comments", (req, res) => {
     // const userID = req.session.user_id; //from the cookie
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -56,7 +61,9 @@ module.exports = (db) => {
       });
     }
 
-    const { pinID } = req.params;
+    const {
+      pinID
+    } = req.params;
 
     // user_id, pin_id, comment
 
@@ -98,7 +105,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/favorites", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -136,7 +146,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/favorites/:pinID/delete", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -167,7 +180,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/favorites/:pinID", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -206,7 +222,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/owned", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -243,7 +262,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/:pinID/rating", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -278,7 +300,10 @@ module.exports = (db) => {
   // getRatingsExpandedView
 
   router.get("/:pinID/rating", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -287,7 +312,9 @@ module.exports = (db) => {
       });
     }
 
-    const { pinID } = req.params;
+    const {
+      pinID
+    } = req.params;
 
     db.getRatingsExpandedView(userID, pinID)
       .then((rating) => {
@@ -312,7 +339,9 @@ module.exports = (db) => {
 
   //get pin by pin ID
   router.get("/:pinID", (req, res) => {
-    const { isLoggedIn } = req; //gets this from middleware
+    const {
+      isLoggedIn
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -320,7 +349,9 @@ module.exports = (db) => {
         message: "not logged in",
       });
     }
-    const { pinID } = req.params;
+    const {
+      pinID
+    } = req.params;
 
     //using promise all because both db queries dont depend on each other
 
@@ -358,7 +389,10 @@ module.exports = (db) => {
   //right now the db limits it to 15
 
   router.get("/", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -388,7 +422,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -409,7 +446,7 @@ module.exports = (db) => {
     if (!(pin.title && pin.description && pin.content && pin.tag)) {
       return res.json({
         auth: true,
-        message: "incomplete form",
+        message: "Please fill in all required fields",
         formError: true,
       });
     }
