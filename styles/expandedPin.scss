@@ -10,7 +10,6 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 0em 4em;
-    height: 63em;
     width: 90%;
 
     .expanded-pin-wrapper {
@@ -216,8 +215,8 @@
           display: flex;
           max-width: 100%;
           height: auto;
-          padding-bottom: 1.5em;
           border-radius: 1em;
+          margin: 0.5em 0;
         }
       }
 

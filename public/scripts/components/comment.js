@@ -1,6 +1,6 @@
 const createCommentElement = (obj) => {
   let creation = obj.created_at.replace('T', ' ');
-  let final = creation.split(('.')[0]);
+  let time = creation.split(('.')[0]);
 
   return `
   <article class="comment" id="comment-list">
@@ -16,7 +16,7 @@ const createCommentElement = (obj) => {
   <hr class="comment-line"/>
   <footer class="comment-footer">
     <p class="comment-time">
-      ${final[0]}
+      ${time[0]}
     </p>
   </footer>
   </article>`;

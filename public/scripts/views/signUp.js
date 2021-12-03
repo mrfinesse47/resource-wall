@@ -28,7 +28,7 @@ const signUp = () => {
           loadPins("api/pins", (obj) => render("pins", obj));
         }
         if (!obj.auth) {
-          errorHandler(obj.message);
+          errorHandler(obj.message); //function that shows a pop-up error for incorrect form
         }
       })
       .fail(function () {

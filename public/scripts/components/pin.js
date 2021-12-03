@@ -98,7 +98,7 @@ const createPinElement = (obj) => {
   <div class="card-footer text-muted">
 
 
-    <p id="tag-name">${obj.name}:</p>
+    <p id="tag-name">${obj.name}</p>
     ${starRating(rating)}
 
 

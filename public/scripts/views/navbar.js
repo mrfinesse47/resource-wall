@@ -1,6 +1,7 @@
 const navBarView = (obj) => {
   const $navBar = navBar(obj);
   $($navBar).appendTo("#nav-placeholder");
+  //appends the NavBar to the top of the screen
 
   if (obj.auth) {
 

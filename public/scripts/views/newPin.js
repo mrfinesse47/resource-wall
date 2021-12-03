@@ -2,6 +2,7 @@ const newPin = () => {
   const $createDiv = `<article id="modal-holder">
   </article>`;
   $($createDiv).appendTo("#main-container");
+  //creating containers to hold components
 
   const $newPin = createNewPinElement();
   $("#modal-holder").append($newPin);

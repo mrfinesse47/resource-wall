@@ -10,7 +10,7 @@ const createExpandedPinElement = (obj) => {
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
-      <span class="fa fa-star checked f a-lg"></span>`;
+      <span class="fa fa-star checked fa-lg"></span>`;
     } else if (rating > 4) {
       return `
       <span class="fa fa-star checked a-lg"></span>
@@ -29,7 +29,7 @@ const createExpandedPinElement = (obj) => {
       return `
       <span class="fa fa-star checked fa-lg"></span>
       <span class="fa fa-star checked fa-lg"></span>
-      <span class="fa fa-star fa-lg "></span>
+      <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>
       <span class="fa fa-star fa-lg"></span>`;
     } else if (rating > 1) {
