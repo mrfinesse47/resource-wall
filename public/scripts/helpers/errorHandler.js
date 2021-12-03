@@ -1,4 +1,4 @@
 const errorHandler = (message) => {
-  $("#error-msg").slideDown("slow");
+  $("#error-msg").slideDown(10);
   $("#error-msg p").text(`${message}`);
 };
