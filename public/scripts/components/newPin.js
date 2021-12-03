@@ -19,7 +19,6 @@ const createNewPinElement = () => {
 <div class="mb-3">
 <label for="select-tag" class="form-label">Choose a tag</label>
 <select class="form-select" name="tag" id="select-tag" aria-label="Default select example">
-  <option selected>Choose a tag:</option>
   <option value="1">Computer Science</option>
   <option value="2">Biology</option>
   <option value="3">Chemistry</option>

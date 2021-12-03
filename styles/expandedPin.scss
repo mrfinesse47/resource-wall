@@ -16,6 +16,7 @@
     .expanded-pin-wrapper {
       display: flex;
       justify-content: space-between;
+      position: relative;
     }
 
     #comment-section {
@@ -119,6 +120,10 @@
       height: fit-content;
       border-radius: 2em;
 
+      #expanded-pin-header {
+        position: relative
+      }
+
       // .fa-star {
       //   color: orange;
       //   font-size: 1.2em;
@@ -186,8 +191,9 @@
       }
 
       .title-like {
-        display: flex;
-        justify-content: flex-end;
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
         padding: 0.7em 1em;
       }
 

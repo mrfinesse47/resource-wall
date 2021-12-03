@@ -56,9 +56,9 @@ const createExpandedPinElement = (obj) => {
   <h3 class="title">
   ${obj.pin.title}
   </h3>
-  <div class="title-like" >
-  <i class="fa fa-heart-o favorite " aria-hidden="true"></i>
-  </div>
+  <span class="title-like" >
+  <i class="fa fa-heart-o favorite fa-lg" aria-hidden="true"></i>
+  </span>
     <img
       src="${obj.pin.thumbnail_url}"
     />
