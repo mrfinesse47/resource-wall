@@ -39,7 +39,7 @@ module.exports = (db) => {
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     WHERE owner_id = $1
     GROUP BY pins.id, tags.name, tags.thumbnail_url
-    ORDER BY pins.created_at
+    ORDER BY pins.created_at DESC;
     `, [id])
       .then((result) => result.rows)
       .catch((err) => console.log(err))
@@ -55,7 +55,8 @@ module.exports = (db) => {
     LEFT JOIN pin_ratings AS rating ON rating.pin_id = pins.id
     JOIN tags ON tags.id = pins.tag_id
     WHERE fav_pins.user_id = $1
-    GROUP BY pins.id, tags.name, tags.thumbnail_url;
+    GROUP BY pins.id, tags.name, tags.thumbnail_url
+    ORDER BY pins.created_at DESC;
     `, [id])
       .then((result) => result.rows)
       .catch((err) => console.log(err))
@@ -69,7 +70,7 @@ module.exports = (db) => {
     LEFT JOIN pin_ratings ON pins.id = pin_ratings.pin_id
     JOIN tags ON pins.tag_id = tags.id
     GROUP BY pins.id, tags.name, tags.thumbnail_url
-    ORDER BY created_at;
+    ORDER BY created_at DESC;
     `)
     .then((result) => result.rows)
     .catch((err) => console.log(err))
@@ -90,7 +91,7 @@ module.exports = (db) => {
     OR LOWER(pins.description) LIKE LOWER($1)
     OR LOWER(pins.content) LIKE LOWER($1)
     GROUP BY pins.id , tags.name, tags.thumbnail_url
-    ORDER BY pins.created_at
+    ORDER BY pins.created_at DESC
     `;
     return db.query(queryString, [queryParam])
       .then((result) => result.rows)
