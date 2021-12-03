@@ -16,7 +16,9 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/auth", (req, res) => {
-    const { isLoggedIn } = req; //gets this from middleware
+    const {
+      isLoggedIn
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -36,7 +38,10 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.get("/info", (req, res) => {
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -72,7 +77,9 @@ module.exports = (db) => {
   //-----------------------------------------------------------------
 
   router.post("/login", (req, res) => {
-    const { isLoggedIn } = req; //gets this from middleware
+    const {
+      isLoggedIn
+    } = req; //gets this from middleware
     if (isLoggedIn) {
       return res.json({
         auth: true,
@@ -89,7 +96,7 @@ module.exports = (db) => {
           console.log("email does not exist");
           return res.json({
             auth: false,
-            message: "not a valid email address",
+            message: "User information is incorrect",
           });
         }
         if (req.body.password !== user.password) {
@@ -97,7 +104,7 @@ module.exports = (db) => {
 
           return res.json({
             auth: false,
-            message: "bad password",
+            message: "User information is incorrect",
           });
         }
         req.session.user_id = user.id;
@@ -149,13 +156,15 @@ module.exports = (db) => {
     if (!(user.first_name && user.last_name && user.email && user.password)) {
       return res.json({
         auth: false,
-        message: "incomplete form",
+        message: "Please fill in all required fields",
       });
     }
 
     //second thing is to check if the user is already logged in
 
-    const { isLoggedIn } = req; //gets this from middleware
+    const {
+      isLoggedIn
+    } = req; //gets this from middleware
 
     if (isLoggedIn) {
       return res.json({
@@ -171,7 +180,7 @@ module.exports = (db) => {
         if (!result) {
           return res.json({
             auth: false,
-            message: "not succesful in registering user",
+            message: "Email already in use",
           });
         }
         console.log("successfully added user to db: ", result);
@@ -204,7 +213,10 @@ module.exports = (db) => {
 
     //makes sure the edit form is completenpm star
 
-    const { isLoggedIn, userID } = req; //gets this from middleware
+    const {
+      isLoggedIn,
+      userID
+    } = req; //gets this from middleware
 
     if (!isLoggedIn) {
       return res.json({
@@ -217,7 +229,7 @@ module.exports = (db) => {
     if (!(user.first_name || user.last_name || user.email || user.password)) {
       return res.json({
         auth: true,
-        message: "incomplete form",
+        message: "Please fill in all required fields",
         formError: true,
       });
     }
